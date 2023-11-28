@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 sessionStorage.removeItem('uid');
 
                 // Redirect to the login page after sign out
-                window.location.href = 'sign-in.html';
+                window.location.href = 'index.html';
             })
             .catch((error) => {
                 console.error('Error signing out:', error.message);
@@ -29,8 +29,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (!uid) {
         // If not authenticated and not already on the login page, redirect to the login page
-        if (window.location.pathname !== '/sign-in.html') {
-            window.location.href = 'sign-in.html';
+        if (window.location.pathname !== '/index.html') {
+            window.location.href = 'index.html';
         }
     }
 });
