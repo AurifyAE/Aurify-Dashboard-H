@@ -71,7 +71,10 @@
       <div class="container-fluid py-1" style="margin-left:80px;">
         <img src="./orbixbullion l2.png" width="200px;">
       </div>
-      <div class="container-fluid py-1 px-3" id="datetime-container">
+      <div class="container-fluid py-1">
+
+      </div>
+      <div class="container-fluid py-1 " id="datetime-container">
         <div id="date"></div>
         <div id="time" style="font-size: 3rem;font-weight: 600;"></div>
       </div>
@@ -103,7 +106,7 @@
                 <div style="background-color: #c88029;height: 22px;width: 22px;display: flex;justify-content: center;align-items: center;margin-left: 25px;"><i class="fa-solid fa-dollar-sign" style="color: white;"></i></div>
                 <div><p>&nbsp;BUY</p></div>
               </div>
-              <div class="form-control input-box" id="goldInputLow"></div>
+              <div class="form-control input-box" id="goldInputLow" ></div>
               <!-- <label class="badge badge-success label-low mt-1" id="lowLabelGold">7777</label> -->
             </div>
             <div class="col-md-4 ms-3" style="text-align: center;">
@@ -138,11 +141,57 @@
               <!-- <label class="badge badge-warning label-high mt-1" id="highLabelSilver">44556</label> -->
             </div>
           </div>
+          <div class="col-md-3 mb-0 mt-0">
+<!-- TradingView Widget BEGIN -->
+<div class="tradingview-widget-container" style="border: none; border-radius:25px;background-color: rgb(254, 255, 255,0.6);">
+  <!-- <div class="tradingview-widget-container__widget"></div> -->
+  <!-- <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div> -->
+  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
+  {
+  "colorTheme": "light",
+  "dateRange": "3M",
+  "showChart": true,
+  "locale": "en",
+  "width": "300",
+  "height": "300",
+  "largeChartUrl": "",
+  "isTransparent": true,
+  "showSymbolLogo": true,
+  "showFloatingTooltip": false,
+  "plotLineColorGrowing": "rgba(151, 0, 0, 1)",
+  "plotLineColorFalling": "rgba(151, 0, 0, 1)",
+  "gridLineColor": "rgba(42, 46, 57, 0)",
+  "scaleFontColor": "rgba(106, 109, 120, 1)",
+  "belowLineFillColorGrowing": "rgba(221, 126, 107, 0.12)",
+  "belowLineFillColorFalling": "rgba(221, 126, 107, 0.12)",
+  "belowLineFillColorGrowingBottom": "rgba(41, 98, 255, 0)",
+  "belowLineFillColorFallingBottom": "rgba(41, 98, 255, 0)",
+  "symbolActiveColor": "rgba(41, 98, 255, 0.12)",
+  "tabs": [
+    {
+      "title": "Indices",
+      "symbols": [
+        {
+          "s": "TVC:GOLD"
+        },
+        {
+          "s": "TVC:SILVER"
+        }
+      ],
+      "originalTitle": "Indices"
+    }
+  ]
+}
+  </script>
+</div>
+<!-- TradingView Widget END -->
+
+          </div>
+
         </div>
 
 
-        <div class="col-md-6 mt-5 mb-5 ms-3"
-          style="border: none; border-radius:25px; background-color:rgb(200, 128, 41, 0.5) ;">
+        <div class="col-md-6 mt-5 mb-5 ms-3" style="border: none; border-radius:25px; background-color:rgb(200, 128, 41, 0.5) ;">
           <table class="table" style="font-size: large;font-weight:bolder; color: black;text-align: center;">
             <thead>
               <tr>
@@ -183,8 +232,16 @@
               </script>
           </div>
           <!-- TradingView Widget END -->
-
+          <div style="width:320px ; border: none; border-radius:25px;background-color: rgb(254, 255, 255,0.6);">
+            <div class="d-flex" style="margin-left:40px ;margin-top: 30px;">
+            <h6>Powered By</h6>
+            <center><img src="./assets/img/apple-icon.png" height="100px" width="100px"></center>
+            </div>
+            <center><h5 style="margin-left:50px ;">www.aurify.ae</h5></center>
+          </div>
         </div>
+
+
       </div>
     </div>
   </div>
