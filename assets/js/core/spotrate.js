@@ -376,11 +376,17 @@ async function showTable() {
           unitMultiplier = 31.1034768;
         }
 
-        console.log(unitMultiplier);
-        console.log(parseFloat(goldValue));
+        let sellPremium = sellPremiumInputAED || 0;
+        let buyPremium = buyPremiumInputAED || 0;
+        let askSpreadValue = askSpread || 0;
+        let bidSpreadValue = bidSpread || 0;
+
+        // console.log(unitMultiplier);
+        // console.log(parseFloat(goldValue));
+
         // Update the sellAED and buyAED values for the current 
-        newRow.querySelector("#sellAED").innerText = ((parseFloat(goldValue) + parseFloat(sellPremiumInputAED) + parseFloat(askSpread)) * unitInput * unitMultiplier * (purityInput / Math.pow(10, purityInput.length))).toFixed(4);
-        newRow.querySelector("#buyAED").innerText = ((parseFloat(goldValue) + parseFloat(buyPremiumInputAED) + parseFloat(bidSpread)) * unitInput * unitMultiplier * (purityInput / Math.pow(10, purityInput.length))).toFixed(4);
+        newRow.querySelector("#sellAED").innerText = ((parseFloat(goldValue) + parseFloat(sellPremium) + parseFloat(askSpreadValue)) * unitInput * unitMultiplier * (purityInput / Math.pow(10, purityInput.length))).toFixed(4);
+        newRow.querySelector("#buyAED").innerText = ((parseFloat(goldValue) + parseFloat(buyPremium) + parseFloat(bidSpreadValue)) * unitInput * unitMultiplier * (purityInput / Math.pow(10, purityInput.length))).toFixed(4);
       }, 1000)
 
     }

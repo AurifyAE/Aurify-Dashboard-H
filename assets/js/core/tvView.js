@@ -1,4 +1,8 @@
-import { readData, readSpreadValues } from '../core/spotrateDB.js';
+import { readSpreadValues } from '../core/spotrateDB.js';
+import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore.js";
+import { app } from '../../../config/db.js';
+
+const firestore = getFirestore(app)
 
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -77,6 +81,27 @@ function displaySpreadValues() {
         });
 }
 
+// Function to read data from the Firestore collection
+async function readData() {
+    // Get the UID of the authenticated user
+    const uid = 'BKm70mfv8BMQuJJUO4tiM3f0t6X2';
+
+    if (!uid) {
+        console.error('User not authenticated');
+        return Promise.reject('User not authenticated');
+    }
+
+    const querySnapshot = await getDocs(collection(firestore, `users/${uid}/commodities`));
+    const result = [];
+    querySnapshot.forEach((doc) => {
+        result.push({
+            id: doc.id,
+            data: doc.data()
+        });
+    });
+    return result;
+}
+
 // Show Table from Database
 async function showTable() {
     console.log("Tv");
@@ -97,6 +122,7 @@ async function showTable() {
             const buyAEDInput = data.data.buyAED;
             const sellPremiumInputAED = data.data.sellPremiumAED;
             const buyPremiumInputAED = data.data.buyPremiumAED;
+
 
             // Create a new table row
             const newRow = document.createElement("tr");
@@ -130,10 +156,14 @@ async function showTable() {
                     unitMultiplier = 31.1034768;
                 }
 
+                let sellPremium = sellPremiumInputAED || 0;
+                let buyPremium = buyPremiumInputAED || 0;
+                let askSpreadValue = askSpread || 0;
+                let bidSpreadValue = bidSpread || 0;
 
                 // Update the sellAED and buyAED values for the current 
-                newRow.querySelector("#sellAED").innerText = ((parseFloat(goldValue) + parseFloat(sellPremiumInputAED) + parseFloat(askSpread)) * unitInput * unitMultiplier * (purityInput / Math.pow(10, purityInput.length))).toFixed(4);
-                newRow.querySelector("#buyAED").innerText = ((parseFloat(goldValue) + parseFloat(buyPremiumInputAED) + parseFloat(bidSpread)) * unitInput * unitMultiplier * (purityInput / Math.pow(10, purityInput.length))).toFixed(4);
+                newRow.querySelector("#sellAED").innerText = ((parseFloat(goldValue) + parseFloat(sellPremium) + parseFloat(askSpreadValue)) * unitInput * unitMultiplier * (purityInput / Math.pow(10, purityInput.length))).toFixed(4);
+                newRow.querySelector("#buyAED").innerText = ((parseFloat(goldValue) + parseFloat(buyPremium) + parseFloat(bidSpreadValue)) * unitInput * unitMultiplier * (purityInput / Math.pow(10, purityInput.length))).toFixed(4);
             }, 1000)
         }
     } catch (error) {
