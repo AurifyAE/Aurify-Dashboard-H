@@ -679,11 +679,13 @@ function valuesUSDToAED() {
 
 
 // Function to add values to the "spread" collection in Firebase
-function addToFirebaseSpreadCollection(editedBidSpreadValue, editedAskSpreadValue) {
+function addToFirebaseSpreadCollection(editedBidSpreadValue, editedAskSpreadValue, editedBidSilverSpreadValue, editedAskSilverSpreadValue) {
   // Define the data to be added to the collection
   saveSpreadValues({
     editedBidSpreadValue: editedBidSpreadValue,
-    editedAskSpreadValue: editedAskSpreadValue
+    editedAskSpreadValue: editedAskSpreadValue,
+    editedBidSilverSpreadValue: editedBidSilverSpreadValue,
+    editedAskSilverSpreadValue: editedAskSilverSpreadValue
   });
 }
 
@@ -698,6 +700,8 @@ function displaySpreadValues() {
         // Do something with the retrieved data
         document.getElementById("goldAskSpread").textContent = latestSpreadData.editedAskSpreadValue;
         document.getElementById("goldSpread").textContent = latestSpreadData.editedBidSpreadValue;
+        document.getElementById("silverAskSpread").textContent = latestSpreadData.editedAskSilverSpreadValue;
+        document.getElementById("silverSpread").textContent = latestSpreadData.editedBidSilverSpreadValue;
 
         // Assuming you want to track the latest document ID
         spreadDocId = spreadDataArray[spreadDataArray.length - 1].id;
@@ -747,9 +751,11 @@ function editGoldBid() {
     document.getElementById("goldAskingPrice").innerHTML = totalGoldSpreadValue + 0.5;
 
     const editedAskSpreadValue = parseFloat(document.getElementById("goldAskSpread").textContent.trim());
+    const editedBidSilverSpreadValue = parseFloat(document.getElementById("silverSpread").textContent.trim());
+    const editedAskSilverSpreadValue = parseFloat(document.getElementById("silverAskSpread").textContent.trim());
 
     // Add the edited spread value to Firebase
-    addToFirebaseSpreadCollection(editedGoldSpreadValue, editedAskSpreadValue);
+    addToFirebaseSpreadCollection(editedGoldSpreadValue, editedAskSpreadValue, editedBidSilverSpreadValue, editedAskSilverSpreadValue);
 
     // Update Buy USD Value
     updateBuyUSDInput(totalGoldSpreadValue);
@@ -789,9 +795,11 @@ function editGoldAsk() {
     document.getElementById("goldAskingPrice").innerHTML = totalGoldSpreadValue;
 
     const editedBidSpreadValue = parseFloat(document.getElementById("goldSpread").textContent.trim());
+    const editedBidSilverSpreadValue = parseFloat(document.getElementById("silverSpread").textContent.trim());
+    const editedAskSilverSpreadValue = parseFloat(document.getElementById("silverAskSpread").textContent.trim());
 
     // Add the edited spread value to Firebase
-    addToFirebaseSpreadCollection(editedBidSpreadValue, editedGoldSpreadValue);
+    addToFirebaseSpreadCollection(editedBidSpreadValue, editedGoldSpreadValue, editedBidSilverSpreadValue, editedAskSilverSpreadValue);
 
     //Update Sell USD Value
     updateSellUSDInput(totalGoldSpreadValue)
@@ -830,6 +838,13 @@ function editSilverBid() {
     document.getElementById("silverBiddingPrice").innerHTML = totalSilverSpreadvalue;
     document.getElementById("silverAsk").innerHTML = totalSilverSpreadvalue + 0.05;
     document.getElementById("silverAskingPrice").innerHTML = totalSilverSpreadvalue + 0.05;
+
+    const editedBidSpreadValue = parseFloat(document.getElementById("goldSpread").textContent.trim());
+    const editedGoldSpreadValue = parseFloat(document.getElementById("goldAskSpread").textContent.trim());
+    const editedAskSilverSpreadValue = parseFloat(document.getElementById("silverAskSpread").textContent.trim());
+
+    // Add the edited spread value to Firebase
+    addToFirebaseSpreadCollection(editedBidSpreadValue, editedGoldSpreadValue, editedSilverSpreadValue, editedAskSilverSpreadValue);
   });
 }
 
@@ -862,6 +877,13 @@ function editSilverAsk() {
       totalSilverSpreadvalue = askSilverValue - editedSilverSpreadValue;
     }
     document.getElementById("silverAskingPrice").innerHTML = totalSilverSpreadvalue;
+
+    const editedBidSpreadValue = parseFloat(document.getElementById("goldSpread").textContent.trim());
+    const editedGoldSpreadValue = parseFloat(document.getElementById("goldAskSpread").textContent.trim());
+    const editedBidSilverSpreadValue = parseFloat(document.getElementById("silverSpread").textContent.trim());
+
+    // Add the edited spread value to Firebase
+    addToFirebaseSpreadCollection(editedBidSpreadValue, editedGoldSpreadValue, editedBidSilverSpreadValue, editedSilverSpreadValue);
   });
 }
 
