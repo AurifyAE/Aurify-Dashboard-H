@@ -597,10 +597,12 @@ function updateSellUSDInput(value) {
 function setGoldValue(goldValue) {
   // Set the value to elements
   document.getElementById("goldBid").textContent = goldValue;
-  document.getElementById("goldBiddingPrice").textContent = goldValue;
+  const goldSpread = document.getElementById("goldSpread").textContent;
+  document.getElementById("goldBiddingPrice").textContent = (goldValue + parseFloat(goldSpread)).toFixed(2);
 
   document.getElementById("goldAsk").textContent = goldValue + 0.5;
-  document.getElementById("goldAskingPrice").textContent = goldValue + 0.5;
+  const goldAskSpread = document.getElementById("goldAskSpread").textContent;
+  document.getElementById("goldAskingPrice").textContent = (goldValue + 0.5 + parseFloat(goldAskSpread)).toFixed(2);
 
   // Set Value to Commodity
   updateSellUSDInput(goldValue + 0.5);
@@ -629,35 +631,41 @@ document.getElementById("addRowForm").addEventListener("input", buyRate);
 function setSilverValue(silverValue) {
   //Set the value to elements
   document.getElementById("silverBid").innerHTML = silverValue
-  document.getElementById("silverBiddingPrice").innerHTML = silverValue
+  const silverSpread = document.getElementById("silverSpread").textContent;
+  document.getElementById("silverBiddingPrice").innerHTML = (silverValue + parseFloat(silverSpread)).toFixed(2);
 
   document.getElementById("silverAsk").innerHTML = silverValue + 0.05
-  document.getElementById("silverAskingPrice").innerHTML = silverValue + 0.05
+  const silverAskSpread = document.getElementById("silverAskSpread").textContent;
+  document.getElementById("silverAskingPrice").innerHTML = (silverValue + 0.05 + parseFloat(silverAskSpread)).toFixed(2);
 }
 
 //Margin Value
 function setGoldLowMarginValue(goldLowValue) {
   //Set the value to elements
-  document.getElementById("goldLowValue").innerHTML = goldLowValue
-  document.getElementById("goldNewLowValue").innerHTML = goldLowValue
+  document.getElementById("goldLowValue").innerHTML = goldLowValue.toFixed(3)
+  const goldMargin = document.getElementById("goldLowMargin").textContent;
+  document.getElementById("goldNewLowValue").innerHTML = (goldLowValue + parseFloat(goldMargin)).toFixed(3)
 }
 
 function setSilverLowMarginValue(silverLowValue) {
   //Set the value to elements
   document.getElementById("silverLowValue").innerHTML = silverLowValue
-  document.getElementById("silverNewLowValue").innerHTML = silverLowValue
+  const silverMargin = document.getElementById("silverLowMargin").textContent;
+  document.getElementById("silverNewLowValue").innerHTML = (silverLowValue + parseFloat(silverMargin)).toFixed(3)
 }
 
 function setGoldHighMarginValue(goldHighValue) {
   //Set the value to elements
-  document.getElementById("goldHighValue").innerHTML = goldHighValue
-  document.getElementById("goldNewHighValue").innerHTML = goldHighValue
+  document.getElementById("goldHighValue").innerHTML = goldHighValue.toFixed(3)
+  const goldMargin = document.getElementById("goldHighMargin").textContent;
+  document.getElementById("goldNewHighValue").innerHTML = (goldHighValue + parseFloat(goldMargin)).toFixed(3)
 }
 
 function setSilverHighMarginValue(silverHighValue) {
   //Set the value to elements
   document.getElementById("silverHighValue").innerHTML = silverHighValue
-  document.getElementById("silverNewHighValue").innerHTML = silverHighValue
+  const silverMargin = document.getElementById("silverHighMargin").textContent;
+  document.getElementById("silverNewHighValue").innerHTML = (silverHighValue + parseFloat(silverMargin)).toFixed(3)
 }
 
 //Convert Values From USD to AED for Sell and Buy
@@ -698,11 +706,11 @@ function displaySpreadValues() {
         const latestSpreadData = spreadDataArray[spreadDataArray.length - 1].data;
 
         // Do something with the retrieved data
-        document.getElementById("goldAskSpread").textContent = latestSpreadData.editedAskSpreadValue;
-        document.getElementById("goldSpread").textContent = latestSpreadData.editedBidSpreadValue;
-        document.getElementById("silverAskSpread").textContent = latestSpreadData.editedAskSilverSpreadValue;
-        document.getElementById("silverSpread").textContent = latestSpreadData.editedBidSilverSpreadValue;
-
+        document.getElementById("goldAskSpread").textContent = latestSpreadData.editedAskSpreadValue || 0;
+        document.getElementById("goldSpread").textContent = latestSpreadData.editedBidSpreadValue || 0;
+        document.getElementById("silverAskSpread").textContent = latestSpreadData.editedAskSilverSpreadValue || 0;
+        document.getElementById("silverSpread").textContent = latestSpreadData.editedBidSilverSpreadValue || 0;
+        
         // Assuming you want to track the latest document ID
         spreadDocId = spreadDataArray[spreadDataArray.length - 1].id;
       } else {
@@ -713,7 +721,6 @@ function displaySpreadValues() {
       console.error('Error reading spread values: ', error);
     });
 }
-
 
 //Edit Value for Gold on Button Click
 function editGoldBid() {
@@ -1007,5 +1014,4 @@ function editSilverMarginValue() {
     document.getElementById("silverNewHighValue").innerHTML = finalHighMarginValue;
   });
 }
-
 
