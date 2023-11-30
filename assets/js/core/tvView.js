@@ -104,12 +104,12 @@ async function readData() {
 
 // Show Table from Database
 async function showTable() {
-    console.log("Tv");
     try {
         const tableData = await readData();
         // console.log('Data read successfully:', tableData);
 
         const tableBody = document.getElementById('tableBodyTV');
+        console.log(tableData);
 
         // Loop through the tableData
         for (const data of tableData) {
