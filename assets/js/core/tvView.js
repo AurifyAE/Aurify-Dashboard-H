@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-let askSpread, bidSpread, goldValue;
+let askSpread, bidSpread, goldValue, silverBidSpread, silverAskSpread;
 
 // Gold API KEY
 const API_KEY = 'goldapi-fbqpmirloto20zi-io'
@@ -44,6 +44,8 @@ async function fetchData() {
 
         // Adjust based on the actual API response structure
         var goldValueUSD = parseFloat(resultGold.price);
+        var silverValueUSD = parseFloat(resultSilver.price)
+
         var GoldUSDResult = (goldValueUSD / 31.1035).toFixed(4);
         goldValue = (GoldUSDResult * 3.67).toFixed(4);
 
@@ -54,11 +56,38 @@ async function fetchData() {
 
         console.log(goldLowValue);
 
-        document.getElementById("goldInputLow").innerHTML = goldLowValue;
-        document.getElementById("goldInputHigh").innerHTML = goldHighValue;
-        document.getElementById("silverInputLow").innerHTML = silverLowValue;
-        document.getElementById("silverInputHigh").innerHTML = silverHighValue;
+        var goldBuy = (goldValueUSD + bidSpread).toFixed(2);
+        var goldSell = (goldValueUSD + askSpread + parseFloat(0.5)).toFixed(2);
+        var silverBuy = (silverValueUSD + silverBidSpread).toFixed(3);
+        var silverSell = (silverValueUSD + silverAskSpread + parseFloat(0.05)).toFixed(3);
 
+        document.getElementById("goldInputLow").innerHTML = goldBuy;
+        document.getElementById("goldInputHigh").innerHTML = goldSell;
+        document.getElementById("silverInputLow").innerHTML = silverBuy;
+        document.getElementById("silverInputHigh").innerHTML = silverSell;
+
+        document.getElementById("lowLabelGold").innerHTML = goldLowValue;
+        document.getElementById("highLabelGold").innerHTML = goldHighValue;
+        document.getElementById("lowLabelSilver").innerHTML = silverLowValue;
+        document.getElementById("highLabelSilver").innerHTML = silverHighValue;
+
+        var element;
+
+        // LowLabelGold
+        element = document.getElementById("lowLabelGold");
+        element.style.backgroundColor = goldBuy > goldLowValue ? "red" : "green";
+
+        // HighLabelGold
+        element = document.getElementById("highLabelGold");
+        element.style.backgroundColor = goldSell > goldHighValue ? "red" : "green";
+
+        // LowLabelSilver
+        element = document.getElementById("lowLabelSilver");
+        element.style.backgroundColor = silverBuy > silverLowValue ? "red" : "green";
+
+        // HighLabelSilver
+        element = document.getElementById("highLabelSilver");
+        element.style.backgroundColor = silverSell > silverHighValue ? "red" : "green";
 
     } catch (error) {
         console.error('Error fetching gold and silver values:', error);
@@ -73,6 +102,8 @@ function displaySpreadValues() {
             spreadDataArray.map((spreadData) => {
                 askSpread = spreadData.data.editedAskSpreadValue;
                 bidSpread = spreadData.data.editedBidSpreadValue;
+                silverAskSpread = spreadData.data.editedAskSilverSpreadValue;
+                silverBidSpread = spreadData.data.editedBidSilverSpreadValue;
             });
         })
         .catch((error) => {
@@ -161,9 +192,18 @@ async function showTable() {
                 let askSpreadValue = askSpread || 0;
                 let bidSpreadValue = bidSpread || 0;
 
-                // Update the sellAED and buyAED values for the current 
-                newRow.querySelector("#sellAED").innerText = parseFloat(((parseFloat(goldValue) + parseFloat(sellPremium) + parseFloat(askSpreadValue)) * unitInput * unitMultiplier * (purityInput / Math.pow(10, purityInput.length))).toFixed(2)) + parseFloat(0.5);
-                newRow.querySelector("#buyAED").innerText = ((parseFloat(goldValue) + parseFloat(buyPremium) + parseFloat(bidSpreadValue)) * unitInput * unitMultiplier * (purityInput / Math.pow(10, purityInput.length))).toFixed(2);
+                if (weight === "GM") {
+                    // Update the sellAED and buyAED values for the current 
+                    newRow.querySelector("#sellAED").innerText = parseFloat(((parseFloat(goldValue) + parseFloat(sellPremium) + parseFloat(askSpreadValue)) * unitInput * unitMultiplier * (purityInput / Math.pow(10, purityInput.length))).toFixed(2)) + parseFloat(0.5);
+                    newRow.querySelector("#buyAED").innerText = ((parseFloat(goldValue) + parseFloat(buyPremium) + parseFloat(bidSpreadValue)) * unitInput * unitMultiplier * (purityInput / Math.pow(10, purityInput.length))).toFixed(2);
+                } else {
+                    // Update the sellAED and buyAED values for the current row
+                    const sellAEDValue = parseFloat(((parseFloat(goldValue) + parseFloat(sellPremium) + parseFloat(askSpreadValue)) * unitInput * unitMultiplier * (purityInput / Math.pow(10, purityInput.length))).toFixed(2)) + parseFloat(0.5);
+                    const buyAEDValue = parseInt((parseFloat(goldValue) + parseFloat(buyPremium) + parseFloat(bidSpreadValue)) * unitInput * unitMultiplier * (purityInput / Math.pow(10, purityInput.length))).toFixed(0);
+
+                    newRow.querySelector("#sellAED").innerText = parseInt(sellAEDValue).toFixed(0); // Round to remove decimals
+                    newRow.querySelector("#buyAED").innerText = parseInt(buyAEDValue).toFixed(0);   // Round to remove decimals
+                }
             }, 1000)
         }
     } catch (error) {
