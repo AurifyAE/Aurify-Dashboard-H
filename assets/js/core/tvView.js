@@ -1,9 +1,8 @@
-import { readSpreadValues } from '../core/spotrateDB.js';
+// import { readSpreadValues } from '../core/spotrateDB.js';
 import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore.js";
 import { app } from '../../../config/db.js';
 
 const firestore = getFirestore(app)
-
 
 document.addEventListener('DOMContentLoaded', function () {
     setInterval(() => {
@@ -94,23 +93,47 @@ async function fetchData() {
     }
 }
 
-// Function to Display Spread Values from Firebase
-function displaySpreadValues() {
-    return readSpreadValues() // Return the promise to allow further chaining
-        .then((spreadDataArray) => {
-            // Process the data if needed
-            spreadDataArray.map((spreadData) => {
-                askSpread = spreadData.data.editedAskSpreadValue;
-                bidSpread = spreadData.data.editedBidSpreadValue;
-                silverAskSpread = spreadData.data.editedAskSilverSpreadValue;
-                silverBidSpread = spreadData.data.editedBidSilverSpreadValue;
-            });
-        })
-        .catch((error) => {
-            console.error('Error reading spread values: ', error);
-            throw error; // Rethrow the error to indicate a problem
+async function readSpreadValues() {
+    try {
+        const uid = 'BKm70mfv8BMQuJJUO4tiM3f0t6X2';
+        if (!uid) {
+            console.error('User not authenticated');
+            throw new Error('User not authenticated');
+        }
+
+        const spreadCollection = collection(firestore, `users/${uid}/spread`);
+        const querySnapshot = await getDocs(spreadCollection);
+
+        const spreadDataArray = [];
+        querySnapshot.forEach((doc) => {
+            const spreadData = doc.data();
+            const spreadDocId = doc.id;
+            spreadDataArray.push({ id: spreadDocId, data: spreadData });
         });
+
+        return spreadDataArray;
+    } catch (error) {
+        console.error('Error reading data from Firestore: ', error);
+        throw error;
+    }
 }
+
+async function displaySpreadValues() {
+    try {
+        const spreadDataArray = await readSpreadValues();
+
+        spreadDataArray.forEach((spreadData) => {
+            askSpread = spreadData.data.editedAskSpreadValue || 0;
+            bidSpread = spreadData.data.editedBidSpreadValue || 0;
+            silverAskSpread = spreadData.data.editedAskSilverSpreadValue || 0;
+            silverBidSpread = spreadData.data.editedBidSilverSpreadValue || 0;
+        });
+    } catch (error) {
+        console.error('Error reading spread values: ', error);
+        throw error;
+    }
+}
+
 
 // Function to read data from the Firestore collection
 async function readData() {
