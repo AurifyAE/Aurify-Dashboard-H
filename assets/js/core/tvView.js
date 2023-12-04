@@ -53,7 +53,6 @@ async function fetchData() {
         var silverLowValue = parseFloat(resultSilver.low_price);
         var silverHighValue = parseFloat(resultSilver.high_price);
 
-        console.log(goldLowValue);
 
         var goldBuy = (goldValueUSD + bidSpread).toFixed(2);
         var goldSell = (goldValueUSD + askSpread + parseFloat(0.5)).toFixed(2);

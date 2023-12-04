@@ -172,7 +172,13 @@
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.7"></script>
-  <script src="../assets/js/core/error.js"></script>
+  <script>
+    // Check if the screen width is below a certain threshold (e.g., 1000 pixels)
+    if (window.innerWidth < 1024) {
+      // Redirect users from mobile and tablet devices to a different page or show an error message
+      window.location.href = '../../../pages/error.html'; // Redirect to a mobile error page
+    }
+  </script>
   <!-- Firebase  -->
   <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-auth.js"></script>

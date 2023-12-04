@@ -389,7 +389,13 @@
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-        <script src="../assets/js/core/error.js"></script>
+        <script>
+          // Check if the screen width is below a certain threshold (e.g., 1000 pixels)
+          if (window.innerWidth < 1024) {
+            // Redirect users from mobile and tablet devices to a different page or show an error message
+            window.location.href = '../../../pages/error.html'; // Redirect to a mobile error page
+          }
+        </script>
       </body>
 
 </html>
