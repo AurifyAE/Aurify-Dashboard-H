@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+  <title>
+    TV View
+  </title>
+  <!--     Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+  <!-- Nucleo Icons -->
+  <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
+  <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
+  <!-- Font Awesome Icons -->
+  <script src="https://kit.fontawesome.com/0e1fa7c1a3.js" crossorigin="anonymous"></script>
+  <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
+  <!-- CSS Files -->
+  <link id="pagestyle" href="../assets/css/soft-ui-dashboard.css?v=1.0.7" rel="stylesheet" />
+  <!-- Nepcha Analytics (nepcha.com) -->
+  <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
+  <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
+  <style>
+    .heading-gold,
+    .heading-silver {
+      color: #c88029;
+    }
+
+    .input-box {
+      width: 110px;
+      height: 40px;
+    }
+
+    .label-low,
+    .label-high {
+      margin-right: 15px;
+      padding: 10px;
+    }
+
+    .label-low {
+      background-color: green;
+    }
+
+    .label-high {
+      background-color: crimson;
+    }
+
+    #datetime-container {
+      background-color: #c88029;
+      color: white;
+      border: none;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      font-size: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  </style>
+  
+</head>
+
+<body class="g-sidenav-show  bg-gray-100 virtual-reality">
+  <div>
+    <!-- Navbar -->
+    <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur"
+      navbar-scroll="true">
+      <div class="container-fluid py-1" style="margin-left:80px;">
+        <img src="./orbixbullion l2.png" width="200px;">
+      </div>
+      <div class="container-fluid py-1">
+
+      </div>
+      <div class="container-fluid py-1 " id="datetime-container">
+        <div id="date"></div>
+        <div id="time" style="font-size: 3rem;font-weight: 600;"></div>
+      </div>
+    </nav>
+    <!-- End Navbar -->
+
+
+
+
+
+
+
+
+  </div>
+  <div class="border-radius-xl mt-3 mx-3 position-relative"
+    style="background-image: url('./assets/img/14380.png'); background-size: cover; height: 550px;">
+
+    <div class="container effectclass">
+      <div class="row">
+
+        <div class="col-md-3 mb-5 mt-5">
+          <div class="row mb-3">
+            <div class="col-md-3">
+              <h4 class="heading-gold" style="margin-top:40px;">Gold</h4>
+              <p style="margin-top:-20px;float: right;">oz</p>
+            </div>
+            <div class="col-md-4"  style="text-align: center;">
+              <div class="d-flex">
+                <div style="background-color: #c88029;height: 22px;width: 22px;display: flex;justify-content: center;align-items: center;margin-left: 25px;"><i class="fa-solid fa-dollar-sign" style="color: white;"></i></div>
+                <div><p>&nbsp;BUY</p></div>
+              </div>
+              <div class="form-control input-box" id="goldInputLow" ></div>
+              <label class="badge badge-success label-low mt-1" id="lowLabelGold">0</label>
+            </div>
+            <div class="col-md-4 ms-3" style="text-align: center;">
+              <div class="d-flex" >
+                <div style="background-color: #c88029;height: 22px;width: 22px;display: flex;justify-content: center;align-items: center;margin-left: 25px;"><i class="fa-solid fa-dollar-sign" style="color: white;"></i></div>
+                <div><p>&nbsp;SELL</p></div>
+              </div>
+              <div class="form-control input-box" id="goldInputHigh"></div>
+              <label class="badge badge-warning label-high mt-1" id="highLabelGold">0</label>
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <div class="col-md-12">
+              <h4 class="heading-silver"style="margin-top:0px;">Silver</h4>
+              <p style="margin-top:-20px;float: right;">oz</p>
+            </div>
+            <div class="col-md-4"  style="text-align: center;">
+              <!-- <div class="d-flex">
+                <div style="background-color: #c88029;height: 22px;width: 22px;display: flex;justify-content: center;align-items: center;"><i class="fa-solid fa-dollar-sign" style="color: white;"></i></div>
+                <div><p>&nbsp;BUY</p></div>
+              </div> -->
+              <div class="form-control input-box" id="silverInputLow"></div>
+              <label class="badge badge-success label-low mt-1" id="lowLabelSilver">0</label>
+            </div>
+            <div class="col-md-4 ms-3"  style="text-align: center;">
+              <!-- <div class="d-flex">
+                <div style="background-color: #c88029;height: 22px;width: 22px;display: flex;justify-content: center;align-items: center;"><i class="fa-solid fa-dollar-sign" style="color: white;"></i></div>
+                <div><p>&nbsp;SELL</p></div>
+              </div> -->
+              <div class="form-control input-box" id="silverInputHigh"></div>
+              <label class="badge badge-warning label-high mt-1" id="highLabelSilver">0</label>
+            </div>
+          </div>
+
+        </div>
+        <div>
+
+            
+        </div>
+
+
+        <div class="col-md-12 mt-5 mb-5 ms-1" style="border: none; border-radius:25px; background-color:rgb(200, 128, 41, 0.5) ;">
+          <table class="table" style="font-size: large;font-weight:bolder; color: black;text-align: center;">
+            <thead>
+              <tr>
+                <th style="font-weight:bolder;color: #714004;">Metal</th>
+                <th style="font-weight:bolder;color: #714004;" >Purity</th>
+                <th style="font-weight:bolder;color: #714004;">Unit</th>
+                <th style="font-weight:bolder;color: #714004;">Sell<br>(<span id="currencySymbol">AED</span>)</th>
+                <th style="font-weight:bolder;color: #714004;">Buy<br>(<span id="currencySymbol">AED</span>)</th>
+
+              </tr>
+            </thead>
+            <tbody id="tableBodyTV">
+              <!-- Table body content will be dynamically updated here -->
+            </tbody>
+          </table>
+
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+
+  <!--   Core JS Files   -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="./assets/js/core/popper.min.js"></script>
+  <script src="./assets/js/core/bootstrap.min.js"></script>
+  <script src="./assets/js/plugins/perfect-scrollbar.min.js"></script>
+  <script src="./assets/js/plugins/smooth-scrollbar.min.js"></script>
+  <script src="./assets/js/core/spotrate.js"></script>
+
+  <script>
+    var win = navigator.platform.indexOf('Win') > -1;
+    if (win && document.querySelector('#sidenav-scrollbar')) {
+      var options = {
+        damping: '0.5'
+      }
+      Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+    }
+  </script>
+  <!-- Date & Time -->
+  <script>
+    'use strict';
+    function refreshDateTime() {
+      const dateDisplay = document.getElementById('date');
+      const timeDisplay = document.getElementById('time');
+
+      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+      const date = new Date().toLocaleDateString(undefined, options);
+      const time = new Date().toLocaleTimeString();
+
+      dateDisplay.textContent = date;
+      timeDisplay.textContent = time;
+    }
+    setInterval(refreshDateTime, 1000);
+  </script>
+  <!-- <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Check if the user is authenticated
+      const uid = sessionStorage.getItem('uid');
+
+      if (!uid) {
+        // If not authenticated, redirect to the login page
+        window.location.href = '../pages/sign-in.html'; // Change to your login page
+      }
+    });
+  </script> -->
+
+  <!-- Github buttons -->
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+  <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
+  <script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.7"></script>
+
+  <script src="./assets/js/core/error.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-database.js"></script>
+  <script type="module" src="./config/db.js"></script>
+  <script type="module" src="./assets/js/core/spotrateDB.js"></script>
+  <script type="module" defer src="./assets/js/core/tvView.js"></script>
+</body>
+
+</html>
