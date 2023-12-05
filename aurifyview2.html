@@ -173,10 +173,31 @@
 
 
 
-.box {
+.box1 {
       width: 500px; /* Width of each box */
       height: 200px; /* Height of each box */
-      background-image:  url('./assets/img/coin.jpg'); 
+      background-image:  url('./assets/img/goldcoin.jpg'); 
+      height: 100%;
+      background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+      //* Background color */
+      margin: 20px; /* Margin around each box */
+      display: inline-block; /* Display boxes in a row */
+      border-radius: 10px; /* Rounded corners */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adding a shadow effect */
+      text-align: center; /* Center text inside box */
+      padding: 20px; /* Padding inside the box */
+      margin-left: 60px;
+      color: #ffffff;
+      
+    }
+
+
+    .box2 {
+      width: 500px; /* Width of each box */
+      height: 200px; /* Height of each box */
+      background-image:  url('./assets/img/silvercoins.jpg'); 
       height: 100%;
       background-position: center;
   background-repeat: no-repeat;
@@ -253,7 +274,7 @@
       width: 70%; /* Adjust the width as needed */
       margin: 20px auto;
       padding: 20px;
-      background-image: url('./assets/img/blackgold.jpg'); /* Background image URL */
+      background-image: url('./assets/img/wgold.jpg'); /* Background image URL */
       background-size: 1100px 600px; /* Adjust the size of the background image */
       border-radius: 15px; /* Rounded corners */
       box-shadow: 0 0 10px rgba(231, 227, 227, 0.1); /* Adding a shadow effect */
@@ -295,49 +316,51 @@
     </style>
   </head>
   <body>
-    <div class="box"><div class="row mb-3">
+    <div class="box1"><div class="row mb-3">
       <div class="col-md-3">
         <h4 class="heading-gold" style="margin-top:40px;">Gold</h4>
-        <p style="margin-top:-20px;float: right;">oz</p>
+        <p style="margin-top:-20px;float: right;color: #000000;">oz</p>
       </div>
       <div class="col-md-4"  style="text-align: center;">
         <div class="d-flex">
           <div style="background-color: #c88029;height: 22px;width: 22px;display: flex;justify-content: center;align-items: center;margin-left: 25px;"><i class="fa-solid fa-dollar-sign" style="color: white;"></i></div>
-          <div><p>&nbsp;BUY</p></div>
+          <div><p style="color: #000000;">&nbsp;BUY</p></div>
         </div>
         <div class="form-control input-box" id="goldInputLow" ></div>
-        <label class="badge badge-success label-low mt-1" id="lowLabelGold">0</label>
+        <label class="badge badge-success label-low mt-1" id="lowLabelGold" style="color: #000000;">0</label>
       </div>
       <div class="col-md-4 ms-3" style="text-align: center;">
         <div class="d-flex" >
           <div style="background-color: #c88029;height: 22px;width: 22px;display: flex;justify-content: center;align-items: center;margin-left: 25px;"><i class="fa-solid fa-dollar-sign" style="color: white;"></i></div>
-          <div><p>&nbsp;SELL</p></div>
+          <div><p style="color: #000000;">&nbsp;SELL</p></div>
         </div>
         <div class="form-control input-box" id="goldInputHigh"></div>
-        <label class="badge badge-warning label-high mt-1" id="highLabelGold">0</label>
+        <label class="badge badge-warning label-high mt-1" id="highLabelGold" style="color: #000000;">0</label>
       </div>
     </div></div>
-<div class="box"><div class="row mb-3">
+
+
+<div class="box2"><div class="row mb-3">
   <div class="col-md-3">
     <h4 class="heading-silver"style="margin-top:0px;">Silver</h4>
-    <p style="margin-top:-20px;float: right;">oz</p>
+    <p style="margin-top:-20px;float: right;color: #000000;" >oz</p>
   </div>
   
   <div class="col-md-4"  style="text-align: center;">
     <div class="d-flex">
       <div style="background-color: #c88029;height: 22px;width: 22px;display: flex;justify-content: center;align-items: center;"><i class="fa-solid fa-dollar-sign" style="color: white;"></i></div>
-      <div><p>&nbsp;BUY</p></div>
+      <div><p style="color: #000000;">&nbsp;BUY</p></div>
     </div>
     <div class="form-control input-box" id="silverInputLow"></div>
-    <label class="badge badge-success label-low mt-1" id="lowLabelSilver">0</label>
+    <label class="badge badge-success label-low mt-1" id="lowLabelSilver" style="color: #000000;">0</label>
   </div>
   <div class="col-md-4 ms-3"  style="text-align: center;">
     <div class="d-flex">
       <div style="background-color: #c88029;height: 22px;width: 22px;display: flex;justify-content: center;align-items: center;"><i class="fa-solid fa-dollar-sign" style="color: white;"></i></div>
-      <div><p>&nbsp;SELL</p></div>
+      <div><p style="color: #000000;">&nbsp;SELL</p></div>
     </div>
     <div class="form-control input-box" id="silverInputHigh"></div>
-    <label class="badge badge-warning label-high mt-1" id="highLabelSilver">0</label>
+    <label class="badge badge-warning label-high mt-1" id="highLabelSilver" style="color: #000000;">0</label>
   </div>
 </div></div>
 
@@ -353,42 +376,42 @@
         <th>BUY</th>
       </tr>
    
-      <tr style="color: #ffffff;">
+      <tr style="color: #000000;">
         <td>Row 1, Cell 1</td>
         <td>Row 1, Cell 2</td>
         <td>Row 1, Cell 3</td>
         <td>Row 1, Cell 4</td>
         <td>Row 1, Cell 5</td>
       </tr>
-      <tr style="color: #ffffff;">
+      <tr style="color: #000000;">
         <td>Row 2, Cell 1</td>
         <td>Row 2, Cell 2</td>
         <td>Row 2, Cell 3</td>
         <td>Row 2, Cell 4</td>
         <td>Row 2, Cell 5</td>
       </tr>
-      <tr style="color: #ffffff;">
+      <tr style="color: #000000;">
         <td>Row 3, Cell 1</td>
         <td>Row 3, Cell 2</td>
         <td>Row 3, Cell 3</td>
         <td>Row 3, Cell 4</td>
         <td>Row 3, Cell 5</td>
       </tr>
-      <tr style="color: #ffffff;">
+      <tr style="color: #000000;">
         <td>Row 4, Cell 1</td>
         <td>Row 4, Cell 2</td>
         <td>Row 4, Cell 3</td>
         <td>Row 4, Cell 4</td>
         <td>Row 4, Cell 5</td>
       </tr>
-      <tr style="color: #ffffff;">
+      <tr style="color: #000000;">
         <td >Row 5, Cell 1</td>
         <td>Row 5, Cell 2</td>
         <td>Row 5, Cell 3</td>
         <td>Row 5, Cell 4</td>
         <td>Row 5, Cell 5</td>
       </tr>
-      <tr style="color: #ffffff;">
+      <tr style="color: #000000;">
         <td>Row 6, Cell 1</td>
         <td>Row 6, Cell 2</td>
         <td>Row 6, Cell 3</td>

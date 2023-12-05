@@ -1,0 +1,174 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <title>Automatic Clock and Date Display</title>
+  <script>
+    function updateDateTime() {
+      let currentDate = new Date();
+      let timeString = currentDate.toLocaleTimeString();
+      let dateString = currentDate.toDateString();
+      document.getElementById('time').innerHTML = timeString;
+      document.getElementById('date').innerHTML = dateString;
+    }
+
+    // Update time every second
+    setInterval(updateDateTime, 1000);
+
+    // Call the function to display date and time when the page loads
+    window.onload = function() {
+      updateDateTime();
+    };
+  </script>
+  <style>
+    /* Optional: Styling for better presentation */
+    #time, #date {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Automatic Clock and Date Display</h1>
+  <div id="time"></div>
+  <div id="date"></div>
+
+
+ 
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Parallel Boxes with Bootstrap</title>
+  <!-- Link Bootstrap CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .big-box {
+      height: 500px;
+      background-color: rgb(133, 212, 223);
+      margin-top: 20px;
+    }
+    .clock {
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+
+    body{
+	margin:0;
+	padding:0;
+	font-family:"arial",heletica,sans-serif;
+	font-size:12px;
+    background: #383829 url('https://static.tumblr.com/03fbbc566b081016810402488936fbae/pqpk3dn/MRSmlzpj3/tumblr_static_bg3.png') repeat 0 0;
+	-webkit-animation: 10s linear 0s normal none infinite animate;
+	-moz-animation: 10s linear 0s normal none infinite animate;
+	-ms-animation: 10s linear 0s normal none infinite animate;
+	-o-animation: 10s linear 0s normal none infinite animate;
+	animation: 10s linear 0s normal none infinite animate;
+ 
+}
+ 
+@-webkit-keyframes animate {
+	from {background-position:0 0;}
+	to {background-position: 500px 0;}
+}
+ 
+@-moz-keyframes animate {
+	from {background-position:0 0;}
+	to {background-position: 500px 0;}
+}
+ 
+@-ms-keyframes animate {
+	from {background-position:0 0;}
+	to {background-position: 500px 0;}
+}
+ 
+@-o-keyframes animate {
+	from {background-position:0 0;}
+	to {background-position: 500px 0;}
+}
+ 
+@keyframes animate {
+	from {background-position:0 0;}
+	to {background-position: 500px 0;}
+}
+
+
+    
+  </style>
+</head>
+<body>
+
+
+
+
+
+  <div class="container">
+    <div class="row">
+        
+        <div class="col-md-3">
+            <div class="card">
+              <div class="card-body">
+                <img src   ="./orbixbullion l2.png" alt="" style="width: 50px;" >
+              </div>
+            </div>
+          </div>
+      <div class="col-md-3">
+        <div class="card">
+          <div class="card-body">
+            GOLD RATE
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card">
+          <div class="card-body">
+            SILVER RATE
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="card">
+          <div class="card-body clock" id="clock">
+            <!-- Clock will be displayed here -->
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    <div class="row">
+      <div class="col-md-12 big-box">
+        <div class="card">
+          <div class="card-body">
+            Large Box Below
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Link Bootstrap JS and Popper.js -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script>
+    function updateClock() {
+      const now = new Date();
+      const clockElement = document.getElementById('clock');
+      clockElement.innerHTML = now.toLocaleString();
+    }
+
+    // Update the clock every second
+    setInterval(updateClock, 1000);
+
+    // Initial call to display the clock immediately
+    updateClock();
+  </script>
+</body>
+</html>
