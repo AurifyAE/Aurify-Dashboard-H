@@ -41,6 +41,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Parallel Boxes with Bootstrap</title>
@@ -52,55 +53,124 @@
       background-color: rgb(133, 212, 223);
       margin-top: 20px;
     }
+
     .clock {
       font-size: 14px;
       font-weight: bold;
     }
 
 
-    body{
-	margin:0;
-	padding:0;
-	font-family:"arial",heletica,sans-serif;
-	font-size:12px;
-    background: #383829 url('https://static.tumblr.com/03fbbc566b081016810402488936fbae/pqpk3dn/MRSmlzpj3/tumblr_static_bg3.png') repeat 0 0;
-	-webkit-animation: 10s linear 0s normal none infinite animate;
-	-moz-animation: 10s linear 0s normal none infinite animate;
-	-ms-animation: 10s linear 0s normal none infinite animate;
-	-o-animation: 10s linear 0s normal none infinite animate;
-	animation: 10s linear 0s normal none infinite animate;
- 
-}
- 
-@-webkit-keyframes animate {
-	from {background-position:0 0;}
-	to {background-position: 500px 0;}
-}
- 
-@-moz-keyframes animate {
-	from {background-position:0 0;}
-	to {background-position: 500px 0;}
-}
- 
-@-ms-keyframes animate {
-	from {background-position:0 0;}
-	to {background-position: 500px 0;}
-}
- 
-@-o-keyframes animate {
-	from {background-position:0 0;}
-	to {background-position: 500px 0;}
-}
- 
-@keyframes animate {
-	from {background-position:0 0;}
-	to {background-position: 500px 0;}
-}
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "arial", heletica, sans-serif;
+      font-size: 12px;
+      background: #383829 url('https://static.tumblr.com/03fbbc566b081016810402488936fbae/pqpk3dn/MRSmlzpj3/tumblr_static_bg3.png') repeat 0 0;
+      -webkit-animation: 10s linear 0s normal none infinite animate;
+      -moz-animation: 10s linear 0s normal none infinite animate;
+      -ms-animation: 10s linear 0s normal none infinite animate;
+      -o-animation: 10s linear 0s normal none infinite animate;
+      animation: 10s linear 0s normal none infinite animate;
+
+    }
+
+    .card-table {
+      margin-top: 75px;
+      background-color: transparent;
+      border-collapse: collapse;
+    }
+
+    table{
+      width: 1070px;
+    }
+
+    .card-table tbody tr {
+      margin-top: 15px;
+      background-color: #f9f9f9;
+      /* Light gray background for odd rows */
+    }
+
+    .card-table tbody tr:nth-child(even) {
+      background-color: #e6e6e6;
+      /* Dark gray background for even rows */
+    }
+
+    .card-table thead tr {
+      background-color: #ffffff;
+      /* White background for header row */
+      border-bottom: 2px solid #dddddd;
+      /* Add a bottom border to separate header from body */
+    }
+
+    .card-table th,
+    .card-table td {
+      padding: 12px;
+      text-align: left;
+    }
+
+    .card-table th {
+      font-weight: bold;
+    }
+
+    /* Hover effect for better user experience */
+    .card-table tbody tr:hover {
+      background-color: #d3d3d3;
+      /* Lighter gray on hover */
+    }
 
 
-    
+    @-webkit-keyframes animate {
+      from {
+        background-position: 0 0;
+      }
+
+      to {
+        background-position: 500px 0;
+      }
+    }
+
+    @-moz-keyframes animate {
+      from {
+        background-position: 0 0;
+      }
+
+      to {
+        background-position: 500px 0;
+      }
+    }
+
+    @-ms-keyframes animate {
+      from {
+        background-position: 0 0;
+      }
+
+      to {
+        background-position: 500px 0;
+      }
+    }
+
+    @-o-keyframes animate {
+      from {
+        background-position: 0 0;
+      }
+
+      to {
+        background-position: 500px 0;
+      }
+    }
+
+    @keyframes animate {
+      from {
+        background-position: 0 0;
+      }
+
+      to {
+        background-position: 500px 0;
+      }
+    }
   </style>
 </head>
+
 <body>
 
 
@@ -109,18 +179,19 @@
 
   <div class="container">
     <div class="row">
-        
-        <div class="col-md-3">
-            <div class="card">
-              <div class="card-body">
-                <img src   ="./orbixbullion l2.png" alt="" style="width: 50px;" >
-              </div>
-            </div>
+
+      <div class="col-md-3">
+        <div class="card">
+          <div class="card-body">
+            <img src="./orbixbullion l2.png" alt="" style="width: 50px;">
           </div>
+        </div>
+      </div>
       <div class="col-md-3">
         <div class="card">
           <div class="card-body">
             GOLD RATE
+            <p id="goldRate"></p>
           </div>
         </div>
       </div>
@@ -128,6 +199,7 @@
         <div class="card">
           <div class="card-body">
             SILVER RATE
+            <p id="silverRate"></p>
           </div>
         </div>
       </div>
@@ -139,13 +211,26 @@
           </div>
         </div>
       </div>
-      
+
     </div>
     <div class="row">
       <div class="col-md-12 big-box">
-        <div class="card">
+        <div class="card card-table">
           <div class="card-body">
-            Large Box Below
+            <table style="margin-top: 0px; ">
+              <thead>
+                <tr>
+                  <th>Metal</th>
+                  <th>Purity</th>
+                  <th>Unit</th>
+                  <th>Sell<br>(<span id="currencySymbol">AED</span>)</th>
+                  <th>Buy<br>(<span id="currencySymbol">AED</span>)</th>
+                </tr>
+              </thead>
+              <tbody id="tableBodyTV">
+                <!-- Table body content will be dynamically updated here -->
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
@@ -170,5 +255,12 @@
     // Initial call to display the clock immediately
     updateClock();
   </script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-database.js"></script>
+  <script type="module" src="./config/db.js"></script>
+  <script type="module" src="./assets/js/core/spotrateDB.js"></script>
+  <script type="module" defer src="./assets/js/core/aurifyview2.js"></script>
 </body>
+
 </html>
