@@ -1,61 +1,24 @@
-<!-- <!DOCTYPE html>
-<html>
-<head>
-  <title>Automatic Clock and Date Display</title>
-  <script>
-    function updateDateTime() {
-      let currentDate = new Date();
-      let timeString = currentDate.toLocaleTimeString();
-      let dateString = currentDate.toDateString();
-      document.getElementById('time').innerHTML = timeString;
-      document.getElementById('date').innerHTML = dateString;
-    }
-
-    // Update time every second
-    setInterval(updateDateTime, 1000);
-
-    // Call the function to display date and time when the page loads
-    window.onload = function() {
-      updateDateTime();
-    };
-  </script>
-  <style>
-    /* Optional: Styling for better presentation */
-    #time, #date {
-      font-size: 24px;
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
-  </style>
-</head>
-<body>
-  <h1>Automatic Clock and Date Display</h1>
-  <div id="time"></div>
-  <div id="date"></div>
-
-
- 
-</body>
-</html> -->
-
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <title>Parallel Boxes with Bootstrap</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+  <title>
+    TV View
+  </title>
   <!-- Link Bootstrap CSS -->
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <style>
-    .big-box {
-      height: 500px;
-      background-color: rgb(133, 212, 223);
-      margin-top: 20px;
+    .container{
+      width: 100%;
+      margin: 20px;
+      padding: 0;
     }
-
     .clock {
-      font-size: 14px;
+      font-size: 24px;
       font-weight: bold;
     }
 
@@ -64,8 +27,8 @@
       margin: 0;
       padding: 0;
       font-family: "arial", heletica, sans-serif;
-      font-size: 12px;
-      background: #383829 url('https://static.tumblr.com/03fbbc566b081016810402488936fbae/pqpk3dn/MRSmlzpj3/tumblr_static_bg3.png') repeat 0 0;
+      font-size: 24px;
+      background: white url('./tumblr_static_bg3.png') repeat 0 0;
       -webkit-animation: 10s linear 0s normal none infinite animate;
       -moz-animation: 10s linear 0s normal none infinite animate;
       -ms-animation: 10s linear 0s normal none infinite animate;
@@ -81,11 +44,14 @@
     }
 
     table{
-      width: 1070px;
+      width: 100%;
+      display:inline-table;
+      justify-content: center;
+      align-items: center;
     }
 
     .card-table tbody tr {
-      margin-top: 15px;
+      margin-top: 10px;
       background-color: #f9f9f9;
       /* Light gray background for odd rows */
     }
@@ -173,21 +139,17 @@
 
 <body>
 
-
-
-
-
   <div class="container">
     <div class="row">
 
-      <div class="col-md-3">
-        <div class="card">
+      <div class="col-md-4">
+        <div class="">
           <div class="card-body">
-            <img src="./orbixbullion l2.png" alt="" style="width: 50px;">
+            <img src="./orbixbullion l2.png" alt="" style="width: 200px;">
           </div>
         </div>
       </div>
-      <div class="col-md-3">
+      <div class="col-md-4">
         <div class="card">
           <div class="card-body">
             GOLD RATE
@@ -195,7 +157,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-3">
+      <div class="col-md-4">
         <div class="card">
           <div class="card-body">
             SILVER RATE
@@ -204,27 +166,29 @@
         </div>
       </div>
 
-      <div class="col-md-3">
-        <div class="card">
-          <div class="card-body clock" id="clock">
-            <!-- Clock will be displayed here -->
-          </div>
-        </div>
-      </div>
+
 
     </div>
     <div class="row">
-      <div class="col-md-12 big-box">
+      <div class="col-md-12">
+        <div class="">
+          <div id="clock">
+            <h1 id="date-time"></h1>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
         <div class="card card-table">
           <div class="card-body">
-            <table style="margin-top: 0px; ">
+            <table style="margin-top: 0px;">
               <thead>
                 <tr>
-                  <th>Metal</th>
-                  <th>Purity</th>
+                  <th colspan="2" >Commodity</th>
                   <th>Unit</th>
-                  <th>Sell<br>(<span id="currencySymbol">AED</span>)</th>
-                  <th>Buy<br>(<span id="currencySymbol">AED</span>)</th>
+                  <th>Sell (<span id="currencySymbol">AED</span>)</th>
+                  <th>Buy (<span id="currencySymbol">AED</span>)</th>
                 </tr>
               </thead>
               <tbody id="tableBodyTV">
@@ -243,17 +207,63 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
   <script>
-    function updateClock() {
-      const now = new Date();
-      const clockElement = document.getElementById('clock');
-      clockElement.innerHTML = now.toLocaleString();
-    }
+window.addEventListener("load", () => {
+  clock();
+  function clock() {
+    const today = new Date();
 
-    // Update the clock every second
-    setInterval(updateClock, 1000);
+    // get time components
+    const hours = today.getHours();
+    const minutes = today.getMinutes();
+    const seconds = today.getSeconds();
 
-    // Initial call to display the clock immediately
-    updateClock();
+    //add '0' to hour, minute & second when they are less 10
+    const hour = hours < 10 ? "0" + hours : hours;
+    const minute = minutes < 10 ? "0" + minutes : minutes;
+    const second = seconds < 10 ? "0" + seconds : seconds;
+
+    //make clock a 12-hour time clock
+    const hourTime = hour > 12 ? hour - 12 : hour;
+
+    // if (hour === 0) {
+    //   hour = 12;
+    // }
+    //assigning 'am' or 'pm' to indicate time of the day
+    const ampm = hour < 12 ? "AM" : "PM";
+
+    // get date components
+    const month = today.getMonth();
+    const year = today.getFullYear();
+    const day = today.getDate();
+
+    //declaring a list of all months in  a year
+    const monthList = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
+    ];
+
+    //get current date and time
+    const date = monthList[month] + " " + day + ", " + year;
+    const time = hourTime + ":" + minute + ":" + second + ampm;
+
+    //combine current date and time
+    const dateTime = date + " - " + time;
+
+    //print current date and time to the DOM
+    document.getElementById("date-time").innerHTML = dateTime;
+    setTimeout(clock, 1000);
+  }
+});
   </script>
   <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore.js"></script>
