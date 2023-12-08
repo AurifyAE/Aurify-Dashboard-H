@@ -242,6 +242,9 @@
     }
 
     .card {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       background-color: white;
       padding: 15px;
       margin-bottom: 20px;
@@ -249,13 +252,18 @@
       box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
     }
 
+    .card-content img {
+      width: 60px;
+    }
+
     .card-content h3 {
       margin-top: 0;
+      font-size: 19px;
     }
 
     .card-content p {
       margin-bottom: 0;
-      font-size: 25px;
+      font-size: 42px;
     }
 
     /* Adjust styling for your content like font sizes, colors, etc. */
@@ -288,8 +296,14 @@
       /* Clear floats */
     }
 
+    .card-box {
+      display: flex;
+      flex-direction: row;
+      margin-top: 75px;
+    }
+
     .boxxx {
-      width: calc(50% - 20px);
+      width: calc(47% - 20px);
       /* Two boxes in a row with some spacing */
       background-color: white;
       padding: 20px;
@@ -299,11 +313,35 @@
       box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
       box-sizing: border-box;
       /* Ensure padding is included in width */
-      margin-left: 50px;
+      margin-left: 21px;
     }
 
-    tbody tr{
+    .silver-card,
+    .gold-card {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    .silver-card h3 {
+      font-size: 32px;
+    }
+
+    .gold-card h3 {
+      font-size: 30px;
+    }
+
+    tbody tr {
       color: black;
+    }
+
+    .silver-rate, .gold-rate{
+      display: flex;
+      flex-direction: column;
+    }
+
+    .silver-rate{
+      margin-top: 32px;
     }
 
     /* Adjust styling for your content like font sizes, colors, etc. */
@@ -329,32 +367,38 @@
       <div class="card">
         <!-- Current Date and Time -->
         <div class="card-content">
-          <h3 id="date"></h3>
           <p id="time"></p>
+          <h3 id="date"></h3>
         </div>
       </div>
       <div class="card">
         <!-- Gold Rate -->
         <div class="card-content">
-          <h3>GOLD</h3>
+          <div class="gold-card">
+            <h3>Gold</h3>
+            <img src="./assets/img/gold.png" alt="">
+          </div>
           <p id="goldRate"></p>
         </div>
       </div>
       <div class="card">
         <!-- Silver Rate -->
         <div class="card-content">
-          <h3>SILVER</h3>
+          <div class="silver-card">
+            <h3>Silver</h3>
+            <img src="./assets/img/silver.png" alt="">
+          </div>
           <p id="silverRate"></p>
         </div>
       </div>
 
-      <div class="card">
+      <!-- <div class="card">
         <!-- Additional content 2 -->
-        <div class="card-content">
+      <!-- <div class="card-content">
           <h3>Additional Content 2</h3>
           <p>Your additional content goes here.</p>
         </div>
-      </div>
+      </div> --> -->
     </div>
 
     <div class="wrapper">
@@ -398,7 +442,80 @@
 
         <body>
 
-          <table style="margin-top: 60px; width: 1000px;">
+
+          <div class="card-box">
+            <div class="boxxx">
+              <div class="row mb-3">
+                <div class="col-md-3 gold-rate">
+                  <h4 class="heading-gold" style="margin-top:40px;">Gold</h4>
+                  <p style="margin-top:-20px;float: right;">oz</p>
+                </div>
+                <div class="col-md-4" style="text-align: center;">
+                  <div class="d-flex">
+                    <div
+                      style="background-color: #c88029;height: 22px;width: 22px;display: flex;justify-content: center;align-items: center;margin-left: 25px;">
+                      <i class="fa-solid fa-dollar-sign" style="color: white;"></i>
+                    </div>
+                    <div>
+                      <p>&nbsp;BUY</p>
+                    </div>
+                  </div>
+                  <div class="form-control input-box" id="goldInputLow"></div>
+                  <label class="badge badge-success label-low mt-1" id="lowLabelGold">0</label>
+                </div>
+                <div class="col-md-4 ms-3" style="text-align: center;">
+                  <div class="d-flex">
+                    <div
+                      style="background-color: #c88029;height: 22px;width: 22px;display: flex;justify-content: center;align-items: center;margin-left: 25px;">
+                      <i class="fa-solid fa-dollar-sign" style="color: white;"></i>
+                    </div>
+                    <div>
+                      <p>&nbsp;SELL</p>
+                    </div>
+                  </div>
+                  <div class="form-control input-box" id="goldInputHigh"></div>
+                  <label class="badge badge-warning label-high mt-1" id="highLabelGold">0</label>
+                </div>
+              </div>
+            </div>
+            <div class="boxxx">
+              <div class="row mb-3">
+                <div class="col-md-3 silver-rate">
+                  <h4 class="heading-silver" style="margin-top:0px;">Silver</h4>
+                  <p style="margin-top:-20px;float: right;">oz</p>
+                </div>
+
+                <div class="col-md-4" style="text-align: center;">
+                  <div class="d-flex">
+                    <div
+                      style="background-color: #c88029;height: 22px;width: 22px;display: flex;justify-content: center;align-items: center;">
+                      <i class="fa-solid fa-dollar-sign" style="color: white;"></i>
+                    </div>
+                    <div>
+                      <p>&nbsp;BUY</p>
+                    </div>
+                  </div>
+                  <div class="form-control input-box" id="silverInputLow"></div>
+                  <label class="badge badge-success label-low mt-1" id="lowLabelSilver">0</label>
+                </div>
+                <div class="col-md-4 ms-3" style="text-align: center;">
+                  <div class="d-flex">
+                    <div
+                      style="background-color: #c88029;height: 22px;width: 22px;display: flex;justify-content: center;align-items: center;">
+                      <i class="fa-solid fa-dollar-sign" style="color: white;"></i>
+                    </div>
+                    <div>
+                      <p>&nbsp;SELL</p>
+                    </div>
+                  </div>
+                  <div class="form-control input-box" id="silverInputHigh"></div>
+                  <label class="badge badge-warning label-high mt-1" id="highLabelSilver">0</label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <table style="margin-top: 60px; width: 1150px;">
             <thead>
               <tr>
                 <th>Metal</th>
@@ -415,75 +532,6 @@
 
 
 
-          <div class="boxxx">
-            <div class="row mb-3">
-              <div class="col-md-3">
-                <h4 class="heading-gold" style="margin-top:40px;">Gold</h4>
-                <p style="margin-top:-20px;float: right;">oz</p>
-              </div>
-              <div class="col-md-4" style="text-align: center;">
-                <div class="d-flex">
-                  <div
-                    style="background-color: #c88029;height: 22px;width: 22px;display: flex;justify-content: center;align-items: center;margin-left: 25px;">
-                    <i class="fa-solid fa-dollar-sign" style="color: white;"></i>
-                  </div>
-                  <div>
-                    <p>&nbsp;BUY</p>
-                  </div>
-                </div>
-                <div class="form-control input-box" id="goldInputLow"></div>
-                <label class="badge badge-success label-low mt-1" id="lowLabelGold">0</label>
-              </div>
-              <div class="col-md-4 ms-3" style="text-align: center;">
-                <div class="d-flex">
-                  <div
-                    style="background-color: #c88029;height: 22px;width: 22px;display: flex;justify-content: center;align-items: center;margin-left: 25px;">
-                    <i class="fa-solid fa-dollar-sign" style="color: white;"></i>
-                  </div>
-                  <div>
-                    <p>&nbsp;SELL</p>
-                  </div>
-                </div>
-                <div class="form-control input-box" id="goldInputHigh"></div>
-                <label class="badge badge-warning label-high mt-1" id="highLabelGold">0</label>
-              </div>
-            </div>
-          </div>
-          <div class="boxxx">
-            <div class="row mb-3">
-              <div class="col-md-3">
-                <h4 class="heading-silver" style="margin-top:0px;">Silver</h4>
-                <p style="margin-top:-20px;float: right;">oz</p>
-              </div>
-
-              <div class="col-md-4" style="text-align: center;">
-                <div class="d-flex">
-                  <div
-                    style="background-color: #c88029;height: 22px;width: 22px;display: flex;justify-content: center;align-items: center;">
-                    <i class="fa-solid fa-dollar-sign" style="color: white;"></i>
-                  </div>
-                  <div>
-                    <p>&nbsp;BUY</p>
-                  </div>
-                </div>
-                <div class="form-control input-box" id="silverInputLow"></div>
-                <label class="badge badge-success label-low mt-1" id="lowLabelSilver">0</label>
-              </div>
-              <div class="col-md-4 ms-3" style="text-align: center;">
-                <div class="d-flex">
-                  <div
-                    style="background-color: #c88029;height: 22px;width: 22px;display: flex;justify-content: center;align-items: center;">
-                    <i class="fa-solid fa-dollar-sign" style="color: white;"></i>
-                  </div>
-                  <div>
-                    <p>&nbsp;SELL</p>
-                  </div>
-                </div>
-                <div class="form-control input-box" id="silverInputHigh"></div>
-                <label class="badge badge-warning label-high mt-1" id="highLabelSilver">0</label>
-              </div>
-            </div>
-          </div>
         </body>
 
         </html>
