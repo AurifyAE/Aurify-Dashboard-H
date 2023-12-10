@@ -299,11 +299,13 @@
     .card-box {
       display: flex;
       flex-direction: row;
+      padding: 0px 90px;
       margin-top: 75px;
+      width: 100%;
     }
 
     .boxxx {
-      width: calc(47% - 20px);
+      width: calc(50% - 20px);
       /* Two boxes in a row with some spacing */
       background-color: white;
       padding: 20px;
@@ -331,17 +333,19 @@
       font-size: 30px;
     }
 
-    tbody tr {
-      color: black;
-    }
-
-    .silver-rate, .gold-rate{
+    .silver-rate,
+    .gold-rate {
       display: flex;
       flex-direction: column;
     }
 
-    .silver-rate{
-      margin-top: 32px;
+    .silver-rate {
+      margin-top: 38px;
+    }
+
+    .boxxx label{
+      width: 100%;
+      margin-left: 0px;
     }
 
     /* Adjust styling for your content like font sizes, colors, etc. */
@@ -410,32 +414,36 @@
 
         <head>
           <style>
-            /* Styling the table */
+            /* General table styling */
+            .container1{
+              padding: 0px 100px;
+            }
+
             table {
               width: 100%;
-              /* Adjust the width as needed */
               margin: 20px auto;
               border-collapse: collapse;
-              /* Collapse table borders */
-              margin-left: 20px;
-              margin-top: 200px;
-              margin-right: 30px;
+              border: 2px solid black;
             }
 
+            /* Table cell styling  */
             th,
             td {
-              border: 1px solid #ccc;
-              /* Border style */
-              padding: 8px;
-              /* Padding inside cells */
               text-align: center;
-              /* Center text */
+            } 
+
+            /* Header styling */
+            th {
+              color: black;
+              font-size: 24px;
+              font-weight: bold;
             }
 
-            th {
-              background-color: #f2f2f2;
-              /* Background color for table header */
-              font-weight: bold;
+            /* Row styling */
+            tbody tr {
+              color: black;
+              font-size: 26px;
+              font-weight: 600;
             }
           </style>
         </head>
@@ -443,7 +451,7 @@
         <body>
 
 
-          <div class="card-box">
+          <div class="col-md-12 card-box">
             <div class="boxxx">
               <div class="row mb-3">
                 <div class="col-md-3 gold-rate">
@@ -515,20 +523,27 @@
             </div>
           </div>
 
-          <table style="margin-top: 60px; width: 1150px;">
-            <thead>
-              <tr>
-                <th>Metal</th>
-                <th>Purity</th>
-                <th>Unit</th>
-                <th>Sell<br>(<span id="currencySymbol">AED</span>)</th>
-                <th>Buy<br>(<span id="currencySymbol">AED</span>)</th>
-              </tr>
-            </thead>
-            <tbody id="tableBodyTV">
-              <!-- Table body content will be dynamically updated here -->
-            </tbody>
-          </table>
+          <div class="container1">
+            <div class="row">
+              <div class="col-md-12">
+                <table class="table" style="margin-top: 60px; width: 100%;">
+                  <thead>
+                    <tr>
+                      <th>Metal</th>
+                      <th>Purity</th>
+                      <th>Unit</th>
+                      <th>Sell<br>(<span id="currencySymbol">AED</span>)</th>
+                      <th>Buy<br>(<span id="currencySymbol">AED</span>)</th>
+                    </tr>
+                  </thead>
+                  <tbody id="tableBodyTV">
+                    <!-- Table body content will be dynamically updated here -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
 
 
 
