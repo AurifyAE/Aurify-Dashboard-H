@@ -75,13 +75,20 @@
       margin-bottom: 10px;
     }
 
-    .sidebar-item:hover {
-      background-color: #555;
+    .sidebar-item {
+      text-align: center;
     }
 
-    .content {
-      margin-left: 300px;
-      padding: 20px;
+    .sidebar-item span:first-child {
+      font-size: 34px;
+    }
+
+    .sidebar-item span:last-child {
+      font-size: 50px;
+    }
+
+    .sidebar-item:hover {
+      background-color: #555;
     }
 
     .clocks {
@@ -90,18 +97,17 @@
       margin-top: 50px;
       color: #fff;
       height: 50px;
-      margin-left: 60px;
+      font-size: 26px;
+      text-align: center;
 
     }
 
     .rates {
-      margin-top: 50px;
+      margin-top: 100px;
       color: #fff;
-      margin-left: 60px;
-
+      font-size: 26px;
+      text-align: center;
     }
-
-
 
 
     .content {
@@ -182,20 +188,12 @@
       line-height: 1.5;
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    .main-box {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin: 0px auto;
+    }
 
 
     .box1 {
@@ -208,7 +206,7 @@
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
-      //* Background color */
+      /* Background color */
       margin: 20px;
       /* Margin around each box */
       display: inline-block;
@@ -221,7 +219,6 @@
       /* Center text inside box */
       padding: 20px;
       /* Padding inside the box */
-      margin-left: 60px;
       color: #ffffff;
 
     }
@@ -237,7 +234,7 @@
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
-      //* Background color */
+      /* Background color */
       margin: 20px;
       /* Margin around each box */
       display: inline-block;
@@ -250,9 +247,31 @@
       /* Center text inside box */
       padding: 20px;
       /* Padding inside the box */
-      margin-left: 60px;
+      margin-left: 72px;
       color: #ffffff;
 
+    }
+
+    .box1 .d-flex{
+      margin-left: -22px;
+    }
+
+    .silver-rate {
+      margin-top: 38px;
+    }
+
+    .gold-labels label,
+    .silver-labels label {
+      width: 100%;
+      margin-left: 0px;
+      font-size: 18px;
+    }
+
+    .gold-labels .input-box,
+    .silver-labels .input-box {
+      width: 100%;
+      margin-left: 0px;
+      font-size: 18px;
     }
   </style>
 </head>
@@ -269,7 +288,7 @@
 
     <div class="dttm">
       <div class="sidebar-item">
-        <span id="date"></span>
+        <span id="date"></span><br>
         <span id="time"></span>
       </div>
     </div>
@@ -289,18 +308,12 @@
       <strong>Silver Rate:</strong> <span id="silverRate"></span>
     </div>
     <div class="sidebar-item">
-      <a href="#cart">Cart</a>
       <div class="glassmorphism-box">
         <!-- Content for the glassmorphism box -->
         <h3>powerd by</h3>
-
         <img src="./assets/img/apple-icon.png" style="width: 30px;" alt="">
-
-
       </div>
     </div>
-
-
   </div>
 
 
@@ -368,78 +381,86 @@
           /* Background color for table header */
           font-weight: bold;
         }
+
+        tbody tr {
+          color: black;
+          font-size: 26px;
+          font-weight: 500;
+        }
       </style>
     </head>
 
     <body>
-      <div class="box1">
-        <div class="row mb-3">
-          <div class="col-md-3">
-            <h4 class="heading-gold" style="margin-top:40px;">Gold</h4>
-            <p style="margin-top:-20px;float: right;color: #000000;">oz</p>
-          </div>
-          <div class="col-md-4" style="text-align: center;">
-            <div class="d-flex">
-              <div
-                style="background-color: #c88029;height: 22px;width: 22px;display: flex;justify-content: center;align-items: center;margin-left: 25px;">
-                <i class="fa-solid fa-dollar-sign" style="color: white;"></i>
-              </div>
-              <div>
-                <p style="color: #000000;">&nbsp;BUY</p>
-              </div>
+      <div class="main-box">
+        <div class="box1">
+          <div class="row mb-3">
+            <div class="col-md-3 gold-rate">
+              <h4 class="heading-gold" style="margin-top:40px;">Gold</h4>
+              <p style="margin-top:-20px;float: right;color: #000000;">oz</p>
             </div>
-            <div class="form-control input-box" id="goldInputLow"></div>
-            <label class="badge badge-success label-low mt-1" id="lowLabelGold" style="color: #000000;">0</label>
-          </div>
-          <div class="col-md-4 ms-3" style="text-align: center;">
-            <div class="d-flex">
-              <div
-                style="background-color: #c88029;height: 22px;width: 22px;display: flex;justify-content: center;align-items: center;margin-left: 25px;">
-                <i class="fa-solid fa-dollar-sign" style="color: white;"></i>
+            <div class="col-md-4 gold-labels" style="text-align: center;">
+              <div class="d-flex">
+                <div
+                  style="background-color: #c88029;height: 22px;width: 22px;display: flex;justify-content: center;align-items: center;margin-left: 25px;">
+                  <i class="fa-solid fa-dollar-sign" style="color: white;"></i>
+                </div>
+                <div>
+                  <p style="color: #000000;">&nbsp;BUY</p>
+                </div>
               </div>
-              <div>
-                <p style="color: #000000;">&nbsp;SELL</p>
-              </div>
+              <div class="form-control input-box" id="goldInputLow"></div>
+              <label class="badge badge-success label-low mt-1" id="lowLabelGold" style="color: #000000;">0</label>
             </div>
-            <div class="form-control input-box" id="goldInputHigh"></div>
-            <label class="badge badge-warning label-high mt-1" id="highLabelGold" style="color: #000000;">0</label>
+            <div class="col-md-4 ms-3 gold-labels" style="text-align: center;">
+              <div class="d-flex">
+                <div
+                  style="background-color: #c88029;height: 22px;width: 22px;display: flex;justify-content: center;align-items: center;margin-left: 25px;">
+                  <i class="fa-solid fa-dollar-sign" style="color: white;"></i>
+                </div>
+                <div>
+                  <p style="color: #000000;">&nbsp;SELL</p>
+                </div>
+              </div>
+              <div class="form-control input-box" id="goldInputHigh"></div>
+              <label class="badge badge-warning label-high mt-1" id="highLabelGold" style="color: #000000;">0</label>
+            </div>
           </div>
         </div>
-      </div>
 
 
-      <div class="box2">
-        <div class="row mb-3">
-          <div class="col-md-3">
-            <h4 class="heading-silver" style="margin-top:0px;">Silver</h4>
-            <p style="margin-top:-20px;float: right;color: #000000;">oz</p>
-          </div>
-
-          <div class="col-md-4" style="text-align: center;">
-            <div class="d-flex">
-              <div
-                style="background-color: #c88029;height: 22px;width: 22px;display: flex;justify-content: center;align-items: center;">
-                <i class="fa-solid fa-dollar-sign" style="color: white;"></i>
-              </div>
-              <div>
-                <p style="color: #000000;">&nbsp;BUY</p>
-              </div>
+        <div class="box2">
+          <div class="row mb-3">
+            <div class="col-md-3 silver-rate">
+              <h4 class="heading-silver" style="margin-top:0px;">Silver</h4>
+              <p style="margin-top:-20px;float: right;color: #000000;">oz</p>
             </div>
-            <div class="form-control input-box" id="silverInputLow"></div>
-            <label class="badge badge-success label-low mt-1" id="lowLabelSilver" style="color: #000000;">0</label>
-          </div>
-          <div class="col-md-4 ms-3" style="text-align: center;">
-            <div class="d-flex">
-              <div
-                style="background-color: #c88029;height: 22px;width: 22px;display: flex;justify-content: center;align-items: center;">
-                <i class="fa-solid fa-dollar-sign" style="color: white;"></i>
+
+            <div class="col-md-4 silver-labels" style="text-align: center;">
+              <div class="d-flex">
+                <div
+                  style="background-color: #c88029;height: 22px;width: 22px;display: flex;justify-content: center;align-items: center;">
+                  <i class="fa-solid fa-dollar-sign" style="color: white;"></i>
+                </div>
+                <div>
+                  <p style="color: #000000;">&nbsp;BUY</p>
+                </div>
               </div>
-              <div>
-                <p style="color: #000000;">&nbsp;SELL</p>
-              </div>
+              <div class="form-control input-box" id="silverInputLow"></div>
+              <label class="badge badge-success label-low mt-1" id="lowLabelSilver" style="color: #000000;">0</label>
             </div>
-            <div class="form-control input-box" id="silverInputHigh"></div>
-            <label class="badge badge-warning label-high mt-1" id="highLabelSilver" style="color: #000000;">0</label>
+            <div class="col-md-4 ms-3 silver-labels" style="text-align: center;">
+              <div class="d-flex">
+                <div
+                  style="background-color: #c88029;height: 22px;width: 22px;display: flex;justify-content: center;align-items: center;">
+                  <i class="fa-solid fa-dollar-sign" style="color: white;"></i>
+                </div>
+                <div>
+                  <p style="color: #000000;">&nbsp;SELL</p>
+                </div>
+              </div>
+              <div class="form-control input-box" id="silverInputHigh"></div>
+              <label class="badge badge-warning label-high mt-1" id="highLabelSilver" style="color: #000000;">0</label>
+            </div>
           </div>
         </div>
       </div>
@@ -477,8 +498,8 @@
       const now = new Date();
       const dateElement = document.getElementById('date');
       const timeElement = document.getElementById('time');
-      dateElement.textContent = 'Date: ' + now.toDateString();
-      timeElement.textContent = 'Time: ' + now.toLocaleTimeString();
+      dateElement.textContent = now.toDateString();
+      timeElement.textContent = now.toLocaleTimeString();
     }
 
     // Function to get current time in different timezones
@@ -509,8 +530,6 @@
     setInterval(updateTime, 1000);
     setInterval(updateClocks, 1000);
     setInterval(updateRates, 5000); // Update rates every 5 seconds (adjust as needed)
-
-
   </script>
   <script>
     // Check if the screen width is below a certain threshold (e.g., 1000 pixels)
