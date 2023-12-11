@@ -14,10 +14,10 @@
   <style>
     .container{
       width: 100%;
-      margin: 20px;
-      padding: 0;
+      margin-top: 20px;
     }
     .clock {
+      margin-top: 10px;
       font-size: 24px;
       font-weight: bold;
     }
@@ -36,14 +36,23 @@
       animation: 10s linear 0s normal none infinite animate;
 
     }
+    .card{
+      border:none;
+      border-radius: 20px;
+      box-shadow: 5px 5px 10px grey;
+    }
 
     .card-table {
-      margin-top: 75px;
+      padding: 10px;
+      margin-top: 15px;
+      border-radius: 20px !important;
       background-color: transparent;
-      border-collapse: collapse;
+      border-collapse: separate;
+      background-color: #ffffff;
     }
 
     table{
+      margin: 0;
       width: 100%;
       display:inline-table;
       justify-content: center;
@@ -51,7 +60,6 @@
     }
 
     .card-table tbody tr {
-      margin-top: 10px;
       background-color: #f9f9f9;
       /* Light gray background for odd rows */
     }
@@ -71,11 +79,15 @@
     .card-table th,
     .card-table td {
       padding: 12px;
-      text-align: left;
+      text-align: center;
     }
 
     .card-table th {
-      font-weight: bold;
+      color: #c88028;
+      font-weight: bolder;
+    }
+    .card-table td {
+      font-weight:600;
     }
 
     /* Hover effect for better user experience */
@@ -144,24 +156,36 @@
 
       <div class="col-md-4">
         <div class="">
-          <div class="card-body">
+          <div class="card-body d-flex justify-content-center">
             <img src="./orbixbullion l2.png" alt="" style="width: 200px;">
           </div>
         </div>
       </div>
       <div class="col-md-4">
-        <div class="card">
-          <div class="card-body">
-            GOLD RATE
-            <p id="goldRate"></p>
+        <div class="card ">
+
+          <div class="card-body d-flex">
+            <div class="">
+              <img src="./gold bar.png" height="100px" width="100px">
+            </div>
+            <div class="" style="margin-left: 20px;margin-top: 20px;">
+           <h3>GOLD RATE</h3> 
+            <p id="goldRate" style="display: flex;justify-content: center; color:#c88028; font-size: larger;font-weight: bolder;"></p>
+          </div>
           </div>
         </div>
       </div>
       <div class="col-md-4">
-        <div class="card">
-          <div class="card-body">
-            SILVER RATE
-            <p id="silverRate"></p>
+        <div class="card ">
+
+          <div class="card-body d-flex">
+            <div class="">
+              <img src="./silver bar.png" height="100px" width="100px">
+            </div>
+            <div class="" style="margin-left: 20px;margin-top: 20px;">
+           <h3>SILVER RATE</h3> 
+            <p id="silverRate" style="display: flex;justify-content: center; color:#c88028; font-size: larger;font-weight: bolder;"></p>
+          </div>
           </div>
         </div>
       </div>
@@ -170,18 +194,16 @@
 
     </div>
     <div class="row">
-      <div class="col-md-12">
-        <div class="">
+      <div class="col-md-12 d-flex justify-content-center mt-3">
           <div id="clock">
-            <h1 id="date-time"></h1>
+            <h1 id="date-time" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: bolder;"></h1>
           </div>
-        </div>
+
       </div>
     </div>
     <div class="row">
       <div class="col-md-12">
         <div class="card card-table">
-          <div class="card-body">
             <table style="margin-top: 0px;">
               <thead>
                 <tr>
@@ -195,7 +217,6 @@
                 <!-- Table body content will be dynamically updated here -->
               </tbody>
             </table>
-          </div>
         </div>
       </div>
     </div>
@@ -257,7 +278,7 @@ window.addEventListener("load", () => {
     const time = hourTime + ":" + minute + ":" + second + ampm;
 
     //combine current date and time
-    const dateTime = date + " - " + time;
+    const dateTime = date + "\xa0\xa0\xa0\xa0\xa0\xa0\xa0" + time;
 
     //print current date and time to the DOM
     document.getElementById("date-time").innerHTML = dateTime;
