@@ -73,14 +73,14 @@
     <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur"
       navbar-scroll="true">
       <div class="container-fluid py-1" style="margin-left:80px;">
-        <img src="./orbixbullion l2.png" width="200px;">
+        <img src="./orbixbullion l2.png" width="150px;">
       </div>
       <div class="container-fluid py-1">
 
       </div>
       <div class="container-fluid py-1 " id="datetime-container">
         <div id="date"></div>
-        <div id="time" style="font-size: 3rem;font-weight: 600;"></div>
+        <div id="time" style="font-size: 2rem;font-weight: 800;"></div>
       </div>
     </nav>
     <!-- End Navbar -->
@@ -93,14 +93,14 @@
 
 
   </div>
-  <div class="border-radius-xl mt-3 mx-3 position-relative"
+  <div class="border-radius-xl mt-1 mx-3 position-relative"
     style="background-image: url('./assets/img/14380.png'); background-size: cover; height: 550px;">
 
     <div class="container effectclass">
       <div class="row">
 
-        <div class="col-md-3 mb-5 mt-5">
-          <div class="row mb-3">
+        <div class="col-md-3 mt-5" style="margin-left: -75px;">
+          <div class="row ">
             <div class="col-md-3">
               <h4 class="heading-gold" style="margin-top:40px;">Gold</h4>
               <p style="margin-top:-20px;float: right;">oz</p>
@@ -108,10 +108,10 @@
             <div class="col-md-4" style="text-align: center;">
               <div class="d-flex">
                 <div
-                  style="background-color: #c88029;height: 22px;width: 22px;display: flex;justify-content: center;align-items: center;margin-left: 25px;">
+                  style="background-color: #c88029;height: 22px;width: 22px;display: flex;justify-content: center;align-items: center;">
                   <i class="fa-solid fa-dollar-sign" style="color: white;"></i></div>
                 <div>
-                  <p>&nbsp;BUY</p>
+                  <p style="font-weight: bold;">&nbsp;BUY</p>
                 </div>
               </div>
               <div class="form-control input-box" id="goldInputLow"></div>
@@ -120,10 +120,10 @@
             <div class="col-md-4 ms-3" style="text-align: center;">
               <div class="d-flex">
                 <div
-                  style="background-color: #c88029;height: 22px;width: 22px;display: flex;justify-content: center;align-items: center;margin-left: 25px;">
+                  style="background-color: #c88029;height: 22px;width: 22px;display: flex;justify-content: center;align-items: center;">
                   <i class="fa-solid fa-dollar-sign" style="color: white;"></i></div>
                 <div>
-                  <p>&nbsp;SELL</p>
+                  <p style="font-weight: bold;">&nbsp;SELL</p>
                 </div>
               </div>
               <div class="form-control input-box" id="goldInputHigh"></div>
@@ -166,8 +166,8 @@
                       "dateRange": "3M",
                         "showChart": true,
                           "locale": "en",
-                            "width": "300",
-                              "height": "300",
+                            "width": "270",
+                              "height": "270",
                                 "largeChartUrl": "",
                                   "isTransparent": true,
                                     "showSymbolLogo": true,
@@ -205,13 +205,13 @@
         </div>
 
 
-        <div class="col-md-6 mt-5 mb-5 ms-3"
-          style="border: none; border-radius:25px; background-color:rgb(200, 128, 41, 0.5) ;">
+        <div class="col-md-6 mt-5 mb-5 ms-6"
+          style="border: none; border-radius:25px; background-color:rgb(200, 128, 41, 0.5) ; height:fit-content;">
           <table class="table" style="font-size: large;font-weight:bolder; color: black;text-align: center;">
             <thead>
               <tr>
-                <th style="font-weight:bolder;color: #714004;">Metal</th>
-                <th style="font-weight:bolder;color: #714004;">Purity</th>
+                <th colspan="2" style="font-weight:bolder;color: #714004;">Commodity</th>
+                <!-- <th style="font-weight:bolder;color: #714004;">Purity</th> -->
                 <th style="font-weight:bolder;color: #714004;">Unit</th>
                 <th style="font-weight:bolder;color: #714004;">Sell<br>(<span id="currencySymbol">AED</span>)</th>
                 <th style="font-weight:bolder;color: #714004;">Buy<br>(<span id="currencySymbol">AED</span>)</th>
@@ -248,13 +248,11 @@
           </div>
           <!-- TradingView Widget END -->
           <div style="width:320px ; border: none; border-radius:25px;background-color: rgb(254, 255, 255,0.6);">
-            <div class="d-flex" style="margin-left:40px ;margin-top: 30px;">
+            <div class="d-flex" style="margin-left:40px ;margin-top: 30px; justify-content: center;align-items: center;">
               <h6>Powered By</h6>
-              <center><img src="./assets/img/apple-icon.png" height="100px" width="100px"></center>
+             <img src="./assets/img/apple-icon.png" height="24px" width="24px" style="margin-left:20px ;" >
+             <h6 style="margin-left:10px ;">www.aurify.ae</h6>
             </div>
-            <center>
-              <h5 style="margin-left:50px ;">www.aurify.ae</h5>
-            </center>
           </div>
         </div>
 
@@ -264,7 +262,7 @@
   </div>
   <div class="col-md-12">
     <!-- TradingView Widget BEGIN -->
-    <div class="tradingview-widget-container trading-marquee">
+    <!-- <div class="tradingview-widget-container trading-marquee"> -->
       <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js"
         async>
           {
