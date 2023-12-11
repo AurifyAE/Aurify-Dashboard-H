@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+  <title>
+    TV View
+  </title>
+  <!-- Link Bootstrap CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <!--     Fonts and icons     -->
+  <script src="https://kit.fontawesome.com/0e1fa7c1a3.js" crossorigin="anonymous"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "arial", heletica, sans-serif;
+      font-size: 24px;
+      background: white url('./tumblr_static_bg3.png') repeat 0 0;
+      -webkit-animation: 10s linear 0s normal none infinite animate;
+      -moz-animation: 10s linear 0s normal none infinite animate;
+      -ms-animation: 10s linear 0s normal none infinite animate;
+      -o-animation: 10s linear 0s normal none infinite animate;
+      animation: 10s linear 0s normal none infinite animate;
+    }
+
+    .container1 {
+      width: 100%;
+      margin: 20px;
+      padding: 0;
+    }
+
+    i {
+      font-size: 1rem;
+    }
+
+    h4 {
+      color: black;
+      font-weight: bold;
+    }
+
+    .clock {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .dateTime {
+      margin-top: 38px;
+      font-size: 30px;
+    }
+
+    .card {
+      margin-top: 30px;
+      border-radius: 15px;
+    }
+
+    .card-body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .card-body p {
+      font-size: 28px;
+      color: #c88029;
+      font-weight: bold;
+    }
+
+    .silver-card,
+    .gold-card {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    .silver-card img,
+    .gold-card img {
+      width: 60px;
+      margin-right: 50px;
+    }
+
+    .silver-card h3 {
+      font-size: 32px;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    .gold-card h3 {
+      font-size: 30px;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    .card-table {
+      margin-top: 15px;
+      background-color: transparent;
+      border-collapse: collapse;
+    }
+
+    table {
+      display: inline-table;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .card-table tbody tr {
+      margin-top: 10px;
+      background-color: #f9f9f9;
+      /* Light gray background for odd rows */
+    }
+
+    .card-table tbody tr:nth-child(even) {
+      background-color: #e6e6e6;
+      /* Dark gray background for even rows */
+    }
+
+    .card-table thead tr {
+      background-color: #ffffff;
+      /* White background for header row */
+      border-bottom: 2px solid #dddddd;
+      /* Add a bottom border to separate header from body */
+    }
+
+    .card-table th,
+    .card-table td {
+      padding: 12px;
+      text-align: left;
+    }
+
+    .card-table th {
+      font-weight: bold;
+    }
+
+    /* Hover effect for better user experience */
+    .card-table tbody tr:hover {
+      background-color: #d3d3d3;
+      /* Lighter gray on hover */
+    }
+
+    .row2 {
+      display: flex;
+      flex-direction: row;
+      margin-top: 50px;
+    }
+
+    .main-box {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .box1 {
+      width: 450px;
+      /* Width of each box */
+      height: 120px;
+      /* Height of each box */
+      background-image: url('./assets/img/goldcoin.jpg');
+      height: 80%;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      /* Background color */
+      margin: 20px;
+      /* Margin around each box */
+      display: inline-block;
+      /* Display boxes in a row */
+      border-radius: 10px;
+      /* Rounded corners */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      /* Adding a shadow effect */
+      text-align: center;
+      /* Center text inside box */
+      padding: 20px;
+      /* Padding inside the box */
+      color: #ffffff;
+
+    }
+
+
+    .box2 {
+      width: 450px;
+      /* Width of each box */
+      height: 120px;
+      /* Height of each box */
+      background-image: url('./assets/img/silvercoins.jpg');
+      height: 80%;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      /* Background color */
+      margin: 20px;
+      /* Margin around each box */
+      display: inline-block;
+      /* Display boxes in a row */
+      border-radius: 10px;
+      /* Rounded corners */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      /* Adding a shadow effect */
+      text-align: center;
+      /* Center text inside box */
+      padding: 20px;
+      /* Padding inside the box */
+      color: #ffffff;
+
+    }
+
+    .box1 .d-flex {
+      margin-left: -22px;
+    }
+
+    .silver-rate {
+      margin-top: 38px;
+    }
+
+    .gold-labels label,
+    .silver-labels label {
+      width: 100%;
+      margin-left: 0px;
+      font-size: 18px;
+    }
+
+    .gold-labels .input-box,
+    .silver-labels .input-box {
+      width: 100%;
+      margin-left: 0px;
+      font-size: 18px;
+    }
+
+    @-webkit-keyframes animate {
+      from {
+        background-position: 0 0;
+      }
+
+      to {
+        background-position: 500px 0;
+      }
+    }
+
+    @-moz-keyframes animate {
+      from {
+        background-position: 0 0;
+      }
+
+      to {
+        background-position: 500px 0;
+      }
+    }
+
+    @-ms-keyframes animate {
+      from {
+        background-position: 0 0;
+      }
+
+      to {
+        background-position: 500px 0;
+      }
+    }
+
+    @-o-keyframes animate {
+      from {
+        background-position: 0 0;
+      }
+
+      to {
+        background-position: 500px 0;
+      }
+    }
+
+    @keyframes animate {
+      from {
+        background-position: 0 0;
+      }
+
+      to {
+        background-position: 500px 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container1">
+    <div class="row">
+      <div class="col-md-2">
+        <div class="">
+          <div class="card-body">
+            <img src="./orbixbullion l2.png" alt="" style="width: 200px;">
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="card">
+          <div class="card-body">
+            <div class="gold-card">
+              <img src="./assets/img/gold.png" alt="">
+              <h3>Gold</h3>
+            </div>
+            <p id="goldRate"></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="card">
+          <div class="card-body">
+            <div class="silver-card">
+              <img src="./assets/img/silver.png" alt="">
+              <h3>Silver</h3>
+            </div>
+            <p id="silverRate"></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="dateTime">
+          <div id="clock">
+            <h1 id="date-time"></h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row2">
+    <div class="col-md-4 main-box">
+      <div class="box1">
+        <div class="row mb-3">
+          <div class="col-md-3 gold-rate">
+            <h4 class="heading-gold" style="margin-top:40px;">Gold</h4>
+            <p style="margin-top:-20px;float: right;color: #000000;">oz</p>
+          </div>
+          <div class="col-md-4 gold-labels" style="text-align: center;">
+            <div class="d-flex">
+              <div
+                style="background-color: #c88029;height: 22px;width: 22px;display: flex;justify-content: center;align-items: center;margin-left: 25px;">
+                <i class="fa-solid fa-dollar-sign" style="color: white;"></i>
+              </div>
+              <div>
+                <p style="color: #000000;">&nbsp;BUY</p>
+              </div>
+            </div>
+            <div class="form-control input-box" id="goldInputLow"></div>
+            <label class="badge badge-success label-low mt-1" id="lowLabelGold" style="color: #000000;">0</label>
+          </div>
+          <div class="col-md-4 ms-3 gold-labels" style="text-align: center;">
+            <div class="d-flex">
+              <div
+                style="background-color: #c88029;height: 22px;width: 22px;display: flex;justify-content: center;align-items: center;margin-left: 25px;">
+                <i class="fa-solid fa-dollar-sign" style="color: white;"></i>
+              </div>
+              <div>
+                <p style="color: #000000;">&nbsp;SELL</p>
+              </div>
+            </div>
+            <div class="form-control input-box" id="goldInputHigh"></div>
+            <label class="badge badge-warning label-high mt-1" id="highLabelGold" style="color: #000000;">0</label>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="box2">
+        <div class="row mb-3">
+          <div class="col-md-3 silver-rate">
+            <h4 class="heading-silver" style="margin-top:0px;">Silver</h4>
+            <p style="margin-top:-20px;float: right;color: #000000;">oz</p>
+          </div>
+
+          <div class="col-md-4 silver-labels" style="text-align: center;">
+            <div class="d-flex">
+              <div
+                style="background-color: #c88029;height: 22px;width: 22px;display: flex;justify-content: center;align-items: center;">
+                <i class="fa-solid fa-dollar-sign" style="color: white;"></i>
+              </div>
+              <div>
+                <p style="color: #000000;">&nbsp;BUY</p>
+              </div>
+            </div>
+            <div class="form-control input-box" id="silverInputLow"></div>
+            <label class="badge badge-success label-low mt-1" id="lowLabelSilver" style="color: #000000;">0</label>
+          </div>
+          <div class="col-md-4 ms-3 silver-labels" style="text-align: center;">
+            <div class="d-flex">
+              <div
+                style="background-color: #c88029;height: 22px;width: 22px;display: flex;justify-content: center;align-items: center;">
+                <i class="fa-solid fa-dollar-sign" style="color: white;"></i>
+              </div>
+              <div>
+                <p style="color: #000000;">&nbsp;SELL</p>
+              </div>
+            </div>
+            <div class="form-control input-box" id="silverInputHigh"></div>
+            <label class="badge badge-warning label-high mt-1" id="highLabelSilver" style="color: #000000;">0</label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-8">
+      <div class="card card-table">
+        <table style="margin-top: 0px;">
+          <thead>
+            <tr>
+              <th>Commodity</th>
+              <th>Purity</th>
+              <th>Unit</th>
+              <th>Sell (<span id="currencySymbol">AED</span>)</th>
+              <th>Buy (<span id="currencySymbol">AED</span>)</th>
+            </tr>
+          </thead>
+          <tbody id="tableBodyTV">
+            <!-- Table body content will be dynamically updated here -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <!-- Link Bootstrap JS and Popper.js -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script>
+    window.addEventListener("load", () => {
+      clock();
+      function clock() {
+        const today = new Date();
+
+        // get time components
+        const hours = today.getHours();
+        const minutes = today.getMinutes();
+        const seconds = today.getSeconds();
+
+        //add '0' to hour, minute & second when they are less 10
+        const hour = hours < 10 ? "0" + hours : hours;
+        const minute = minutes < 10 ? "0" + minutes : minutes;
+        const second = seconds < 10 ? "0" + seconds : seconds;
+
+        //make clock a 12-hour time clock
+        const hourTime = hour > 12 ? hour - 12 : hour;
+
+        // if (hour === 0) {
+        //   hour = 12;
+        // }
+        //assigning 'am' or 'pm' to indicate time of the day
+        const ampm = hour < 12 ? "AM" : "PM";
+
+        // get date components
+        const month = today.getMonth();
+        const year = today.getFullYear();
+        const day = today.getDate();
+
+        //declaring a list of all months in  a year
+        const monthList = [
+          "January",
+          "February",
+          "March",
+          "April",
+          "May",
+          "June",
+          "July",
+          "August",
+          "September",
+          "October",
+          "November",
+          "December"
+        ];
+
+        //get current date and time
+        const date = monthList[month] + " " + day + ", " + year;
+        const time = hourTime + ":" + minute + ":" + second + ampm;
+
+        //combine current date and time
+        const dateTime = date + '</br>' + time;
+
+        //print current date and time to the DOM
+        document.getElementById("date-time").innerHTML = dateTime;
+        setTimeout(clock, 1000);
+      }
+    });
+  </script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-database.js"></script>
+  <script type="module" src="./config/db.js"></script>
+  <script type="module" src="./assets/js/core/spotrateDB.js"></script>
+  <script type="module" defer src="./assets/js/core/aurifyview2.js"></script>
+</body>
+
+</html>
