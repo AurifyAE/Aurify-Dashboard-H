@@ -4,13 +4,15 @@ import { app } from '../../../config/db.js';
 
 const firestore = getFirestore(app)
 
-document.addEventListener('DOMContentLoaded', function () {
-    setInterval(() => {
-        fetchData()
-    }, 1000)
+setInterval(() => {
+    fetchData()
+}, 1000)
 
-    showTable();
-});
+setInterval(() => {
+    blinker()
+}, 700)
+
+showTable();
 
 
 let askSpread, bidSpread, goldValue, silverBidSpread, silverAskSpread;
@@ -61,7 +63,7 @@ async function fetchData() {
         var goldSell = (goldValueUSD + askSpread + parseFloat(0.5)).toFixed(2);
         var silverBuy = (silverValueUSD + silverBidSpread).toFixed(3);
         var silverSell = (silverValueUSD + silverAskSpread + parseFloat(0.05)).toFixed(3);
-        
+
 
         document.getElementById("goldInputLow").innerHTML = goldBuy;
         document.getElementById("goldInputHigh").innerHTML = goldSell;
@@ -95,6 +97,34 @@ async function fetchData() {
         console.error('Error fetching gold and silver values:', error);
     }
 }
+
+function blinker() {
+    if (document.getElementById("lowLabelGold")) {
+        var d = document.getElementById("lowLabelGold");
+        d.classList.add("fading-label"); // Add the fading-label class
+        d.style.color = (d.style.color == 'black' ? 'transparent' : 'black');
+    }
+
+    if (document.getElementById("highLabelGold")) {
+        var d = document.getElementById("highLabelGold");
+        d.classList.add("fading-label"); // Add the fading-label class
+        d.style.color = (d.style.color == 'black' ? 'transparent' : 'black');
+    }
+
+    if (document.getElementById("lowLabelSilver")) {
+        var d = document.getElementById("lowLabelSilver");
+        d.classList.add("fading-label"); // Add the fading-label class
+        d.style.color = (d.style.color == 'black' ? 'transparent' : 'black');
+    }
+
+    if (document.getElementById("highLabelSilver")) {
+        var d = document.getElementById("highLabelSilver");
+        d.classList.add("fading-label"); // Add the fading-label class
+        d.style.color = (d.style.color == 'black' ? 'transparent' : 'black');
+    }
+}
+
+
 
 async function readSpreadValues() {
     try {

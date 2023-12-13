@@ -4,13 +4,11 @@ import { app } from '../../../config/db.js';
 
 const firestore = getFirestore(app)
 
-document.addEventListener('DOMContentLoaded', function () {
-    setInterval(() => {
-        fetchData()
-    }, 1000)
+setInterval(() => {
+    fetchData()
+}, 1000)
 
-    showTable();
-});
+showTable();
 
 
 let askSpread, bidSpread, goldValue, silverBidSpread, silverAskSpread;

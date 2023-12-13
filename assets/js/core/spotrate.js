@@ -1,13 +1,11 @@
 import { saveDataToFirestore, readData, updateDataInFirestore, deleteDataFromFirestore, saveSpreadValues, readSpreadValues } from '../core/spotrateDB.js'
 
-document.addEventListener('DOMContentLoaded', function () {
-  setInterval(() => {
-    fetchData()
-  }, 1000)
+setInterval(() => {
+  fetchData()
+}, 1000)
 
-  showTable();
-  displaySpreadValues();
-});
+showTable();
+displaySpreadValues();
 
 
 // Gold API KEY
@@ -551,6 +549,8 @@ function updateRow(documentId) {
       resetFormFields();
       // Hide the modal after updating
       $('#addRowModal').modal('hide');
+
+      location.reload();
     })
     .catch((error) => {
       console.error('Error updating document in Firestore: ', error);
@@ -710,7 +710,7 @@ function displaySpreadValues() {
         document.getElementById("goldSpread").textContent = latestSpreadData.editedBidSpreadValue || 0;
         document.getElementById("silverAskSpread").textContent = latestSpreadData.editedAskSilverSpreadValue || 0;
         document.getElementById("silverSpread").textContent = latestSpreadData.editedBidSilverSpreadValue || 0;
-        
+
         // Assuming you want to track the latest document ID
         spreadDocId = spreadDataArray[spreadDataArray.length - 1].id;
       } else {
