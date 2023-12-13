@@ -65,7 +65,32 @@ async function fetchData() {
         var silverSell = (silverValueUSD + silverAskSpread + parseFloat(0.05)).toFixed(3);
 
 
-        document.getElementById("goldInputLow").innerHTML = goldBuy;
+        var currentGoldPrice = goldBuy;
+        function updatePrice() {
+            // Simulate price changes (you would replace this with actual API calls)
+            let newGoldPrice = goldBuy;
+
+            var element = document.getElementById("goldInputLow")
+
+            element.innerHTML = newGoldPrice
+
+            // Determine if the price increased or decreased
+            element.style.color = newGoldPrice > currentGoldPrice ? "red" : "green";
+           
+            
+            // Update the current price for the next iteration
+            
+            currentGoldPrice = newGoldPrice;
+            
+
+            // Schedule the next update (you can adjust the interval as needed)
+            // setTimeout(updatePrice, 1000); // Update every 1000 milliseconds (1 second)
+        }
+
+        updatePrice()
+
+
+        // document.getElementById("goldInputLow").innerHTML = goldBuy;
         document.getElementById("goldInputHigh").innerHTML = goldSell;
         document.getElementById("silverInputLow").innerHTML = silverBuy;
         document.getElementById("silverInputHigh").innerHTML = silverSell;
