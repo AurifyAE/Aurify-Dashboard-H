@@ -134,7 +134,7 @@ async function fetchData() {
             currentSilverBuy = newSilverBuy;
             currentSilverSell = newSilverSell;
 
-            setTimeout(updatePrice, 1000);
+            setTimeout(updatePrice, 600);
         }
 
 
