@@ -8,14 +8,14 @@ setInterval(() => {
     fetchData()
 }, 1000)
 
-setInterval(() => {
-    blinker()
-}, 700)
+// setInterval(() => {
+//     blinker()
+// }, 700)
 
 showTable();
 
 
-let askSpread, bidSpread, goldValue, silverBidSpread, silverAskSpread;
+let askSpread, bidSpread, goldValue, silverBidSpread, silverAskSpread, goldBuy, goldSell, silverBuy, silverSell;
 
 // Gold API KEY
 const API_KEY = 'goldapi-fbqpmirloto20zi-io'
@@ -59,41 +59,92 @@ async function fetchData() {
         var silverHighValue = parseFloat(resultSilver.high_price);
 
 
-        var goldBuy = (goldValueUSD + bidSpread).toFixed(2);
-        var goldSell = (goldValueUSD + askSpread + parseFloat(0.5)).toFixed(2);
-        var silverBuy = (silverValueUSD + silverBidSpread).toFixed(3);
-        var silverSell = (silverValueUSD + silverAskSpread + parseFloat(0.05)).toFixed(3);
+        goldBuy = (goldValueUSD + bidSpread).toFixed(2);
+        goldSell = (goldValueUSD + askSpread + parseFloat(0.5)).toFixed(2);
+        silverBuy = (silverValueUSD + silverBidSpread).toFixed(3);
+        silverSell = (silverValueUSD + silverAskSpread + parseFloat(0.05)).toFixed(3);
 
 
-        var currentGoldPrice = goldBuy;
+        var currentGoldBuy = goldBuy;
+        var currentGoldSell = goldSell;
+        var currentSilverBuy = silverBuy;
+        var currentSilverSell = silverSell;
+
         function updatePrice() {
-            // Simulate price changes (you would replace this with actual API calls)
-            let newGoldPrice = goldBuy;
+            var newGoldBuy = goldBuy;
+            var newGoldSell = goldSell;
+            var newSilverBuy = silverBuy;
+            var newSilverSell = silverSell;
 
-            var element = document.getElementById("goldInputLow")
+            var element1 = document.getElementById("goldInputLow");
+            var element2 = document.getElementById("goldInputHigh");
+            var element3 = document.getElementById("silverInputLow");
+            var element4 = document.getElementById("silverInputHigh");
 
-            element.innerHTML = newGoldPrice
+            element1.innerHTML = newGoldBuy;
+            element2.innerHTML = newGoldSell;
+            element3.innerHTML = newSilverBuy;
+            element4.innerHTML = newSilverSell;
 
-            // Determine if the price increased or decreased
-            element.style.color = newGoldPrice > currentGoldPrice ? "red" : "green";
-           
-            
-            // Update the current price for the next iteration
-            
-            currentGoldPrice = newGoldPrice;
-            
+            // Determine color for each element
+            var color1;
+            if (newGoldBuy > currentGoldBuy) {
+                color1 = "green";
+            } else if (newGoldBuy < currentGoldBuy) {
+                color1 = "red";
+            } else {
+                color1 = element1.style.color; // Maintain current color if no change
+            }
 
-            // Schedule the next update (you can adjust the interval as needed)
-            // setTimeout(updatePrice, 1000); // Update every 1000 milliseconds (1 second)
+            var color2;
+            if (newGoldSell > currentGoldSell) {
+                color2 = "green";
+            } else if (newGoldSell < currentGoldSell) {
+                color2 = "red";
+            } else {
+                color2 = element2.style.color; // Maintain current color if no change
+            }
+
+            var color3;
+            if (newSilverBuy > currentSilverBuy) {
+                color3 = "green";
+            } else if (newSilverBuy < currentSilverBuy) {
+                color3 = "red";
+            } else {
+                color3 = element3.style.color; // Maintain current color if no change
+            }
+
+            var color4;
+            if (newSilverSell > currentSilverSell) {
+                color4 = "green";
+            } else if (newSilverSell < currentSilverSell) {
+                color4 = "red";
+            } else {
+                color4 = element4.style.color; // Maintain current color if no change
+            }
+
+
+            element1.style.color = color1;
+            element2.style.color = color2;
+            element3.style.color = color3;
+            element4.style.color = color4;
+
+            currentGoldBuy = newGoldBuy;
+            currentGoldSell = newGoldSell;
+            currentSilverBuy = newSilverBuy;
+            currentSilverSell = newSilverSell;
+
+            setTimeout(updatePrice, 1000);
         }
 
-        updatePrice()
+
+        updatePrice();
 
 
         // document.getElementById("goldInputLow").innerHTML = goldBuy;
-        document.getElementById("goldInputHigh").innerHTML = goldSell;
-        document.getElementById("silverInputLow").innerHTML = silverBuy;
-        document.getElementById("silverInputHigh").innerHTML = silverSell;
+        // document.getElementById("goldInputHigh").innerHTML = goldSell;
+        // document.getElementById("silverInputLow").innerHTML = silverBuy;
+        // document.getElementById("silverInputHigh").innerHTML = silverSell;
 
         document.getElementById("lowLabelGold").innerHTML = goldLowValue;
         document.getElementById("highLabelGold").innerHTML = goldHighValue;
@@ -117,37 +168,36 @@ async function fetchData() {
         // HighLabelSilver
         element = document.getElementById("highLabelSilver");
         element.style.backgroundColor = silverSell > silverHighValue ? "red" : "green";
-
     } catch (error) {
         console.error('Error fetching gold and silver values:', error);
     }
 }
 
-function blinker() {
-    if (document.getElementById("lowLabelGold")) {
-        var d = document.getElementById("lowLabelGold");
-        d.classList.add("fading-label"); // Add the fading-label class
-        d.style.color = (d.style.color == 'black' ? 'transparent' : 'black');
-    }
+// function blinker() {
+//     if (document.getElementById("lowLabelGold")) {
+//         var d = document.getElementById("lowLabelGold");
+//         d.classList.add("fading-label"); // Add the fading-label class
+//         d.style.color = (d.style.color == 'black' ? 'transparent' : 'black');
+//     }
 
-    if (document.getElementById("highLabelGold")) {
-        var d = document.getElementById("highLabelGold");
-        d.classList.add("fading-label"); // Add the fading-label class
-        d.style.color = (d.style.color == 'black' ? 'transparent' : 'black');
-    }
+//     if (document.getElementById("highLabelGold")) {
+//         var d = document.getElementById("highLabelGold");
+//         d.classList.add("fading-label"); // Add the fading-label class
+//         d.style.color = (d.style.color == 'black' ? 'transparent' : 'black');
+//     }
 
-    if (document.getElementById("lowLabelSilver")) {
-        var d = document.getElementById("lowLabelSilver");
-        d.classList.add("fading-label"); // Add the fading-label class
-        d.style.color = (d.style.color == 'black' ? 'transparent' : 'black');
-    }
+//     if (document.getElementById("lowLabelSilver")) {
+//         var d = document.getElementById("lowLabelSilver");
+//         d.classList.add("fading-label"); // Add the fading-label class
+//         d.style.color = (d.style.color == 'black' ? 'transparent' : 'black');
+//     }
 
-    if (document.getElementById("highLabelSilver")) {
-        var d = document.getElementById("highLabelSilver");
-        d.classList.add("fading-label"); // Add the fading-label class
-        d.style.color = (d.style.color == 'black' ? 'transparent' : 'black');
-    }
-}
+//     if (document.getElementById("highLabelSilver")) {
+//         var d = document.getElementById("highLabelSilver");
+//         d.classList.add("fading-label"); // Add the fading-label class
+//         d.style.color = (d.style.color == 'black' ? 'transparent' : 'black');
+//     }
+// }
 
 
 
