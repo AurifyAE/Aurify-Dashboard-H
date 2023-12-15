@@ -146,19 +146,19 @@ async function fetchData() {
 
         // LowLabelGold
         element = document.getElementById("lowLabelGold");
-        element.style.backgroundColor = goldBuy > goldLowValue ? "red" : "green";
+        element.style.backgroundColor = "red";
 
         // HighLabelGold
         element = document.getElementById("highLabelGold");
-        element.style.backgroundColor = goldSell > goldHighValue ? "red" : "green";
+        element.style.backgroundColor = "green";
 
         // LowLabelSilver
         element = document.getElementById("lowLabelSilver");
-        element.style.backgroundColor = silverBuy > silverLowValue ? "red" : "green";
+        element.style.backgroundColor = "red";
 
         // HighLabelSilver
         element = document.getElementById("highLabelSilver");
-        element.style.backgroundColor = silverSell > silverHighValue ? "red" : "green";
+        element.style.backgroundColor = "green";
 
     } catch (error) {
         console.error('Error fetching gold and silver values:', error);

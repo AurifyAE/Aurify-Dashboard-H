@@ -10,7 +10,7 @@ setInterval(() => {
 
 // setInterval(() => {
 //     blinker()
-// }, 700)
+// }, 500)
 
 showTable();
 
@@ -155,47 +155,47 @@ async function fetchData() {
 
         // LowLabelGold
         element = document.getElementById("lowLabelGold");
-        element.style.backgroundColor = goldBuy > goldLowValue ? "red" : "green";
+        element.style.backgroundColor = "red";
 
         // HighLabelGold
         element = document.getElementById("highLabelGold");
-        element.style.backgroundColor = goldSell > goldHighValue ? "red" : "green";
+        element.style.backgroundColor = "green";
 
         // LowLabelSilver
         element = document.getElementById("lowLabelSilver");
-        element.style.backgroundColor = silverBuy > silverLowValue ? "red" : "green";
+        element.style.backgroundColor = "red";
 
         // HighLabelSilver
         element = document.getElementById("highLabelSilver");
-        element.style.backgroundColor = silverSell > silverHighValue ? "red" : "green";
+        element.style.backgroundColor = "green";
     } catch (error) {
         console.error('Error fetching gold and silver values:', error);
     }
 }
 
 // function blinker() {
-//     if (document.getElementById("lowLabelGold")) {
-//         var d = document.getElementById("lowLabelGold");
+//     if (document.getElementById("goldInputLow")) {
+//         var d = document.getElementById("goldInputLow");
 //         d.classList.add("fading-label"); // Add the fading-label class
-//         d.style.color = (d.style.color == 'black' ? 'transparent' : 'black');
+//         d.style.backgroundColor = (d.style.backgroundColor == 'white' ? 'transparent' : 'white');
 //     }
 
-//     if (document.getElementById("highLabelGold")) {
-//         var d = document.getElementById("highLabelGold");
+//     if (document.getElementById("goldInputHigh")) {
+//         var d = document.getElementById("goldInputHigh");
 //         d.classList.add("fading-label"); // Add the fading-label class
-//         d.style.color = (d.style.color == 'black' ? 'transparent' : 'black');
+//         d.style.backgroundColor = (d.style.backgroundColor == 'white' ? 'transparent' : 'white');
 //     }
 
-//     if (document.getElementById("lowLabelSilver")) {
-//         var d = document.getElementById("lowLabelSilver");
+//     if (document.getElementById("silverInputLow")) {
+//         var d = document.getElementById("silverInputLow");
 //         d.classList.add("fading-label"); // Add the fading-label class
-//         d.style.color = (d.style.color == 'black' ? 'transparent' : 'black');
+//         d.style.backgroundColor = (d.style.backgroundColor == 'white' ? '' : 'white');
 //     }
 
-//     if (document.getElementById("highLabelSilver")) {
-//         var d = document.getElementById("highLabelSilver");
+//     if (document.getElementById("silverInputHigh")) {
+//         var d = document.getElementById("silverInputHigh");
 //         d.classList.add("fading-label"); // Add the fading-label class
-//         d.style.color = (d.style.color == 'black' ? 'transparent' : 'black');
+//         d.style.backgroundColor = (d.style.backgroundColor == 'white' ? '' : 'white');
 //     }
 // }
 
