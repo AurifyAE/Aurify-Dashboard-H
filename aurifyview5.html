@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Dashboard </title>
+    <!-- Favicon icon -->
+    <!-- <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png"> -->
+    <!-- Link Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/0e1fa7c1a3.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .main-wrapper {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            width: 250px;
+            height: 120vh;
+            background-color: #fff;
+            color: #333;
+            position: fixed;
+            left: 0;
+            top: 0;
+        }
+
+        .content-body {
+            margin-left: 250px;
+            padding: 20px;
+            height: 100vh;
+            background-color: #eff0f1;
+            margin-top: 0px;
+        }
+
+        .card {
+            border-radius: 10px;
+            border: none;
+        }
+
+        .gradient-1 {
+            background-image: linear-gradient(230deg, #759bff, #843cf6);
+        }
+
+        .gradient-2 {
+            background-image: linear-gradient(230deg, #fc5286, #fbaaa2);
+        }
+
+        .gradient-3 {
+            background-image: linear-gradient(230deg, #ffc480, #ff763b);
+        }
+
+        .gradient-4 {
+            background-image: linear-gradient(230deg, #0e4cfd, #6a8eff);
+        }
+
+        .gradient-5,
+        .gradient-6 {
+            background-image: url('./assets/img/gold-trade.jpeg');
+            background-size: cover;
+        }
+
+        .gradient-7,
+        .gradient-8 {
+            background-image: url('./assets/img/silver-trade.jpeg');
+            background-size: cover;
+        }
+
+
+        .sidebar img {
+            width: 210px;
+            margin-left: 10px;
+        }
+
+        .sidebar .card {
+            padding: 15px;
+            margin: 15px;
+            color: #fff;
+        }
+
+        .sidebar .card h4 {
+            font-size: 20px;
+            text-align: center;
+        }
+
+        .sidebar .card h1 {
+            font-size: 34px;
+            text-align: center;
+        }
+
+        .sidebar .card .country {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            font-size: 22px;
+        }
+
+        .sidebar .card span {
+            font-size: 35px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .glassmorphism-box {
+            text-align: center;
+        }
+
+        img {
+            width: 50px;
+        }
+
+        .rate-card {
+            display: none;
+        }
+
+        table {
+            font-size: 25px;
+            text-align: center;
+            margin: 10px 0px;
+        }
+
+        table td,
+        th {
+            color: #76838f;
+        }
+
+        .gold-silver {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .gold-silver .label {
+            display: flex;
+            justify-content: center;
+        }
+
+        .gold-silver .label p {
+            font-size: 28px;
+            font-weight: 600;
+        }
+
+        .gold-silver .values {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+        }
+
+        .gold-silver .values p {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .gold-silver .values .buy,
+        .sell {
+            display: flex;
+            flex-basis: 50%;
+            flex-direction: column;
+        }
+
+        .gold-silver .values .buy .buy1,
+        .buy2 {
+            display: flex;
+            flex-direction: row;
+            margin: 0px 20px;
+        }
+
+        .gold-silver .values .buy .buy1 div:first-child,
+        .gold-silver .values .buy .buy2 div:first-child {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .gold-silver .values .buy .buy1 div:first-child i,
+        .gold-silver .values .buy .buy2 div:first-child i {
+            margin-top: 5px;
+        }
+
+        .gold-silver .values .sell .sell1,
+        .sell2 {
+            display: flex;
+            flex-direction: row;
+            margin: 0px 20px;
+        }
+
+        .gold-silver .values .input-box,
+        .gold-silver .values label {
+            font-size: 30px;
+            width: 150px;
+            height: 35px;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+            font-weight: 600;
+            /* Center the text horizontally */
+            line-height: 30px;
+            /* Center the text vertically */
+        }
+
+        .tradingview {
+            margin-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!--*******************
+        Preloader start
+    ********************-->
+    <!-- <div id="preloader">
+        <div class="loader">
+            <svg class="circular" viewBox="25 25 50 50">
+                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10" />
+            </svg>
+        </div>
+    </div> -->
+    <!--*******************
+        Preloader end
+    ********************-->
+
+
+    <!--**********************************
+        Main wrapper start
+    ***********************************-->
+    <div id="main-wrapper">
+
+
+
+
+
+        <!--**********************************
+            Sidebar start
+        ***********************************-->
+        <div class="sidebar">
+            <div class="mt-3">
+                <img src="./orbixbullion l2.png" alt="">
+            </div>
+            <div class="card gradient-1 mt-3 ">
+                <div class="dateTime">
+                    <div id="clock">
+                        <h1 id="time"></h1>
+                        <h4 id="date"></h4>
+                    </div>
+                </div>
+            </div>
+            <div class="card gradient-2 mt-2">
+                <div class="country">
+                    <strong>India</strong>
+                    <i class="fa-regular fa-clock mt-1"></i>
+                </div>
+                <span id="indiaTime"></span>
+            </div>
+            <div class="card gradient-3 mt-2">
+                <div class="country">
+                    <strong>New York</strong>
+                    <i class="fa-regular fa-clock mt-1"></i>
+                </div>
+                <span id="nyTime"></span>
+            </div>
+            <div class="card gradient-4 mt-2">
+                <div class="country">
+                    <strong>London</strong>
+                    <i class="fa-regular fa-clock mt-1"></i>
+                </div>
+                <span id="londonTime"></span>
+            </div>
+            <div class="glassmorphism-box">
+                <!-- Content for the glassmorphism box -->
+                <h3>powerd by</h3>
+                <p></p><img src="./assets/img/apple-icon.png" style="width: 30px;" alt=""> www.aurify.ae</p>
+            </div>
+        </div>
+        <!--**********************************
+            Sidebar end
+        ***********************************-->
+
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+
+            <div class="container-fluid mt-3">
+                <div class="row">
+                    <div class="col-lg-6 col-sm-6">
+                        <div class="card gradient-5">
+                            <div class="card-body">
+                                <div class="gold-silver" style="text-align: center;">
+                                    <div class="label">
+                                        <p>GOLD</p>
+                                        <h5>oz</h5>
+                                    </div>
+                                    <div class="values">
+                                        <div class="buy">
+                                            <div class="buy1">
+                                                <div>
+                                                    <p style="color: #000000;">&nbsp;BID ($)&nbsp;</p>
+                                                </div>
+                                                <div class="form-control input-box" id="goldInputLow"></div>
+                                            </div>
+                                            <div class="buy2">
+                                                <div>
+                                                    <p style="color: #000000;">&nbsp;ASK ($)&nbsp;</p>
+                                                </div>
+                                                <div class="form-control input-box" id="goldInputHigh"></div>
+                                            </div>
+                                        </div>
+                                        <div class="sell">
+                                            <div class="sell1">
+                                                <p>Low&nbsp;</p>
+                                                <label class="badge badge-success label-low mt-1" id="lowLabelGold"
+                                                    style="color: #000000;">0</label>
+                                            </div>
+                                            <div class="sell2">
+                                                <p>High&nbsp;</p>
+                                                <label class="badge badge-warning label-high mt-1" id="highLabelGold"
+                                                    style="color: #000000;">0</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-sm-6">
+                        <div class="card gradient-7">
+                            <div class="card-body">
+                                <div class="gold-silver" style="text-align: center;">
+                                    <div class="label">
+                                        <p>SILVER</p>
+                                        <h5>oz</h5>
+                                    </div>
+                                    <div class="values">
+                                        <div class="buy">
+                                            <div class="buy1">
+                                                <div>
+                                                    <p style="color: #000000;">&nbsp;BID ($)&nbsp;</p>
+                                                </div>
+                                                <div class="form-control input-box" id="silverInputLow"></div>
+                                            </div>
+                                            <div class="buy2">
+                                                <div>
+                                                    <p style="color: #000000;">&nbsp;ASK ($)&nbsp;</p>
+                                                </div>
+                                                <div class="form-control input-box" id="silverInputHigh"></div>
+                                            </div>
+                                        </div>
+                                        <div class="sell">
+                                            <div class="sell1">
+                                                <p>Low&nbsp;</p>
+                                                <label class="badge badge-success label-low mt-1" id="lowLabelSilver"
+                                                    style="color: #000000;">0</label>
+                                            </div>
+                                            <div class="sell2">
+                                                <p>High&nbsp;</p>
+                                                <label class="badge badge-warning label-high mt-1" id="highLabelSilver"
+                                                    style="color: #000000;">0</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Table -->
+                <div class="row mt-5">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="active-member">
+                                    <div class="table-responsive">
+                                        <table class="table table-xs mb-0">
+                                            <thead>
+                                                <tr>
+                                                    <th colspan="2">Commodity</th>
+                                                    <th>Unit</th>
+                                                    <th>Sell (<span id="currencySymbol">AED</span>)</th>
+                                                    <th>Buy (<span id="currencySymbol">AED</span>)</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="tableBodyTV">
+                                                <!-- Table body content will be dynamically updated here -->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- #/ container -->
+
+            <div class="rate-card">
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="gold-card">
+                                <img src="./assets/img/gold.png" alt="">
+                                <h3>Gold</h3>
+                            </div>
+                            <p id="goldRate"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="silver-card">
+                                <img src="./assets/img/silver.png" alt="">
+                                <h3>Silver</h3>
+                            </div>
+                            <p id="silverRate"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12 tradingview">
+                <!-- TradingView Widget BEGIN -->
+                <!-- <div class="tradingview-widget-container trading-marquee"> -->
+                <script type="text/javascript"
+                    src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+                        {
+                            "symbols": [
+                                {
+                                    "description": "",
+                                    "proName": "FX_IDC:USDINR"
+                                },
+                                {
+                                    "description": "",
+                                    "proName": "FX_IDC:USDAED"
+                                },
+                                {
+                                    "description": "",
+                                    "proName": "BITTREX:USDEUR"
+                                }
+                            ],
+                                "showSymbolLogo": true,
+                                    "colorTheme": "light",
+                                        "isTransparent": false,
+                                            "displayMode": "regular",
+                                                "locale": "in"
+                        }
+                    </script>
+            </div>
+            <!-- TradingView Widget END -->
+        </div>
+    </div>
+    <!--**********************************
+            Content body end
+        ***********************************-->
+    </div>
+    <!--**********************************
+        Main wrapper end
+    ***********************************-->
+
+    <!--**********************************
+        Scripts
+    ***********************************-->
+    <script>
+        window.addEventListener("load", () => {
+            clock();
+            function clock() {
+                const today = new Date();
+
+                // get time components
+                const hours = today.getHours();
+                const minutes = today.getMinutes();
+                const seconds = today.getSeconds();
+
+                //add '0' to hour, minute & second when they are less 10
+                const hour = hours < 10 ? "0" + hours : hours;
+                const minute = minutes < 10 ? "0" + minutes : minutes;
+                const second = seconds < 10 ? "0" + seconds : seconds;
+
+                //make clock a 12-hour time clock
+                const hourTime = hour > 12 ? hour - 12 : hour;
+
+                // if (hour === 0) {
+                //   hour = 12;
+                // }
+                //assigning 'am' or 'pm' to indicate time of the day
+                const ampm = hour < 12 ? " AM" : " PM";
+
+                // get date components
+                const month = today.getMonth();
+                const year = today.getFullYear();
+                const day = today.getDate();
+
+                //declaring a list of all months in  a year
+                const monthList = [
+                    "January",
+                    "February",
+                    "March",
+                    "April",
+                    "May",
+                    "June",
+                    "July",
+                    "August",
+                    "September",
+                    "October",
+                    "November",
+                    "December"
+                ];
+
+                //get current date and time
+                const date = monthList[month] + " " + day + ", " + year;
+                const time = hourTime + ":" + minute + ":" + second + ampm;
+
+                //print current date and time to the DOM
+                document.getElementById("date").innerHTML = date;
+                document.getElementById("time").innerHTML = time;
+                setTimeout(clock, 1000);
+            }
+        });
+
+        function updateClocks() {
+            const options = { timeZone: 'Asia/Kolkata', hour12: false, hour: 'numeric', minute: 'numeric' };
+            document.getElementById('indiaTime').textContent = new Date().toLocaleString('en-US', options);
+
+            options.timeZone = 'America/New_York';
+            document.getElementById('nyTime').textContent = new Date().toLocaleString('en-US', options);
+
+            options.timeZone = 'Europe/London';
+            document.getElementById('londonTime').textContent = new Date().toLocaleString('en-US', options);
+        }
+
+        // Update time and rates every second
+        updateClocks();
+        setInterval(updateClocks, 1000);
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-database.js"></script>
+    <script type="module" src="./config/db.js"></script>
+    <script type="module" src="./assets/js/core/spotrateDB.js"></script>
+    <script type="module" defer src="./assets/js/core/aurifyview2.js"></script>
+</body>
+
+</html>
