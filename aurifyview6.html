@@ -1,0 +1,1387 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./assets/img/apple-icon.png">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>
+    Aurify view
+  </title>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+  <!--     Fonts and icons     -->
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+  <!-- CSS Files -->
+  <link href="./assets/css/material-dashboard.css?v=2.1.0" rel="stylesheet" />
+<style>
+  .tim-typo {
+  padding-left: 25%;
+  margin-bottom: 40px;
+  position: relative;
+  width: 100%;
+}
+
+.tim-typo .tim-note {
+  bottom: 5px;
+  color: #c0c1c2;
+  display: block;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 15px;
+  left: 0;
+  margin-left: 20px;
+  position: absolute;
+  width: 260px;
+}
+
+/* offline-doc */
+
+.offline-doc .navbar.navbar-transparent {
+  padding-top: 25px;
+  border-bottom: none;
+}
+
+.offline-doc .navbar.navbar-transparent .navbar-minimize {
+  display: none;
+}
+
+.offline-doc .navbar.navbar-transparent .navbar-brand,
+.offline-doc .navbar.navbar-transparent .collapse .navbar-nav .nav-link {
+  color: #FFF;
+}
+
+.offline-doc .footer {
+  z-index: 3 !important;
+  position: absolute;
+  width: 100%;
+  background: transparent;
+  bottom: 0;
+  color: #fff;
+}
+
+.offline-doc .page-header .content-center {
+  z-index: 3;
+}
+
+.offline-doc .brand .title {
+  color: #fff;
+}
+
+.offline-doc .footer {
+  z-index: 3 !important;
+}
+
+.offline-doc .page-header .container {
+  z-index: 3;
+}
+
+.offline-doc .page-header:after {
+  background-color: rgba(0, 0, 0, 0.5);
+  content: "";
+  display: block;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 2;
+}
+
+
+@media all and (max-width: 991px) {
+
+  .offline-doc .navbar .navbar-collapse.collapse,
+  .offline-doc .navbar .navbar-collapse.collapse.in,
+  .offline-doc .navbar .navbar-collapse.collapsing {
+    display: block !important;
+  }
+
+  .nav-open .offline-doc .navbar-wrapper,
+  .nav-open .offline-doc .navbar-toggler {
+    -webkit-transform: translate3d(-260px, 0, 0);
+    -moz-transform: translate3d(-260px, 0, 0);
+    -o-transform: translate3d(-260px, 0, 0);
+    -ms-transform: translate3d(-260px, 0, 0);
+    transform: translate3d(-260px, 0, 0);
+  }
+
+  .offline-doc .navbar-wrapper,
+  .offline-doc .navbar-toggler {
+    -webkit-transition: all 0.33s cubic-bezier(0.685, 0.0473, 0.346, 1);
+    -moz-transition: all 0.33s cubic-bezier(0.685, 0.0473, 0.346, 1);
+    -o-transition: all 0.33s cubic-bezier(0.685, 0.0473, 0.346, 1);
+    -ms-transition: all 0.33s cubic-bezier(0.685, 0.0473, 0.346, 1);
+    transition: all 0.33s cubic-bezier(0.685, 0.0473, 0.346, 1);
+  }
+
+  .offline-doc .navbar .collapse .navbar-nav .nav-item .nav-link {
+    margin-left: 15px;
+    color: #8b92a9 !important;
+  }
+}
+
+
+
+
+#map {
+  z-index: 2;
+  height: calc(100vh - 70px);
+  margin-top: 70px;
+}
+
+.bd-docs.dark-edition .bd-example {
+  background-color: #1a2035;
+  border: 0;
+  border-radius: 10px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.bd-docs.dark-edition {
+  background-color: #fff;
+}
+.display-date {
+  color: whitesmoke;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.display-time {
+  color: #ffd868;
+  display: flex;
+  font-size: 2.7rem;
+  font-weight: bold;
+  border: 2px solid #ffd868;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: ease-in-out 0.1s;
+  transition-property: background, box-shadow, color;
+  -webkit-box-reflect: below 2px
+    linear-gradient(transparent, rgba(255, 255, 255, 0.05));
+}
+
+.display-time:hover {
+  background: #ffd868;
+  box-shadow: 0 0 30px#ffd868;
+  color: #272727;
+  cursor: pointer;
+}
+.clock{
+    width: 180px;
+    height: 180px;
+    background-color: #fff;
+    -webkit-box-shadow: 0 0 5px 0 #888;
+    box-shadow: 0 0 5px 0 #888;
+    border-radius: 100%;
+    position: relative;
+    perspective: 100px;
+    display: inline-block;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.clock .apm{
+    position: absolute;
+    top: 50%;
+    left: 60%;
+    transform: translateY(-50%);
+    font-size: 10px;
+    opacity: 0.3;
+    color: #000;
+}
+
+.needle{
+    width: 50%;
+    -webkit-transform-origin: left center;
+    -moz-transform-origin: left center;
+    -ms-transform-origin: left center;
+    -o-transform-origin: left center;
+    transform-origin: left center;
+    -webkit-transform:  translateY(-50%) rotateZ(-90deg);
+    -ms-transform: translateY(-50%) rotateZ(-90deg);
+    transform: translateY(-50%) rotateZ(-90deg);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+}
+
+.needle .hours, .needle .minutes, .needle .seconds{
+    display: block;
+    position: relative;
+}
+
+.needle .seconds{
+    -webkit-transform: rotateZ(0deg);
+    -ms-transform: rotateZ(0deg);
+    transform: rotateZ(0deg);
+    -webkit-transform-origin: left center;
+    -moz-transform-origin: left center;
+    -ms-transform-origin: left center;
+    -o-transform-origin: left center;
+    transform-origin: left center;
+
+}
+
+.needle .minutes{
+    -webkit-transform: rotateZ(0deg);
+    -ms-transform: rotateZ(0deg);
+    transform: rotateZ(0deg);
+    -webkit-transform-origin: left center;
+    -moz-transform-origin: left center;
+    -ms-transform-origin: left center;
+    -o-transform-origin: left center;
+    transform-origin: left center;
+}
+
+.needle .hours{
+    -webkit-transform: rotateZ(0deg);
+    -ms-transform: rotateZ(0deg);
+    transform: rotateZ(0deg);
+    -webkit-transform-origin: left center;
+    -moz-transform-origin: left center;
+    -ms-transform-origin: left center;
+    -o-transform-origin: left center;
+    transform-origin: left center;
+}
+
+.needle .hours:empty:before, .needle .minutes:empty:before, .needle .seconds:empty:before{
+    content: '';
+    display: block;
+    height: 2px;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}
+
+.needle .seconds:empty:after{
+    content: '';
+    width: 10px;
+    height: 10px;
+    display: block;
+    border-radius: 100%;
+    position: absolute;
+    top: 50%;
+    left: -5px;
+    transform: translateY(-50%);
+}
+
+.needle .hours:empty:before{
+    width: 50%;
+    background-color: Tomato;
+
+}
+
+.needle .hours:empty:after{
+    background-color: Tomato;
+}
+
+.needle .minutes:empty:before{
+    width: 70%;
+    background-color: Tomato;
+}
+
+.needle .minutes:empty:after{
+    background-color: Tomato;
+}
+
+.needle .seconds:empty:before{
+    width: 90%;
+    background-color: Tomato;
+}
+
+.needle .seconds:empty:after{
+    background-color: Tomato;
+
+}
+
+.time-number{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+    height: 50%;
+}
+
+.time-number li{
+    position: absolute;
+    left: 50%;
+    top: 0;
+    display: block;
+    -webkit-transform-origin: bottom center;
+    -moz-transform-origin: bottom center;
+    -ms-transform-origin: bottom center;
+    -o-transform-origin: bottom center;
+    transform-origin: bottom center;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+    bottom: 0;
+}
+
+.time-number li > span{
+    display: block;
+    margin-top: 5px;
+}
+
+/* 1 */
+.time-number li:nth-child(1){
+    -webkit-transform: translateX(-50%) rotateZ(30deg);
+    -ms-transform: translateX(-50%) rotateZ(30deg);
+    transform: translateX(-50%) rotateZ(30deg);
+}
+
+.time-number li:nth-child(1) > span{
+    -webkit-transform: rotateZ(-30deg);
+    -ms-transform: rotateZ(-30deg);
+    transform: rotateZ(-30deg);
+}
+
+/* 2 */
+.time-number li:nth-child(2){
+    -webkit-transform: translateX(-50%) rotateZ(60deg);
+    -ms-transform: translateX(-50%) rotateZ(60deg);
+    transform: translateX(-50%) rotateZ(60deg);
+}
+
+.time-number li:nth-child(2) > span{
+    -webkit-transform: rotateZ(-60deg);
+    -ms-transform: rotateZ(-60deg);
+    transform: rotateZ(-60deg);
+}
+
+/* 2 */
+.time-number li:nth-child(3){
+    -webkit-transform: translateX(-50%) rotateZ(90deg);
+    -ms-transform: translateX(-50%) rotateZ(90deg);
+    transform: translateX(-50%) rotateZ(90deg);
+}
+
+.time-number li:nth-child(3) > span{
+    -webkit-transform: rotateZ(-90deg);
+    -ms-transform: rotateZ(-90deg);
+    transform: rotateZ(-90deg);
+}
+
+/* 2 */
+.time-number li:nth-child(4){
+    -webkit-transform: translateX(-50%) rotateZ(120deg);
+    -ms-transform: translateX(-50%) rotateZ(120deg);
+    transform: translateX(-50%) rotateZ(120deg);
+}
+
+.time-number li:nth-child(4) > span{
+    -webkit-transform: rotateZ(-120deg);
+    -ms-transform: rotateZ(-120deg);
+    transform: rotateZ(-120deg);
+}
+
+/* 2 */
+.time-number li:nth-child(5){
+    -webkit-transform: translateX(-50%) rotateZ(150deg);
+    -ms-transform: translateX(-50%) rotateZ(150deg);
+    transform: translateX(-50%) rotateZ(150deg);
+}
+
+.time-number li:nth-child(5) > span{
+    -webkit-transform: rotateZ(-150deg);
+    -ms-transform: rotateZ(-150deg);
+    transform: rotateZ(-150deg);
+}
+
+/* 2 */
+.time-number li:nth-child(6){
+    -webkit-transform: translateX(-50%) rotateZ(180deg);
+    -ms-transform: translateX(-50%) rotateZ(180deg);
+    transform: translateX(-50%) rotateZ(180deg);
+}
+
+.time-number li:nth-child(6) > span{
+    -webkit-transform: rotateZ(-180deg);
+    -ms-transform: rotateZ(-180deg);
+    transform: rotateZ(-180deg);
+}
+
+/* 2 */
+.time-number li:nth-child(7){
+    -webkit-transform: translateX(-50%) rotateZ(210deg);
+    -ms-transform: translateX(-50%) rotateZ(210deg);
+    transform: translateX(-50%) rotateZ(210deg);
+}
+
+.time-number li:nth-child(7) > span{
+    -webkit-transform: rotateZ(-210deg);
+    -ms-transform: rotateZ(-210deg);
+    transform: rotateZ(-210deg);
+}
+
+/* 2 */
+.time-number li:nth-child(8){
+    -webkit-transform: translateX(-50%) rotateZ(240deg);
+    -ms-transform: translateX(-50%) rotateZ(240deg);
+    transform: translateX(-50%) rotateZ(240deg);
+}
+
+.time-number li:nth-child(8) > span{
+    -webkit-transform: rotateZ(-240deg);
+    -ms-transform: rotateZ(-240deg);
+    transform: rotateZ(-240deg);
+}
+
+/* 2 */
+.time-number li:nth-child(9){
+    -webkit-transform: translateX(-50%) rotateZ(270deg);
+    -ms-transform: translateX(-50%) rotateZ(270deg);
+    transform: translateX(-50%) rotateZ(270deg);
+}
+
+.time-number li:nth-child(9) > span{
+    -webkit-transform: rotateZ(-270deg);
+    -ms-transform: rotateZ(-270deg);
+    transform: rotateZ(-270deg);
+}
+
+/* 2 */
+.time-number li:nth-child(10){
+    -webkit-transform: translateX(-50%) rotateZ(300deg);
+    -ms-transform: translateX(-50%) rotateZ(300deg);
+    transform: translateX(-50%) rotateZ(300deg);
+}
+
+.time-number li:nth-child(10) > span{
+    -webkit-transform: rotateZ(-300deg);
+    -ms-transform: rotateZ(-300deg);
+    transform: rotateZ(-300deg);
+}
+
+/* 2 */
+.time-number li:nth-child(11){
+    -webkit-transform: translateX(-50%) rotateZ(330deg);
+    -ms-transform: translateX(-50%) rotateZ(330deg);
+    transform: translateX(-50%) rotateZ(330deg);
+}
+
+.time-number li:nth-child(11) > span{
+    -webkit-transform: rotateZ(-330deg);
+    -ms-transform: rotateZ(-330deg);
+    transform: rotateZ(-330deg);
+}
+
+.clock.ui-dodgerblue .seconds:before, .clock.ui-dodgerblue .seconds:after, .clock.ui-dodgerblue .minutes:before, .clock.ui-dodgerblue .hours:before,
+.clock.ui-tomato .seconds:before, .clock.ui-tomato .seconds:after, .clock.ui-tomato .minutes:before, .clock.ui-tomato .hours:before,
+.clock.ui-black .seconds:before, .clock.ui-black .seconds:after, .clock.ui-black .minutes:before, .clock.ui-black .hours:before,
+.clock.ui-awesome .seconds:before, .clock.ui-awesome .seconds:after, .clock.ui-awesome .minutes:before, .clock.ui-awesome .hours:before{
+    background-color: #FFF;
+}
+
+.clock.ui-banana-yellow .seconds:before, .clock.ui-banana-yellow .seconds:after, .clock.ui-banana-yellow .minutes:before, .clock.ui-banana-yellow .hours:before{
+    background-color: #000;
+}
+
+.clock.ui-dodgerblue .apm, .clock.ui-tomato .apm, .clock.ui-black .apm, .clock.ui-awesome .apm{
+    color: #FFF;
+    opacity: 1;
+}
+
+.clock.ui-banana-yellow .apm{
+    color: #000;
+    opacity: 1;
+}
+
+.clock.ui-dodgerblue{
+    background-color: dodgerblue;
+    color: #FFF;
+}
+
+.clock.ui-tomato{
+    background-color: tomato;
+    color: #FFF;
+}
+
+.clock.ui-black{
+    background-color: #141414;
+    color: #FFF;
+}
+
+.clock.ui-awesome{
+    background-color: #FF2052;
+    color: #FFF;
+}
+
+.clock.ui-banana-yellow{
+    background-color: #FFE135;
+    color: #000;
+}
+
+.clock.ui-large{
+    width: 400px;
+    height: 400px;
+    font-size: 40px;
+}
+
+.clock.ui-medium{
+    width: 180px;
+    height: 180px;
+}
+
+.clock.ui-small{
+    width: 100px;
+    height: 100px;
+}
+/* delete this demo css */
+.wrapper{
+    width: 80%;
+    margin: auto;
+    text-align: center;
+}
+
+.demo{
+    display: inline-block;
+    margin: 10px;
+}
+
+.demo h4{
+    margin-top: -10px;
+    color: antiquewhite;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+    -webkit-box-shadow: 0 0 5px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 0 5px 0 rgba(0,0,0,0.2);
+    padding: 10px;
+}
+
+
+</style>
+</head>
+
+<body class="dark-edition">
+  <!-- <div class="wrapper"> -->
+    <div class="sidebar" data-color="purple" data-background-color="black" data-image="./assets/img/sidebar-2.jpg">
+
+      <div class="logo" style="background-color: white; padding: 0;"><a href="http://www.aurify.com" class="simple-text logo-normal" >
+          <img src="./orbexbullion l1.png" height="100px">
+        </a></div>
+      <div class="sidebar-wrapper">
+       
+        <div class="container">
+          <div class="display-date">
+            <span id="day">day</span>,
+            <span id="daynum">00</span>
+            <span id="month">month</span>
+            <span id="year">0000</span>
+          </div>
+          <a class="navbar-brand" href="javascript:void(0)">Dashboard</a>
+          <a  class="navlink" href="javascript:void(0)"><div class="display-time"></div></a>
+        </div>
+
+        <div style="display: flex; margin-top: 20px;">
+          <div class="demo">
+            <div class="clock ui-small" data-timezone="Asia/Kolkata">
+                <div class="needle">
+                    <span class="minutes"></span>
+                    <span class="hours"></span>
+                    <span class="seconds"></span>
+                </div>
+  
+                <ul class="time-number">
+                    <li><span>1</span></li>
+                    <li><span>2</span></li>
+                    <li><span>3</span></li>
+                    <li><span>4</span></li>
+                    <li><span>5</span></li>
+                    <li><span>6</span></li>
+                    <li><span>7</span></li>
+                    <li><span>8</span></li>
+                    <li><span>9</span></li>
+                    <li><span>10</span></li>
+                    <li><span>11</span></li>
+                    <li><span>12</span></li>
+                </ul>
+  
+                <div class="apm"></div>
+            </div>
+            <h4>India</h4>
+        </div>
+        
+        <div class="demo">
+          <div class="clock ui-small" data-timezone="America/New_York">
+              <div class="needle">
+                  <span class="minutes"></span>
+                  <span class="hours"></span>
+                  <span class="seconds"></span>
+              </div>
+
+              <ul class="time-number">
+                  <li><span>1</span></li>
+                  <li><span>2</span></li>
+                  <li><span>3</span></li>
+                  <li><span>4</span></li>
+                  <li><span>5</span></li>
+                  <li><span>6</span></li>
+                  <li><span>7</span></li>
+                  <li><span>8</span></li>
+                  <li><span>9</span></li>
+                  <li><span>10</span></li>
+                  <li><span>11</span></li>
+                  <li><span>12</span></li>
+              </ul>
+
+              <div class="apm"></div>
+          </div>
+          <h4>New York</h4>
+      </div>
+
+    </div>
+    <div style="display: flex; margin-top: -25px;">
+ 
+      <div class="demo">
+        <div class="clock ui-small" data-timezone="Europe/London">
+            <div class="needle">
+                <span class="minutes"></span>
+                <span class="hours"></span>
+                <span class="seconds"></span>
+            </div>
+  
+            <ul class="time-number">
+                <li><span>1</span></li>
+                <li><span>2</span></li>
+                <li><span>3</span></li>
+                <li><span>4</span></li>
+                <li><span>5</span></li>
+                <li><span>6</span></li>
+                <li><span>7</span></li>
+                <li><span>8</span></li>
+                <li><span>9</span></li>
+                <li><span>10</span></li>
+                <li><span>11</span></li>
+                <li><span>12</span></li>
+            </ul>
+  
+            <div class="apm"></div>
+        </div>
+        <h4>London</h4>
+    </div>
+    <div class="demo">
+      <div class="clock ui-small" data-timezone="Asia/Singapore">
+          <div class="needle">
+              <span class="minutes"></span>
+              <span class="hours"></span>
+              <span class="seconds"></span>
+          </div>
+
+          <ul class="time-number">
+              <li><span>1</span></li>
+              <li><span>2</span></li>
+              <li><span>3</span></li>
+              <li><span>4</span></li>
+              <li><span>5</span></li>
+              <li><span>6</span></li>
+              <li><span>7</span></li>
+              <li><span>8</span></li>
+              <li><span>9</span></li>
+              <li><span>10</span></li>
+              <li><span>11</span></li>
+              <li><span>12</span></li>
+          </ul>
+
+          <div class="apm"></div>
+      </div>
+      <h4>Singapore</h4>
+  </div>
+
+
+    </div>
+        
+
+    <div style="margin-left: 40px; margin-top: -20px; color: antiquewhite;">
+      <p style="font-size: small;">Powered By</p>
+      <div style="display: flex; justify-content: center; align-content: center; margin-top: -10px;">
+        <img src="./assets/img/apple-icon.png" width="24px" height="24px" style="margin-right: 10px;">
+        <p style="font-family: Verdana, Geneva, Tahoma, sans-serif;">www.aurify.ae</p>
+      </div>
+    
+    </div>
+  </div>
+      </div>
+
+    <!-- </div> -->
+    <div class="main-panel">
+      <div class="content" style="margin-top: -30px;">
+        <div class="container-fluid">
+          <div class="row">
+            <!-- <div class="col-xl-4 col-lg-12">
+              <div class="card card-chart">
+                <div class="card-header card-header-success">
+                  <div class="ct-chart" id="dailySalesChart"></div>
+                </div>
+                <div class="card-body">
+                  <h4 class="card-title">Daily Sales</h4>
+                  <p class="card-category">
+                    <span class="text-success"><i class="fa fa-long-arrow-up"></i> 55% </span> increase in today sales.</p>
+                </div>
+                <div class="card-footer">
+                  <div class="stats">
+                    <i class="material-icons">access_time</i> updated 4 minutes ago
+                  </div>
+                </div>
+              </div>
+            </div> -->
+            <div class="col-xl-6 col-lg-12">
+              <div class="card card-chart">
+                <div style="display: flex;justify-content: center;margin-top: -5%;">
+                      <!-- TradingView Widget BEGIN -->
+                    <div class="tradingview-widget-container">
+                      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+                      {
+                      "symbol": "TVC:GOLD",
+                      "width": 460,
+                      "height": 220,
+                      "locale": "in",
+                      "dateRange": "12M",
+                      "colorTheme": "light",
+                      "isTransparent": false,
+                      "autosize": false,
+                      "largeChartUrl": ""
+                    }
+                      </script>
+                    </div>
+                    <!-- TradingView Widget END -->
+                </div>
+                <div class="card-body" style="display: flex;">
+                  <div style="margin-left: 20%; ">
+                    <h4 class="card-title" style="font-family: Verdana, Geneva, Tahoma, sans-serif;font-weight: bold; color: floralwhite;">ASK ($) </h4>
+                    <div class="form-control input-box" id="goldInputHigh"></div>
+                    
+                  </div>
+                  <div style="margin-left: 30%;">
+                    <h4 class="card-title" style="font-family: Verdana, Geneva, Tahoma, sans-serif;font-weight: bold; color: floralwhite;">BID ($) </h4>
+                    <div class="form-control input-box" id="goldInputLow" style="background-color: transparent;"></div>
+                    
+                  </div>
+                  
+                </div>
+                <div class="card-footer" style="display: flex;justify-content: center;">
+                  <div class="stats" >
+                     <p style="background-color: #d83632; color: floralwhite; font-weight: 800;" >&nbsp;&nbsp;&nbsp;Low&nbsp;&nbsp;&nbsp;</p>
+                     <label class="badge badge-success label-low mt-1" id="lowLabelGold" style="color: #000000;">0</label>
+                     <span  style="margin-left:50px;"></span>
+                     <p style="background-color: #4aa456; color: floralwhite; font-weight: 800;" >&nbsp;&nbsp;&nbsp;High&nbsp;&nbsp;&nbsp;</p>
+                     <label class="badge badge-warning label-high mt-1" id="highLabelGold"  style="color: #000000;">0</label>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-6 col-lg-12">
+              <div class="card card-chart">
+                <div style="display: flex;justify-content: center;margin-top: -5%;">
+                <!-- TradingView Widget BEGIN -->
+                <div class="tradingview-widget-container" >
+                  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+                  {
+                  "symbol": "TVC:SILVER",
+                  "width": 460,
+                  "height": 220,
+                  "locale": "in",
+                  "dateRange": "12M",
+                  "colorTheme": "light",
+                  "isTransparent": false,
+                  "autosize": false,
+                  "largeChartUrl": ""
+                }
+                  </script>
+                </div>
+                <!-- TradingView Widget END -->
+            </div>
+                <div class="card-body" style="display: flex;">
+                  <div style="margin-left: 20%; ">
+                    <h4 class="card-title" style="font-family: Verdana, Geneva, Tahoma, sans-serif;font-weight: bold; color: floralwhite;">ASK ($) </h4>
+                    <div class="form-control input-box" id="silverInputHigh"></div>
+                  
+                    
+                  </div>
+                  <div style="margin-left: 30%;">
+                    <h4 class="card-title" style="font-family: Verdana, Geneva, Tahoma, sans-serif;font-weight: bold; color: floralwhite;">BID ($) </h4>
+                    <div class="form-control input-box" id="silverInputLow"></div>
+                    
+                  </div>
+                  
+                </div>
+                <div class="card-footer" style="display: flex;justify-content: center;">
+                  <div class="stats" >
+                     <p style="background-color: #d83632; color: floralwhite; font-weight: 800;" >&nbsp;&nbsp;&nbsp;Low&nbsp;&nbsp;&nbsp;</p>
+                     <label class="badge badge-success label-low mt-1" id="lowLabelSilver" style="color: #000000;">0</label>
+                     <span  style="margin-left:50px;"></span>
+                     <p style="background-color: #4aa456; color: floralwhite; font-weight: 800;" >&nbsp;&nbsp;&nbsp;High&nbsp;&nbsp;&nbsp;</p>
+                     <label class="badge badge-warning label-high mt-1" id="highLabelSilver" style="color: #000000;">0</label>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="row">
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+              <div class="card card-stats">
+                <div class="card-header card-header-warning card-header-icon">
+                  <div class="card-icon">
+                    <i class="material-icons">content_copy</i>
+                  </div>
+                  <p class="card-category">Used Space</p>
+                  <h3 class="card-title">49/50
+                    <small>GB</small>
+                  </h3>
+                </div>
+                <div class="card-footer">
+                  <div class="stats">
+                    <i class="material-icons text-warning">warning</i>
+                    <a href="#pablo" class="warning-link">Get More Space..</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+              <div class="card card-stats">
+                <div class="card-header card-header-success card-header-icon">
+                  <div class="card-icon">
+                    <i class="material-icons">store</i>
+                  </div>
+                  <p class="card-category">Revenue</p>
+                  <h3 class="card-title">$34,245</h3>
+                </div>
+                <div class="card-footer">
+                  <div class="stats">
+                    <i class="material-icons">date_range</i> Last 24 Hours
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+              <div class="card card-stats">
+                <div class="card-header card-header-danger card-header-icon">
+                  <div class="card-icon">
+                    <i class="material-icons">info_outline</i>
+                  </div>
+                  <p class="card-category">Fixed Issues</p>
+                  <h3 class="card-title">75</h3>
+                </div>
+                <div class="card-footer">
+                  <div class="stats">
+                    <i class="material-icons">local_offer</i> Tracked from Github
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+              <div class="card card-stats">
+                <div class="card-header card-header-info card-header-icon">
+                  <div class="card-icon">
+                    <i class="fa fa-twitter"></i>
+                  </div>
+                  <p class="card-category">Followers</p>
+                  <h3 class="card-title">+245</h3>
+                </div>
+                <div class="card-footer">
+                  <div class="stats">
+                    <i class="material-icons">update</i> Just Updated
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> -->
+          <div class="row">
+            <div class="col-lg-12 col-md-12" style="color: floralwhite;font-family: Verdana, Geneva, Tahoma, sans-serif; font-weight: bold;">
+              <div class="card">
+                <div class="card-body table-responsive">
+                  <table class="table table-hover" style="text-align: center;">
+                    <thead class="text-warning">
+                      <th colspan="2">Commodity</th>
+                      <th>Unit</th>
+                      <th>Sell (<span id="currencySymbol">AED</span>)</th>
+                      <th>Buy (<span id="currencySymbol">AED</span>)</th>                 
+                    </thead>
+                    <tbody id="tableBodyTV">
+                       <!-- Table body content will be dynamically updated here -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        const x = new Date().getFullYear();
+        let date = document.getElementById('date');
+        date.innerHTML = '&copy; ' + x + date.innerHTML;
+      </script>
+    </div>
+  </div>
+  <div class="fixed-plugin">
+    <div class="dropdown show-dropdown">
+      <a href="#" data-toggle="dropdown">
+        <i class="fa fa-cog fa-2x"> </i>
+      </a>
+      <ul class="dropdown-menu">
+
+        <li class="header-title">Images</li>
+        <li>
+          <a class="img-holder switch-trigger" href="javascript:void(0)">
+            <img src="./assets/img/sidebar-1.jpg" alt="">
+          </a>
+        </li>
+        <li class="active">
+          <a class="img-holder switch-trigger" href="javascript:void(0)">
+            <img src="./assets/img/sidebar-2.jpg" alt="">
+          </a>
+        </li>
+        <li>
+          <a class="img-holder switch-trigger" href="javascript:void(0)">
+            <img src="./assets/img/sidebar-3.jpg" alt="">
+          </a>
+        </li>
+        <li>
+          <a class="img-holder switch-trigger" href="javascript:void(0)">
+            <img src="./assets/img/sidebar-4.jpg" alt="">
+          </a>
+        </li>
+        <li class="button-container text-center">
+          <button id="twitter" class="btn btn-round btn-twitter"><i class="fa fa-twitter"></i> &middot; 45</button>
+          <button id="facebook" class="btn btn-round btn-facebook"><i class="fa fa-facebook-f"></i> &middot; 50</button>
+          <br>
+          <br>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!--   Core JS Files   -->
+  <script src="./assets/js/core/jquery.min.js"></script>
+  <script src="./assets/js/worldclock.js"></script>
+  <script src="./assets/js/core/popper.min.js"></script>
+  <script src="./assets/js/core/bootstrap-material-design.min.js"></script>
+  <script src="https://unpkg.com/default-passive-events"></script>
+  <script src="./assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+  <script type="module" src="./config/db.js"></script>
+  <script type="module" src="./assets/js/core/spotrateDB.js"></script>
+
+  <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
+  <script src="./assets/js/material-dashboard.js?v=2.1.0"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-database.js"></script>
+
+  <script> 
+  demo = {
+  initDocumentationCharts: function() {
+    if ($('#dailySalesChart').length != 0 && $('#websiteViewsChart').length != 0) {
+      /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
+
+      dataDailySalesChart = {
+        labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
+        series: [
+          [12, 17, 7, 17, 23, 18, 38]
+        ]
+      };
+
+      optionsDailySalesChart = {
+        lineSmooth: Chartist.Interpolation.cardinal({
+          tension: 0
+        }),
+        low: 0,
+        high: 50, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
+        chartPadding: {
+          top: 0,
+          right: 0,
+          bottom: 0,
+          left: 0
+        },
+      }
+
+      var dailySalesChart = new Chartist.Line('#dailySalesChart', dataDailySalesChart, optionsDailySalesChart);
+
+      var animationHeaderChart = new Chartist.Line('#websiteViewsChart', dataDailySalesChart, optionsDailySalesChart);
+    }
+  },
+
+  initGoogleMaps: function() {
+    var myLatlng = new google.maps.LatLng(40.748817, -73.985428);
+    var mapOptions = {
+      zoom: 13,
+      center: myLatlng,
+      scrollwheel: false, //we disable de scroll over the map, it is a really annoing when you scroll through page
+      styles: [{
+          "elementType": "geometry",
+          "stylers": [{
+            "color": "#f5f5f5"
+          }]
+        },
+        {
+          "elementType": "labels.icon",
+          "stylers": [{
+            "visibility": "off"
+          }]
+        },
+        {
+          "elementType": "labels.text.fill",
+          "stylers": [{
+            "color": "#616161"
+          }]
+        },
+        {
+          "elementType": "labels.text.stroke",
+          "stylers": [{
+            "color": "#f5f5f5"
+          }]
+        },
+        {
+          "featureType": "administrative.land_parcel",
+          "elementType": "labels.text.fill",
+          "stylers": [{
+            "color": "#bdbdbd"
+          }]
+        },
+        {
+          "featureType": "poi",
+          "elementType": "geometry",
+          "stylers": [{
+            "color": "#eeeeee"
+          }]
+        },
+        {
+          "featureType": "poi",
+          "elementType": "labels.text.fill",
+          "stylers": [{
+            "color": "#757575"
+          }]
+        },
+        {
+          "featureType": "poi.park",
+          "elementType": "geometry",
+          "stylers": [{
+            "color": "#e5e5e5"
+          }]
+        },
+        {
+          "featureType": "poi.park",
+          "elementType": "labels.text.fill",
+          "stylers": [{
+            "color": "#9e9e9e"
+          }]
+        },
+        {
+          "featureType": "road",
+          "elementType": "geometry",
+          "stylers": [{
+            "color": "#ffffff"
+          }]
+        },
+        {
+          "featureType": "road.arterial",
+          "elementType": "labels.text.fill",
+          "stylers": [{
+            "color": "#757575"
+          }]
+        },
+        {
+          "featureType": "road.highway",
+          "elementType": "geometry",
+          "stylers": [{
+            "color": "#dadada"
+          }]
+        },
+        {
+          "featureType": "road.highway",
+          "elementType": "labels.text.fill",
+          "stylers": [{
+            "color": "#616161"
+          }]
+        },
+        {
+          "featureType": "road.local",
+          "elementType": "labels.text.fill",
+          "stylers": [{
+            "color": "#9e9e9e"
+          }]
+        },
+        {
+          "featureType": "transit.line",
+          "elementType": "geometry",
+          "stylers": [{
+            "color": "#e5e5e5"
+          }]
+        },
+        {
+          "featureType": "transit.station",
+          "elementType": "geometry",
+          "stylers": [{
+            "color": "#eeeeee"
+          }]
+        },
+        {
+          "featureType": "water",
+          "elementType": "geometry",
+          "stylers": [{
+            "color": "#c9c9c9"
+          }]
+        },
+        {
+          "featureType": "water",
+          "elementType": "labels.text.fill",
+          "stylers": [{
+            "color": "#9e9e9e"
+          }]
+        }
+      ]
+
+    };
+    var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+    var marker = new google.maps.Marker({
+      position: myLatlng,
+      title: "Hello World!"
+    });
+
+    // To add the marker to the map, call setMap();
+    marker.setMap(map);
+  }
+
+}
+  </script>
+  <script>
+    $(document).ready(function() {
+      $().ready(function() {
+        $sidebar = $('.sidebar');
+
+        $sidebar_img_container = $sidebar.find('.sidebar-background');
+
+        $full_page = $('.full-page');
+
+        $sidebar_responsive = $('body > .navbar-collapse');
+
+        window_width = $(window).width();
+
+        $('.fixed-plugin a').click(function(event) {
+          // Alex if we click on switch, stop propagation of the event, so the dropdown will not be hide, otherwise we set the  section active
+          if ($(this).hasClass('switch-trigger')) {
+            if (event.stopPropagation) {
+              event.stopPropagation();
+            } else if (window.event) {
+              window.event.cancelBubble = true;
+            }
+          }
+        });
+
+        $('.fixed-plugin .active-color span').click(function() {
+          $full_page_background = $('.full-page-background');
+
+          $(this).siblings().removeClass('active');
+          $(this).addClass('active');
+
+          var new_color = $(this).data('color');
+
+          if ($sidebar.length != 0) {
+            $sidebar.attr('data-color', new_color);
+          }
+
+          if ($full_page.length != 0) {
+            $full_page.attr('filter-color', new_color);
+          }
+
+          if ($sidebar_responsive.length != 0) {
+            $sidebar_responsive.attr('data-color', new_color);
+          }
+        });
+
+        $('.fixed-plugin .background-color .badge').click(function() {
+          $(this).siblings().removeClass('active');
+          $(this).addClass('active');
+
+          var new_color = $(this).data('background-color');
+
+          if ($sidebar.length != 0) {
+            $sidebar.attr('data-background-color', new_color);
+          }
+        });
+
+        $('.fixed-plugin .img-holder').click(function() {
+          $full_page_background = $('.full-page-background');
+
+          $(this).parent('li').siblings().removeClass('active');
+          $(this).parent('li').addClass('active');
+
+
+          var new_image = $(this).find("img").attr('src');
+
+          if ($sidebar_img_container.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
+            $sidebar_img_container.fadeOut('fast', function() {
+              $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
+              $sidebar_img_container.fadeIn('fast');
+            });
+          }
+
+          if ($full_page_background.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
+            var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
+
+            $full_page_background.fadeOut('fast', function() {
+              $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
+              $full_page_background.fadeIn('fast');
+            });
+          }
+
+          if ($('.switch-sidebar-image input:checked').length == 0) {
+            var new_image = $('.fixed-plugin li.active .img-holder').find("img").attr('src');
+            var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
+
+            $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
+            $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
+          }
+
+          if ($sidebar_responsive.length != 0) {
+            $sidebar_responsive.css('background-image', 'url("' + new_image + '")');
+          }
+        });
+
+        $('.switch-sidebar-image input').change(function() {
+          $full_page_background = $('.full-page-background');
+
+          $input = $(this);
+
+          if ($input.is(':checked')) {
+            if ($sidebar_img_container.length != 0) {
+              $sidebar_img_container.fadeIn('fast');
+              $sidebar.attr('data-image', '#');
+            }
+
+            if ($full_page_background.length != 0) {
+              $full_page_background.fadeIn('fast');
+              $full_page.attr('data-image', '#');
+            }
+
+            background_image = true;
+          } else {
+            if ($sidebar_img_container.length != 0) {
+              $sidebar.removeAttr('data-image');
+              $sidebar_img_container.fadeOut('fast');
+            }
+
+            if ($full_page_background.length != 0) {
+              $full_page.removeAttr('data-image', '#');
+              $full_page_background.fadeOut('fast');
+            }
+
+            background_image = false;
+          }
+        });
+
+        $('.switch-sidebar-mini input').change(function() {
+          $body = $('body');
+
+          $input = $(this);
+
+          if (md.misc.sidebar_mini_active == true) {
+            $('body').removeClass('sidebar-mini');
+            md.misc.sidebar_mini_active = false;
+
+            $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar();
+
+          } else {
+
+            $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar('destroy');
+
+            setTimeout(function() {
+              $('body').addClass('sidebar-mini');
+
+              md.misc.sidebar_mini_active = true;
+            }, 300);
+          }
+
+          // we simulate the window Resize so the charts will get updated in realtime.
+          var simulateWindowResize = setInterval(function() {
+            window.dispatchEvent(new Event('resize'));
+          }, 180);
+
+          // we stop the simulation of Window Resize after the animations are completed
+          setTimeout(function() {
+            clearInterval(simulateWindowResize);
+          }, 1000);
+
+        });
+      });
+    });
+  </script>
+  <script>
+    $(document).ready(function() {
+      // Javascript method's body can be found in assets/js/demos.js
+      md.initDashboardPageCharts();
+
+    });
+
+    const displayTime = document.querySelector(".display-time");
+// Time
+function showTime() {
+  let time = new Date();
+  displayTime.innerText = time.toLocaleTimeString("en-US", { hour12: false });
+  setTimeout(showTime, 1000);
+}
+
+showTime();
+
+// Date
+function updateDate() {
+  let today = new Date();
+
+  // return number
+  let dayName = today.getDay(),
+    dayNum = today.getDate(),
+    month = today.getMonth(),
+    year = today.getFullYear();
+
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  const dayWeek = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  // value -> ID of the html element
+  const IDCollection = ["day", "daynum", "month", "year"];
+  // return value array with number as a index
+  const val = [dayWeek[dayName], dayNum, months[month], year];
+  for (let i = 0; i < IDCollection.length; i++) {
+    document.getElementById(IDCollection[i]).firstChild.nodeValue = val[i];
+  }
+}
+
+updateDate();
+
+  </script>
+
+</body>
+
+</html>
