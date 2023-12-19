@@ -25,16 +25,17 @@
       -ms-animation: 10s linear 0s normal none infinite animate;
       -o-animation: 10s linear 0s normal none infinite animate;
       animation: 10s linear 0s normal none infinite animate;
+      color: #0A1172;
+      height: 100vh;
     }
 
-    .container1 {
-      width: 100%;
-      margin: 20px auto;
+    .row {
+      margin: 50px auto;
       padding: 0;
     }
 
     i {
-      font-size: 1rem;
+      font-size: 1.5rem;
     }
 
     h4 {
@@ -43,65 +44,26 @@
     }
 
     .clock {
-      font-size: 24px;
-      font-weight: bold;
+      margin-top: 20px;
     }
 
-    .dateTime {
-      margin-top: 38px;
-      font-size: 30px;
+    #date-time {
+      font-size: 40px;
+      font-weight: bold;
     }
 
     .card {
-      margin-top: 30px;
       border-radius: 15px;
+      margin-left: 10px;
     }
 
-    .card-body {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .card-body p {
-      font-size: 28px;
-      color: #c88029;
-      font-weight: bold;
-    }
-
-    .tradingview-widget-container{
+    .tradingview-widget-container {
       width: 100%;
       margin: 15px;
     }
 
-    .rate-card{
+    .rate-card {
       display: none;
-    }
-
-    .silver-card,
-    .gold-card {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-    }
-
-    .silver-card img,
-    .gold-card img {
-      width: 60px;
-      margin-right: 50px;
-    }
-
-    .silver-card h3 {
-      font-size: 32px;
-      margin-top: 10px;
-      font-weight: bold;
-    }
-
-    .gold-card h3 {
-      font-size: 30px;
-      margin-top: 10px;
-      font-weight: bold;
     }
 
     .card-table {
@@ -114,7 +76,8 @@
       display: inline-table;
       justify-content: center;
       align-items: center;
-      margin-left: 0;
+      margin-left: -50px;
+      font-size: 40px;
     }
 
     .card-table tbody tr {
@@ -138,10 +101,10 @@
     .card-table th,
     .card-table td {
       padding: 12px;
-      text-align: left;
+      text-align: center;
     }
 
-    .card-table th {
+    .card-table td {
       font-weight: bold;
     }
 
@@ -155,94 +118,82 @@
       display: flex;
       flex-direction: row;
       margin-top: 50px;
+      padding: 10px;
     }
 
-    .main-box {
+    .row {
       display: flex;
-      flex-direction: row;
+      justify-content: space-between;
+      padding: 10px;
     }
 
-    .box1 {
-      width: 450px;
-      /* Width of each box */
-      height: 120px;
-      /* Height of each box */
-      background-image: url('./assets/img/gold-trade.jpeg');
-      height: 80%;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
-      /* Background color */
-      margin: 20px;
-      /* Margin around each box */
-      display: inline-block;
-      /* Display boxes in a row */
-      border-radius: 10px;
-      /* Rounded corners */
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      /* Adding a shadow effect */
-      text-align: center;
-      /* Center text inside box */
-      padding: 20px;
-      /* Padding inside the box */
-      color: #ffffff;
-
-    }
-
-
-    .box2 {
-      width: 450px;
-      /* Width of each box */
-      height: 120px;
-      /* Height of each box */
-      background-image: url('./assets/img/silver-trade.jpeg');
-      height: 80%;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
-      /* Background color */
-      margin: 20px;
-      /* Margin around each box */
-      display: inline-block;
-      /* Display boxes in a row */
-      border-radius: 10px;
-      /* Rounded corners */
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      /* Adding a shadow effect */
-      text-align: center;
-      /* Center text inside box */
-      padding: 20px;
-      /* Padding inside the box */
-      color: #ffffff;
-
-    }
-
-    .box1 .d-flex {
-      margin-left: -22px;
-    }
-
-    .silver-rate {
-      margin-top: 38px;
-    }
-
-    .gold-labels label,
-    .silver-labels label {
-      width: 100%;
-      margin-left: 0px;
-      font-size: 22px;
-      font-weight: normal;
-    }
-
-    .gold-labels .input-box,
-    .silver-labels .input-box {
-      width: 100%;
-      margin-left: 0px;
-      font-size: 22px;
-      font-weight: 700;
-    }
 
     .fading-label {
-        transition: color 1s ease; /* Adjust the duration and timing function as needed */
+      transition: color 1s ease;
+      /* Adjust the duration and timing function as needed */
+    }
+
+    .gold-silver {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 20px;
+      background-image: url('./assets/img/gold-trade.jpeg');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .gold-silver .label {
+      display: flex;
+      align-items: center;
+      font-size: 50px;
+      font-weight: 600;
+    }
+
+    .gold-silver .label h5 {
+      font-size: 30px;
+    }
+
+    .gold-silver .buy,
+    .gold-silver .sell {
+      display: flex;
+      flex-direction: column;
+      font-size: 45px;
+    }
+
+
+    .gold-silver .buy .buy-label,
+    .gold-silver .sell .sell-label {
+      display: flex;
+      font-weight: 600;
+    }
+
+    .gold-silver .buy .buy-label div:first-child,
+    .gold-silver .sell .sell-label div:first-child {
+      margin-top: 17px;
+    }
+
+    .gold-silver .buy .input-box,
+    .gold-silver .sell .input-box {
+      width: 175px;
+      font-size: 40px;
+      text-align: center;
+    }
+
+    .date-time {
+      margin-top: -100px;
+      margin-left: 20px;
+    }
+
+    .date-time h3 {
+      font-size: 40px;
+      font-weight: 600;
+    }
+
+    .date-time h1 {
+      font-size: 60px;
+      font-weight: 600;
     }
 
     @-webkit-keyframes animate {
@@ -298,199 +249,178 @@
 </head>
 
 <body>
-  <div class="container1">
-    <div class="row">
-      <div class="col-md-2">
-        <div class="">
-          <div class="card-body">
-            <img src="./orbixbullion l2.png" alt="" style="width: 200px;">
-          </div>
-        </div>
+  <div class="row">
+    <div class="col-lg-3">
+      <img src="./orbixbullion l2.png" alt="" style="width: 300px;">
+    </div>
+
+    <!-- GOLD -->
+    <div class="card col-lg-4 gold-silver">
+      <div class="label">
+        <p>Gold</p>
+        <h5>oz</h5>
       </div>
-
-      <div class="col-md-8 main-box">
-        <div class="box1">
-          <div class="row mb-4">
-            <div class="col-md-3 gold-rate">
-              <h4 class="heading-gold" style="margin-top:40px;">Gold</h4>
-              <p style="margin-top:-20px;float: right;color: #000000;">oz</p>
-            </div>
-            <div class="col-md-4 gold-labels" style="text-align: center;">
-              <div class="d-flex">
-                <div
-                  style="background-color: #c88029;height: 22px;width: 22px;display: flex;justify-content: center;align-items: center;margin-left: 25px;">
-                  <i class="fa-solid fa-dollar-sign" style="color: white;"></i>
-                </div>
-                <div>
-                  <p style="color: #000000;">&nbsp;BUY</p>
-                </div>
-              </div>
-              <div class="form-control input-box" id="goldInputLow"></div>
-              <label class="badge badge-success label-low mt-1" id="lowLabelGold" style="color: #000000;">0</label>
-            </div>
-            <div class="col-md-4 ms-3 gold-labels" style="text-align: center;">
-              <div class="d-flex">
-                <div
-                  style="background-color: #c88029;height: 22px;width: 22px;display: flex;justify-content: center;align-items: center;margin-left: 25px;">
-                  <i class="fa-solid fa-dollar-sign" style="color: white;"></i>
-                </div>
-                <div>
-                  <p style="color: #000000;">&nbsp;SELL</p>
-                </div>
-              </div>
-              <div class="form-control input-box" id="goldInputHigh"></div>
-              <label class="badge badge-warning label-high mt-1" id="highLabelGold" style="color: #000000;">0</label>
-            </div>
+      <div class="buy">
+        <div class="buy-label">
+          <div
+            style="background-color: #c88029;height: 32px;width: 32px;display: flex;justify-content: center;align-items: center;">
+            <i class="fa-solid fa-dollar-sign" style="color: white;"></i>
           </div>
+          <p>BUY</p>
         </div>
-
-
-        <div class="box2">
-          <div class="row mb-4">
-            <div class="col-md-3 silver-rate">
-              <h4 class="heading-silver" style="margin-top:0px;">Silver</h4>
-              <p style="margin-top:-20px;float: right;color: #000000;">oz</p>
-            </div>
-
-            <div class="col-md-4 silver-labels" style="text-align: center;">
-              <div class="d-flex">
-                <div
-                  style="background-color: #c88029;height: 22px;width: 22px;display: flex;justify-content: center;align-items: center;">
-                  <i class="fa-solid fa-dollar-sign" style="color: white;"></i>
-                </div>
-                <div>
-                  <p style="color: #000000;">&nbsp;BUY</p>
-                </div>
-              </div>
-              <div class="form-control input-box" id="silverInputLow"></div>
-              <label class="badge badge-success label-low mt-1" id="lowLabelSilver" style="color: #000000;">0</label>
-            </div>
-            <div class="col-md-4 ms-3 silver-labels" style="text-align: center;">
-              <div class="d-flex">
-                <div
-                  style="background-color: #c88029;height: 22px;width: 22px;display: flex;justify-content: center;align-items: center;">
-                  <i class="fa-solid fa-dollar-sign" style="color: white;"></i>
-                </div>
-                <div>
-                  <p style="color: #000000;">&nbsp;SELL</p>
-                </div>
-              </div>
-              <div class="form-control input-box" id="silverInputHigh"></div>
-              <label class="badge badge-warning label-high mt-1" id="highLabelSilver" style="color: #000000;">0</label>
-            </div>
-          </div>
-        </div>
+        <div class="form-control input-box" id="goldInputLow"></div>
+        <label class="badge badge-success label-low mt-1" id="lowLabelGold">0</label>
       </div>
-
-
-      <div class="col-md-2">
-        <div class="dateTime">
-          <div id="clock">
-            <h1 id="date-time"></h1>
+      <div class="sell">
+        <div class="sell-label">
+          <div
+            style="background-color: #c88029;height: 32px;width: 32px;display: flex;justify-content: center;align-items: center;">
+            <i class="fa-solid fa-dollar-sign" style="color: white;"></i>
           </div>
+          <p>SELL</p>
+        </div>
+        <div class="form-control input-box" id="goldInputHigh"></div>
+        <label class="badge badge-success label-low mt-1" id="highLabelGold">0</label>
+      </div>
+    </div>
+
+    <!-- SILVER -->
+    <div class="card col-lg-4 gold-silver">
+      <div class="label">
+        <p>Silver</p>
+        <h5>oz</h5>
+      </div>
+      <div class="buy">
+        <div class="buy-label">
+          <div
+            style="background-color: #c88029;height: 32px;width: 32px;display: flex;justify-content: center;align-items: center;">
+            <i class="fa-solid fa-dollar-sign" style="color: white;"></i>
+          </div>
+          <p>BUY</p>
+        </div>
+        <div class="form-control input-box" id="silverInputLow"></div>
+        <label class="badge badge-success label-low mt-1" id="lowLabelSilver">0</label>
+      </div>
+      <div class="sell">
+        <div class="sell-label">
+          <div
+            style="background-color: #c88029;height: 32px;width: 32px;display: flex;justify-content: center;align-items: center;">
+            <i class="fa-solid fa-dollar-sign" style="color: white;"></i>
+          </div>
+          <p>SELL</p>
+        </div>
+        <div class="form-control input-box" id="silverInputHigh"></div>
+        <label class="badge badge-success label-low mt-1" id="highLabelSilver">0</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-12 date-time">
+    <h3 id="date"></h3>
+    <h1 id="time"></h1>
+  </div>
+
+
+
+  <div class="row2">
+    <div class="col-lg-3 mb-0 mt-0">
+      <!-- TradingView Widget BEGIN -->
+      <div class="tradingview-widget-container"
+        style="border: none; border-radius:25px;background-color: rgb(254, 255, 255,0.6);">
+        <!-- <div class="tradingview-widget-container__widget"></div> -->
+        <!-- <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div> -->
+        <script type="text/javascript"
+          src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
+            {
+              "colorTheme": "light",
+                "dateRange": "3M",
+                  "showChart": true,
+                    "locale": "en",
+                      "width": "400",
+                        "height": "400",
+                          "largeChartUrl": "",
+                            "isTransparent": true,
+                              "showSymbolLogo": true,
+                                "showFloatingTooltip": false,
+                                  "plotLineColorGrowing": "rgba(151, 0, 0, 1)",
+                                    "plotLineColorFalling": "rgba(151, 0, 0, 1)",
+                                      "gridLineColor": "rgba(42, 46, 57, 0)",
+                                        "scaleFontColor": "rgba(106, 109, 120, 1)",
+                                          "belowLineFillColorGrowing": "rgba(221, 126, 107, 0.12)",
+                                            "belowLineFillColorFalling": "rgba(221, 126, 107, 0.12)",
+                                              "belowLineFillColorGrowingBottom": "rgba(41, 98, 255, 0)",
+                                                "belowLineFillColorFallingBottom": "rgba(41, 98, 255, 0)",
+                                                  "symbolActiveColor": "rgba(41, 98, 255, 0.12)",
+                                                    "tabs": [
+                                                      {
+                                                        "title": "Indices",
+                                                        "symbols": [
+                                                          {
+                                                            "s": "TVC:GOLD"
+                                                          },
+                                                          {
+                                                            "s": "TVC:SILVER"
+                                                          }
+                                                        ],
+                                                        "originalTitle": "Indices"
+                                                      }
+                                                    ]
+            }
+          </script>
+      </div>
+      <!-- TradingView Widget END -->
+
+    </div>
+
+
+
+    <div class="col-lg-9">
+      <div class="card card-table">
+        <table style="margin-top: 0px;">
+          <thead>
+            <tr>
+              <th colspan="2">Commodity</th>
+              <th>Unit</th>
+              <th>Sell (<span id="currencySymbol">AED</span>)</th>
+              <th>Buy (<span id="currencySymbol">AED</span>)</th>
+            </tr>
+          </thead>
+          <tbody id="tableBodyTV">
+            <!-- Table body content will be dynamically updated here -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="rate-card">
+    <div class="col-lg-3">
+      <div class="card">
+        <div class="card-body">
+          <div class="gold-card">
+            <img src="./assets/img/gold.png" alt="">
+            <h3>Gold</h3>
+          </div>
+          <p id="goldRate"></p>
         </div>
       </div>
     </div>
 
-    <div class="row2">
-
-      <div class="col-md-3 mb-0 mt-0">
-        <!-- TradingView Widget BEGIN -->
-        <div class="tradingview-widget-container"
-          style="border: none; border-radius:25px;background-color: rgb(254, 255, 255,0.6);">
-          <!-- <div class="tradingview-widget-container__widget"></div> -->
-          <!-- <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div> -->
-          <script type="text/javascript"
-            src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
-              {
-                "colorTheme": "light",
-                  "dateRange": "3M",
-                    "showChart": true,
-                      "locale": "en",
-                        "width": "270",
-                          "height": "270",
-                            "largeChartUrl": "",
-                              "isTransparent": true,
-                                "showSymbolLogo": true,
-                                  "showFloatingTooltip": false,
-                                    "plotLineColorGrowing": "rgba(151, 0, 0, 1)",
-                                      "plotLineColorFalling": "rgba(151, 0, 0, 1)",
-                                        "gridLineColor": "rgba(42, 46, 57, 0)",
-                                          "scaleFontColor": "rgba(106, 109, 120, 1)",
-                                            "belowLineFillColorGrowing": "rgba(221, 126, 107, 0.12)",
-                                              "belowLineFillColorFalling": "rgba(221, 126, 107, 0.12)",
-                                                "belowLineFillColorGrowingBottom": "rgba(41, 98, 255, 0)",
-                                                  "belowLineFillColorFallingBottom": "rgba(41, 98, 255, 0)",
-                                                    "symbolActiveColor": "rgba(41, 98, 255, 0.12)",
-                                                      "tabs": [
-                                                        {
-                                                          "title": "Indices",
-                                                          "symbols": [
-                                                            {
-                                                              "s": "TVC:GOLD"
-                                                            },
-                                                            {
-                                                              "s": "TVC:SILVER"
-                                                            }
-                                                          ],
-                                                          "originalTitle": "Indices"
-                                                        }
-                                                      ]
-              }
-            </script>
-        </div>
-        <!-- TradingView Widget END -->
-  
-      </div>
-  
-      <div class="rate-card">
-        <div class="col-md-3">
-          <div class="card">
-            <div class="card-body">
-              <div class="gold-card">
-                <img src="./assets/img/gold.png" alt="">
-                <h3>Gold</h3>
-              </div>
-              <p id="goldRate"></p>
-            </div>
+    <div class="col-lg-3">
+      <div class="card">
+        <div class="card-body">
+          <div class="silver-card">
+            <img src="./assets/img/silver.png" alt="">
+            <h3>Silver</h3>
           </div>
-        </div>
-  
-        <div class="col-md-3">
-          <div class="card">
-            <div class="card-body">
-              <div class="silver-card">
-                <img src="./assets/img/silver.png" alt="">
-                <h3>Silver</h3>
-              </div>
-              <p id="silverRate"></p>
-            </div>
-          </div>
-        </div>
-      </div>
-  
-      <div class="col-md-9">
-        <div class="card card-table">
-          <table style="margin-top: 0px;">
-            <thead>
-              <tr>
-                <th>Commodity</th>
-                <th>Purity</th>
-                <th>Unit</th>
-                <th>Sell (<span id="currencySymbol">AED</span>)</th>
-                <th>Buy (<span id="currencySymbol">AED</span>)</th>
-              </tr>
-            </thead>
-            <tbody id="tableBodyTV">
-              <!-- Table body content will be dynamically updated here -->
-            </tbody>
-          </table>
+          <p id="silverRate"></p>
         </div>
       </div>
     </div>
   </div>
 
-  
+
+
 
 
 
@@ -551,11 +481,9 @@
         const date = monthList[month] + " " + day + ", " + year;
         const time = hourTime + ":" + minute + ":" + second + ampm;
 
-        //combine current date and time
-        const dateTime = date + '</br>' + time;
-
         //print current date and time to the DOM
-        document.getElementById("date-time").innerHTML = dateTime;
+        document.getElementById("date").innerHTML = date;
+        document.getElementById("time").innerHTML = time;
         setTimeout(clock, 1000);
       }
     });
