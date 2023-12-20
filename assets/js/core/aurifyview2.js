@@ -291,8 +291,8 @@ async function showTable() {
             // Create a new table row
             const newRow = document.createElement("tr");
             newRow.innerHTML = `
-            <td>${metalInput}</td>
-            <td>${purityInput}</td>
+            <td style="text-align: right;">${metalInput}</td>
+            <td style="text-align: left;">${purityInput}</td>
             <td>${unitInput} ${weightInput}</td>
             <td id="sellAED">0</td>
             <td id="buyAED">0</td>
