@@ -93,7 +93,7 @@ async function fetchData() {
             } else if (newGoldBuy < currentGoldBuy) {
                 color1 = "red";
             } else {
-                color1 = element1.style.color; // Maintain current color if no change
+                color1 = element1.style.backgroundColor; // Maintain current color if no change
             }
 
             var color2;
@@ -102,7 +102,7 @@ async function fetchData() {
             } else if (newGoldSell < currentGoldSell) {
                 color2 = "red";
             } else {
-                color2 = element2.style.color; // Maintain current color if no change
+                color2 = element2.style.backgroundColor; // Maintain current color if no change
             }
 
             var color3;
@@ -111,7 +111,7 @@ async function fetchData() {
             } else if (newSilverBuy < currentSilverBuy) {
                 color3 = "red";
             } else {
-                color3 = element3.style.color; // Maintain current color if no change
+                color3 = element3.style.backgroundColor; // Maintain current color if no change
             }
 
             var color4;
@@ -120,21 +120,21 @@ async function fetchData() {
             } else if (newSilverSell < currentSilverSell) {
                 color4 = "red";
             } else {
-                color4 = element4.style.color; // Maintain current color if no change
+                color4 = element4.style.backgroundColor; // Maintain current color if no change
             }
 
 
-            element1.style.color = color1;
-            element2.style.color = color2;
-            element3.style.color = color3;
-            element4.style.color = color4;
+            element1.style.backgroundColor = color1;
+            element2.style.backgroundColor = color2;
+            element3.style.backgroundColor = color3;
+            element4.style.backgroundColor = color4;
 
             currentGoldBuy = newGoldBuy;
             currentGoldSell = newGoldSell;
             currentSilverBuy = newSilverBuy;
             currentSilverSell = newSilverSell;
 
-            setTimeout(updatePrice, 600);
+            setTimeout(updatePrice, 300);
         }
 
 
