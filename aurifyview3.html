@@ -35,6 +35,18 @@
       padding: 0;
     }
 
+    .card-logo{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #fff;
+      opacity: 90%;
+    }
+
+    .card-logo img{
+      margin-right: 40px;
+    }
+
     i {
       font-size: 1.5rem;
     }
@@ -48,13 +60,8 @@
       margin-top: 20px;
     }
 
-    #date-time {
-      font-size: 2vw;
-      font-weight: bold;
-    }
-
     .card {
-      border-radius: 15px;
+      border-radius: 20px;
       margin-left: 10px;
     }
 
@@ -69,7 +76,9 @@
 
     .card-table {
       margin-top: 15px;
-      background-color: transparent;
+      background-color: #fff;
+      opacity: 70%;
+      border-radius: 25px;
       border-collapse: collapse;
     }
 
@@ -77,8 +86,10 @@
       display: inline-table;
       justify-content: center;
       align-items: center;
-      margin-left: -50px;
+      width: 100%;
+      margin-left: 0px;
       font-size: 2vw;
+      color: #0A1172;
     }
 
     .card-table tbody tr {
@@ -97,6 +108,14 @@
       /* White background for header row */
       border-bottom: 2px solid #dddddd;
       /* Add a bottom border to separate header from body */
+    }
+
+    .card-table th{
+      border-radius: 25px;
+    }
+
+    .card-table tbody td{
+      border-radius: 25px;
     }
 
     .card-table th,
@@ -127,7 +146,6 @@
       justify-content: space-between;
       padding: 10px;
     }
-
 
     .fading-label {
       transition: color 1s ease;
@@ -196,17 +214,21 @@
     }
 
     .date-time {
-      margin-top: -100px;
-      margin-left: 20px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      padding-left: 50px;
+      padding-right: 50px;
+      color: #fff;
     }
 
     .date-time h3 {
-      font-size: 2vw;
+      font-size: 3vw;
       font-weight: 600;
     }
 
     .date-time h1 {
-      font-size: 2vw;
+      font-size: 3vw;
       font-weight: 600;
     }
 
@@ -263,9 +285,9 @@
 </head>
 
 <body>
-  <div class="row">
-    <div class="col-lg-3">
-      <img src="./orbixbullion l2.png" alt="" style="width: 300px;">
+  <div class="row"> 
+    <div class="col-lg-3 card card-logo">
+      <img class="logo" src="./orbixbullion l2.png" alt="" style="width: 300px;">
     </div>
 
     <!-- GOLD -->
@@ -283,7 +305,8 @@
           <p>BUY</p>
         </div>
         <div class="form-control input-box" id="goldInputLow"></div>
-        <label class="badge badge-success label-low mt-1"   style="width: 100px; font-size:20px;" id="lowLabelGold">0</label>
+        <label class="badge badge-success label-low mt-1" style="width: 100px; font-size:20px;"
+          id="lowLabelGold">0</label>
       </div>
       <div class="sell">
         <div class="sell-label">
@@ -294,7 +317,8 @@
           <p>SELL</p>
         </div>
         <div class="form-control input-box" id="goldInputHigh"></div>
-        <label class="badge badge-success label-low mt-1"  style="width: 100px; font-size:20px;"  id="highLabelGold">0</label>
+        <label class="badge badge-success label-low mt-1" style="width: 100px; font-size:20px;"
+          id="highLabelGold">0</label>
       </div>
     </div>
 
@@ -313,7 +337,8 @@
           <p>BUY</p>
         </div>
         <div class="form-control input-box" id="silverInputLow"></div>
-        <label class="badge badge-success label-low mt-1"  style="width: 100px; font-size:20px;"  id="lowLabelSilver">0</label>
+        <label class="badge badge-success label-low mt-1" style="width: 100px; font-size:20px;"
+          id="lowLabelSilver">0</label>
       </div>
       <div class="sell">
         <div class="sell-label">
@@ -324,7 +349,8 @@
           <p>SELL</p>
         </div>
         <div class="form-control input-box" id="silverInputHigh"></div>
-        <label class="badge badge-success label-low mt-1"  style="width: 100px; font-size:20px;"  id="highLabelSilver">0</label>
+        <label class="badge badge-success label-low mt-1" style="width: 100px; font-size:20px;"
+          id="highLabelSilver">0</label>
       </div>
     </div>
   </div>
@@ -340,7 +366,7 @@
     <div class="col-lg-3 mb-0 mt-0">
       <!-- TradingView Widget BEGIN -->
       <div class="tradingview-widget-container"
-        style="border: none; border-radius:25px;background-color: rgb(254, 255, 255,0.6);">
+        style="border: none; border-radius:25px;background-color: rgb(254, 255, 255,0.7);">
         <!-- <div class="tradingview-widget-container__widget"></div> -->
         <!-- <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div> -->
         <script type="text/javascript"
@@ -351,7 +377,7 @@
                   "showChart": true,
                     "locale": "en",
                       "width": "450",
-                        "height": "470",
+                        "height": "475",
                           "largeChartUrl": "",
                             "isTransparent": true,
                               "showSymbolLogo": true,
@@ -390,7 +416,7 @@
 
     <div class="col-lg-9">
       <div class="card card-table">
-        <table style="margin-top: 0px;">
+        <table>
           <thead>
             <tr>
               <th colspan="2">Commodity</th>
