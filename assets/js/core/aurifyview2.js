@@ -88,46 +88,67 @@ async function fetchData() {
 
             // Determine color for each element
             var color1;
+            var fontColor1;
             if (newGoldBuy > currentGoldBuy) {
                 color1 = "green";
+                fontColor1 = "white"
             } else if (newGoldBuy < currentGoldBuy) {
                 color1 = "red";
+                fontColor1 = "white"
             } else {
-                color1 = element1.style.backgroundColor; // Maintain current color if no change
+                color1 = "white"; // Set to white if no change
+                fontColor1 = "black"
             }
 
             var color2;
+            var fontColor2;
             if (newGoldSell > currentGoldSell) {
                 color2 = "green";
+                fontColor2 = "white"
             } else if (newGoldSell < currentGoldSell) {
                 color2 = "red";
+                fontColor2 = "white"
             } else {
-                color2 = element2.style.backgroundColor; // Maintain current color if no change
+                color2 = "white"; // Set to white if no change
+                fontColor2 = "black"
             }
 
             var color3;
+            var fontColor3;
             if (newSilverBuy > currentSilverBuy) {
                 color3 = "green";
+                fontColor3 = "white"
             } else if (newSilverBuy < currentSilverBuy) {
                 color3 = "red";
+                fontColor3 = "white"
             } else {
-                color3 = element3.style.backgroundColor; // Maintain current color if no change
+                color3 = "white"; // Set to white if no change
+                fontColor3 = "black"
             }
 
             var color4;
+            var fontColor4;
             if (newSilverSell > currentSilverSell) {
                 color4 = "green";
+                fontColor4 = "white"
             } else if (newSilverSell < currentSilverSell) {
                 color4 = "red";
+                fontColor4 = "white"
             } else {
-                color4 = element4.style.backgroundColor; // Maintain current color if no change
+                color4 = "white"; // Set to white if no change
+                fontColor4 = "black"
             }
-
 
             element1.style.backgroundColor = color1;
             element2.style.backgroundColor = color2;
             element3.style.backgroundColor = color3;
             element4.style.backgroundColor = color4;
+
+            element1.style.color = fontColor1;
+            element2.style.color = fontColor2;
+            element3.style.color = fontColor3;
+            element4.style.color = fontColor4;
+
 
             currentGoldBuy = newGoldBuy;
             currentGoldSell = newGoldSell;
