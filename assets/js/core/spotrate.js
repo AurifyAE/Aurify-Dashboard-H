@@ -343,10 +343,14 @@ async function showTable() {
         <td>${sellPremiumInputAED}</td>
         <td>${buyPremiumInputAED}</td>
         <td>
-          <button class="btn bg-gradient-primary editRowBtn" data-document-id="${data.id}"><i class="fas fa-edit"></i></button>
-          <button class="btn bg-gradient-primary deleteRowConfirmation" data-document-id="${data.id}"><i class="fas fa-trash-alt"></i></button>
+          <button class="btn bg-gradient-primary editRowBtn" data-document-id="${data.id}">
+            <i class="fas fa-edit"></i>
+          </button>
+          <button class="btn bg-gradient-primary deleteRowConfirmation" data-document-id="${data.id}">
+            <i class="fas fa-trash-alt"></i>
+          </button>
         </td>
-      `;
+        `;
 
       // Append the new row to the table body
       tableBody.appendChild(newRow);
@@ -392,7 +396,6 @@ async function showTable() {
     console.error('Error reading data:', error);
   }
 }
-
 
 // window.onload = function () {
 //   plays();
@@ -541,6 +544,7 @@ function updateRow(documentId) {
     buyPremiumAED: document.getElementById("buyPremiumAED").value
   };
 
+
   // Update the Firestore document
   updateDataInFirestore(documentId, updatedData)
     .then(() => {
@@ -556,10 +560,16 @@ function updateRow(documentId) {
       console.error('Error updating document in Firestore: ', error);
     });
 
-  // // Hide the modal after updating
+  // Hide the modal after updating
   // $('#addRowModal').modal('hide');
+
+  document.getElementById("closeModal").addEventListener('click', () => closeModal());
 }
 
+function closeModal(){
+  console.log("lll");
+  $('#addRowModal').modal('hide');
+}
 
 function deleteRowConfirmation(iconElement) {
   // Get the document ID from the button
