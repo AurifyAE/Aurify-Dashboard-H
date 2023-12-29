@@ -315,8 +315,9 @@ async function showTable() {
             <td style="text-align: right;">${metalInput}</td>
             <td style="text-align: left; font-size:28px; font-weight: 600;">${purityInput}</td>
             <td>${unitInput} ${weightInput}</td>
-            <td id="sellAED">0</td>
             <td id="buyAED">0</td>
+            <td id="sellAED">0</td>
+            
             `;
 
             // Append the new row to the table body

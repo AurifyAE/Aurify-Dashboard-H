@@ -28,7 +28,7 @@
       -ms-animation: 20s linear 0s normal none infinite animate;
       -o-animation: 20s linear 0s normal none infinite animate;
       animation: 20s linear 0s normal none infinite animate;
-      color: #f4c81a;
+      color: #005043;
       height: 100vh;
     }
 
@@ -71,8 +71,9 @@
     }
 
     .card-table {
-      background-color: #fff;
       border-collapse: collapse;
+      border-spacing: 10px;
+      opacity: 0.9;
     }
 
     table {
@@ -82,11 +83,14 @@
       width: 100%;
       margin-left: 0px;
       font-size: 2vw;
-      color: #f4c81a;
+      color: #005043;
     }
 
-    .card-table tbody tr {
+    .card-table tbody {
       margin-top: 10px;
+
+    }
+    .card-table  tr {
       background-color: #f9f9f9;
       /* Light gray background for odd rows */
     }
@@ -96,16 +100,11 @@
       /* Dark gray background for even rows */
     }
 
-    .card-table thead tr {
-      background-color: #ffffff;
-      /* White background for header row */
-      border-bottom: 2px solid #dddddd;
-      /* Add a bottom border to separate header from body */
-    }
+
 
     .card-table th {
-      background-color:#f4c81a;
-      color: black;
+      background-color:#005043;
+      color: white;
     }
 
     .card-table tbody td {
@@ -132,7 +131,7 @@
       display: flex;
       flex-direction: row;
       justify-content: space-between;
-      color: #f4c81a;
+      color: #005043;
       margin-top: 100px;
       margin-left: 150px;
     }
@@ -225,8 +224,7 @@
       display: flex;
       flex-direction: row;
       background-color: #fff;
-      border-radius: 20px;
-      opacity: 50%;
+      opacity: 80%;
       height: 90px;
       width: 100%;
     }
@@ -237,17 +235,18 @@
       padding: 10px;
       flex-direction: column;
       align-items: center;
-      background-color: black;
+      background-color: #005043;
+      color:white;
     }
 
     .news-card .news-label h3 {
-      font-size: 1.1vw;
+      font-size: 1.4vw;
       font-weight: 600;
     }
 
     .news-card .news-label p {
       margin-top: -15px;
-      font-size: 1.4vw;
+      font-size: 1.1vw;
       font-weight: 600;
     }
 
@@ -270,7 +269,7 @@
   position: absolute;
   width: 80px;
   height: 80px;
-  box-shadow: 206px 208px #f4c81a, -35px 70px #f4c81a;
+  box-shadow: 206px 208px #005043, -35px 70px #005043;
   border-radius: 50%;
 }
 
@@ -281,7 +280,7 @@
   flex-direction: column;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(15px);
-  border-bottom: 6px solid #f4c81a;
+  border-bottom: 6px solid #005043;
   border-right: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 8px;
   box-shadow: 0 5px 25px rgb(1 1 1 / 15%);
@@ -289,7 +288,7 @@
 
 .calendar .calendar-body .month-name{
   color: black;
-  background: #f4c81a;
+  background: #005043;
   width: 100%;
   font-size: 1.6em;
   text-align: center;
@@ -317,25 +316,44 @@
   font-size: 3em;
   font-weight: 600;
 }
-.time {
-    background: rgb(12, 12, 12);
-    color: #fff;
-    text-align: center;
-    width: 500px;
-    border: 7px solid rgb(255, 252, 252);
-    padding: 8px;
-    box-shadow: 0 2px 10px 0 rgba(0,0,0,0.16), 0 2px 10px 0 
-    rgba(0,0,0,0.12);
+@font-face{
+    font-family: 'Digital-7';
+    src:  url('./assets/fonts/digital-7.ttf') format('woff2'),
+    url('./assets/fonts/digital-7.woff') format('woff');
 }
-.hms {
-    font-size: 68pt;
-    font-weight: 200;
+.clockdate-wrapper {
+    background: transparent;  /* fallback for old browsers */
+    /* background: -webkit-linear-gradient(to right, #024a61, #005043);  Chrome 10-25, Safari 5.1-6 */
+    /* background: linear-gradient(to right, #024a61, #005043); W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    padding:25px;
+    max-width:100%;
+    width:100%;
+    text-align:center;
+    border-radius:5px;
+    margin:0 auto;
+    border-radius: ;
+  
 }
-.ampm {
-    font-size: 22pt;
+#clock{
+    font-family: Digital-7, 'sans-serif';
+    font-size:5em;
+    text-shadow:0px 0px 1px #fff;
+    color:#fff;
 }
-.date {
-    font-size: 15pt;
+#clock span {
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow:0px 0px 1px #333;
+    font-size:60px;
+    position:relative;
+    top:-5px;
+    left:10px;
+}
+#date {
+    font-family: Digital-7, 'sans-serif';
+    letter-spacing:3px;
+    font-size:2em;
+    font-family:arial,sans-serif;
+    color:#fff;
 }
   </style>
 </head>
@@ -344,35 +362,52 @@
   <div class="row">
     <div class="col-lg-12 d-flex">
           <div class="col-lg-4">
-            <img class="logo" src="./Logo Misna gold.png" alt="" style="width: 350px;margin-top:-50px;margin-left: 25%;">
+            <img class="logo" src="./Logo Misna gold.png" alt="" style="width: 350px;margin-top:20px;margin-left: 25%;">
           </div>
           <div class="col-lg-4 date-time">
+            <div id="clockdate">
+                <div class="clockdate-wrapper">
+                  <div id="clock"></div>
+                  <div id="date"></div>
+                </div>
+              </div>
           </div>
-          <div class="col-lg-3" style="margin-top:-50px; margin-left: 70px;">
-            <div class="time">
-                <span class="hms"></span>
-        <span class="ampm"></span>
-        <br>
-        <span class="date"></span>
-
-            </div>
-    
+          <div class="col-lg-3" >
                   </div>
       </div>
-    
+      <div class="col-lg-7 mt-5 ml-5">
+        <div class="card-table">
+          <table>
+            <thead style="margin-bottom: 0px;">
+              <tr>
+                <th colspan="2">COMMODITY</th>
+                <th>UNIT</th>
+                <th>BUY (<span id="currencySymbol">AED</span>)</th>
+                <th>SELL (<span id="currencySymbol">AED</span>)</th>
+              </tr>
+              <tr style="height: 10px;background-color: transparent;"></tr>
+            </thead>
+            
+            <tbody id="tableBodyTV">
+              <!-- Table body content will be dynamically updated here -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    <div class=" col-lg-4 gold-silver gold d-block mt-4 mr-5" >
     <!-- GOLD -->
-    <div class=" col-lg-4 gold-silver gold d-block mt-4" >
-      <div class="label" style="display: flex;justify-content: center;align-items: center;background-color: #f4c81a;color: white;">
+      <div class="label" style="display: flex;justify-content: center;align-items: center;background-color: #005043;color: white;">
         <p>Gold</p>
         <h5>oz</h5>
       </div>
-      <div class="d-flex mt-2" style="justify-content:space-around;">
+      <div class="d-flex mt-2" style="justify-content:space-around; background-color: rgba(255, 255, 255, 0.9);">
       <div class="buy">
         <div class="buy-label">
           
           <p>BUY</p>
           <div
-            style="background-color: #f4c81a;height: 32px;width: 32px;border: none;border-radius: 50%;  display: flex;justify-content: center;align-items: center;">
+            style="background-color: #005043;height: 32px;width: 32px;border: none;border-radius: 50%;  display: flex;justify-content: center;align-items: center;">
             <i class="fa-solid fa-dollar-sign" style="color: white;"></i>
           </div>
         </div>
@@ -386,7 +421,7 @@
           
           <p>SELL</p>
           <div
-            style="background-color: #f4c81a;height: 32px;width: 32px; border: none;border-radius: 50%;  display: flex;justify-content: center;align-items: center;">
+            style="background-color: #005043;height: 32px;width: 32px; border: none;border-radius: 50%;  display: flex;justify-content: center;align-items: center;">
             <i class="fa-solid fa-dollar-sign" style="color: white;"></i>
           </div>
         </div>
@@ -397,17 +432,17 @@
       </div>
 
       <!-- silver -->
-      <div class="label mt-4" style="display: flex;justify-content: center;align-items: center;background-color: #f4c81a;color: white;">
+      <div class=" label mt-4" style="display: flex;justify-content: center;align-items: center;background-color: #005043;color: white;">
         <p>Silver</p>
         <h5>oz</h5>
       </div>
-      <div class="d-flex mt-2" style="justify-content:space-around;">
+      <div class="d-flex mt-2" style="justify-content:space-around; background-color: rgba(255, 255, 255, 0.9);">
       <div class="buy">
         <div class="buy-label">
           
           <p>BUY</p>
           <div
-            style="background-color: #f4c81a;height: 32px;width: 32px;  border: none;border-radius: 50%;display: flex;justify-content: center;align-items: center;">
+            style="background-color: #005043;height: 32px;width: 32px;  border: none;border-radius: 50%;display: flex;justify-content: center;align-items: center;">
             <i class="fa-solid fa-dollar-sign" style="color: white;"></i>
           </div>
         </div>
@@ -420,7 +455,7 @@
           
           <p>SELL</p>
           <div
-          style="background-color: #f4c81a;height: 32px;width: 32px; border: none;border-radius: 50%;display: flex;justify-content: center;align-items: center;">
+          style="background-color: #005043;height: 32px;width: 32px; border: none;border-radius: 50%;display: flex;justify-content: center;align-items: center;">
           <i class="fa-solid fa-dollar-sign" style="color: white;"></i>
         </div>
         </div>
@@ -430,32 +465,16 @@
       </div>
     </div>
     </div>
-    <div class="col-lg-8 mt-5">
-      <div class="card-table">
-        <table>
-          <thead>
-            <tr>
-              <th colspan="2">COMMODITY</th>
-              <th>UNIT</th>
-              <th>SELL (<span id="currencySymbol">AED</span>)</th>
-              <th>BUY (<span id="currencySymbol">AED</span>)</th>
-            </tr>
-          </thead>
-          <tbody id="tableBodyTV">
-            <!-- Table body content will be dynamically updated here -->
-          </tbody>
-        </table>
-      </div>
-    </div>
+
     </div>
 
     
 
-  <div class="row">
-    <div class="col-lg-12 news-card">
+  <div class="row ">
+    <div class="col-lg-12 news-card" style="margin-left: 60px; max-width: 95%;">
       <div class="news-label">
-        <h3>NASER GOLD</h3>
-        <p>NEWS</p>
+        <h3>MISNA GOLD</h3>
+        <p>Latest News</p>
       </div>
       <div class="news" >
         <!-- Display News Here -->
@@ -502,82 +521,41 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-  <script>
-    function updateTime() {
-  var dateInfo = new Date();
-
-  /* time */
-  var hr,
-    _min = (dateInfo.getMinutes() < 10) ? "0" + dateInfo.getMinutes() : dateInfo.getMinutes(),
-    sec = (dateInfo.getSeconds() < 10) ? "0" + dateInfo.getSeconds() : dateInfo.getSeconds(),
-    ampm = (dateInfo.getHours() >= 12) ? "PM" : "AM";
-
-  // replace 0 with 12 at midnight, subtract 12 from hour if 13–23
-  if (dateInfo.getHours() == 0) {
-    hr = 12;
-  } else if (dateInfo.getHours() > 12) {
-    hr = dateInfo.getHours() - 12;
-  } else {
-    hr = dateInfo.getHours();
-  }
-// Add to time format
-
-  var currentTime = hr + ":" + _min + ":" + sec;
-
-
-
-
-  // AM/ PM options 
-
-  document.getElementsByClassName("hms")[0].innerHTML = currentTime;
-  document.getElementsByClassName("ampm")[0].innerHTML = ampm;
-
-
-
-/*  Add Date options */
-
-
-
-// print time and date once, then update them every second
-updateTime();
-setInterval(function() {
-  updateTime()
-}, 1000);
-
-  /* date */
-  var dow = [
-      "Sunday",
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday"
-    ],
-    month = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December"
-    ],
-    day = dateInfo.getDate();
-
-  // store date
-  var currentDate = dow[dateInfo.getDay()] + ", " + month[dateInfo.getMonth()] + " " + day;
-
-  document.getElementsByClassName("date")[0].innerHTML = currentDate;
-};
-  </script>
+    <script>
+ function startTime() {
+    var today = new Date();
+    var hr = today.getHours();
+    var min = today.getMinutes();
+    var sec = today.getSeconds();
+    ap = (hr < 12) ? "<span>AM</span>" : "<span>PM</span>";
+    hr = (hr == 0) ? 12 : hr;
+    hr = (hr > 12) ? hr - 12 : hr;
+    //Add a zero in front of numbers<10
+    hr = checkTime(hr);
+    min = checkTime(min);
+    sec = checkTime(sec);
+    document.getElementById("clock").innerHTML = hr + ":" + min + ":" + sec + " " + ap;
     
-   
+    var months = ['JANUARY', 'FEBRUARY', 'MARCH', 'APRIL', 'MAY', 'JUNE', 'JULY', 'AUGUST', 'SEPTEMBER', 'OCTOBER', 'NOVEMBER', 'DECEMBER'];
+    var days = ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY'];
+    var curWeekDay = days[today.getDay()];
+    var curDay = today.getDate();
+    var curMonth = months[today.getMonth()];
+    var curYear = today.getFullYear();
+    var date = curWeekDay+", "+curDay+" "+curMonth+" "+curYear;
+    document.getElementById("date").innerHTML = date;
+    
+    var time = setTimeout(function(){ startTime() }, 500);
+}
+function checkTime(i) {
+    if (i < 10) {
+        i = "0" + i;
+    }
+    return i;
+}
+startTime();
+    </script>
+    
   <script>
     // Check if the screen width is below a certain threshold (e.g., 1000 pixels)
     if (window.innerWidth < 1024) {
