@@ -71,8 +71,9 @@
     }
 
     .card-table {
-      background-color: #fff;
       border-collapse: collapse;
+      border-spacing: 10px;
+      opacity: 0.9;
     }
 
     table {
@@ -85,8 +86,11 @@
       color: #005043;
     }
 
-    .card-table tbody tr {
+    .card-table tbody {
       margin-top: 10px;
+
+    }
+    .card-table  tr {
       background-color: #f9f9f9;
       /* Light gray background for odd rows */
     }
@@ -96,16 +100,11 @@
       /* Dark gray background for even rows */
     }
 
-    .card-table thead tr {
-      background-color: #ffffff;
-      /* White background for header row */
-      border-bottom: 2px solid #dddddd;
-      /* Add a bottom border to separate header from body */
-    }
+
 
     .card-table th {
       background-color:#005043;
-      color: black;
+      color: white;
     }
 
     .card-table tbody td {
@@ -225,8 +224,7 @@
       display: flex;
       flex-direction: row;
       background-color: #fff;
-      border-radius: 20px;
-      opacity: 50%;
+      opacity: 80%;
       height: 90px;
       width: 100%;
     }
@@ -237,17 +235,18 @@
       padding: 10px;
       flex-direction: column;
       align-items: center;
-      background-color: black;
+      background-color: #005043;
+      color:white;
     }
 
     .news-card .news-label h3 {
-      font-size: 1.1vw;
+      font-size: 1.4vw;
       font-weight: 600;
     }
 
     .news-card .news-label p {
       margin-top: -15px;
-      font-size: 1.4vw;
+      font-size: 1.1vw;
       font-weight: 600;
     }
 
@@ -376,18 +375,19 @@
           <div class="col-lg-3" >
                   </div>
       </div>
-      <div class="col-lg-8 mt-5 ml-5">
+      <div class="col-lg-7 mt-5 ml-5">
         <div class="card-table">
           <table>
-            <thead>
+            <thead style="margin-bottom: 0px;">
               <tr>
                 <th colspan="2">COMMODITY</th>
                 <th>UNIT</th>
                 <th>BUY (<span id="currencySymbol">AED</span>)</th>
                 <th>SELL (<span id="currencySymbol">AED</span>)</th>
-                
               </tr>
+              <tr style="height: 10px;background-color: transparent;"></tr>
             </thead>
+            
             <tbody id="tableBodyTV">
               <!-- Table body content will be dynamically updated here -->
             </tbody>
@@ -395,13 +395,13 @@
         </div>
       </div>
 
-    <div class=" col-lg-4 gold-silver gold d-block mt-4" >
+    <div class=" col-lg-4 gold-silver gold d-block mt-4 mr-5" >
     <!-- GOLD -->
       <div class="label" style="display: flex;justify-content: center;align-items: center;background-color: #005043;color: white;">
         <p>Gold</p>
         <h5>oz</h5>
       </div>
-      <div class="d-flex mt-2" style="justify-content:space-around;">
+      <div class="d-flex mt-2" style="justify-content:space-around; background-color: rgba(255, 255, 255, 0.9);">
       <div class="buy">
         <div class="buy-label">
           
@@ -432,11 +432,11 @@
       </div>
 
       <!-- silver -->
-      <div class="label mt-4" style="display: flex;justify-content: center;align-items: center;background-color: #005043;color: white;">
+      <div class=" label mt-4" style="display: flex;justify-content: center;align-items: center;background-color: #005043;color: white;">
         <p>Silver</p>
         <h5>oz</h5>
       </div>
-      <div class="d-flex mt-2" style="justify-content:space-around;">
+      <div class="d-flex mt-2" style="justify-content:space-around; background-color: rgba(255, 255, 255, 0.9);">
       <div class="buy">
         <div class="buy-label">
           
@@ -470,11 +470,11 @@
 
     
 
-  <div class="row">
-    <div class="col-lg-12 news-card">
+  <div class="row ">
+    <div class="col-lg-12 news-card" style="margin-left: 40px; max-width: 97%;">
       <div class="news-label">
         <h3>MISNA GOLD</h3>
-        <p>NEWS</p>
+        <p>Latest News</p>
       </div>
       <div class="news" >
         <!-- Display News Here -->
