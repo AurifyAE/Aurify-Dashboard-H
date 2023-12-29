@@ -20,7 +20,7 @@
       padding: 40px;
       font-family: "arial", heletica, sans-serif;
       font-size: 24px;
-      background: white url('./6224145.png');
+      background: white url('./26010_35.png');
       background-repeat: no-repeat;
       background-size: cover;
       -webkit-animation: 20s linear 0s normal none infinite animate;
@@ -28,7 +28,7 @@
       -ms-animation: 20s linear 0s normal none infinite animate;
       -o-animation: 20s linear 0s normal none infinite animate;
       animation: 20s linear 0s normal none infinite animate;
-      color: #dab038;
+      color: #f4c81a;
       height: 100vh;
     }
 
@@ -82,7 +82,7 @@
       width: 100%;
       margin-left: 0px;
       font-size: 2vw;
-      color: #dab038;
+      color: #f4c81a;
     }
 
     .card-table tbody tr {
@@ -104,7 +104,7 @@
     }
 
     .card-table th {
-      background-color:#dab038;
+      background-color:#f4c81a;
       color: black;
     }
 
@@ -132,9 +132,9 @@
       display: flex;
       flex-direction: row;
       justify-content: space-between;
-      color: #dab038;
+      color: #f4c81a;
       margin-top: 100px;
-      margin-left: 50px;
+      margin-left: 150px;
     }
 
     .date-time h3 {
@@ -270,7 +270,7 @@
   position: absolute;
   width: 80px;
   height: 80px;
-  box-shadow: 206px 208px #dab038, -35px 70px #dab038;
+  box-shadow: 206px 208px #f4c81a, -35px 70px #f4c81a;
   border-radius: 50%;
 }
 
@@ -281,7 +281,7 @@
   flex-direction: column;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(15px);
-  border-bottom: 6px solid #dab038;
+  border-bottom: 6px solid #f4c81a;
   border-right: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 8px;
   box-shadow: 0 5px 25px rgb(1 1 1 / 15%);
@@ -289,7 +289,7 @@
 
 .calendar .calendar-body .month-name{
   color: black;
-  background: #dab038;
+  background: #f4c81a;
   width: 100%;
   font-size: 1.6em;
   text-align: center;
@@ -317,7 +317,26 @@
   font-size: 3em;
   font-weight: 600;
 }
-
+.time {
+    background: rgb(12, 12, 12);
+    color: #fff;
+    text-align: center;
+    width: 500px;
+    border: 7px solid rgb(255, 252, 252);
+    padding: 8px;
+    box-shadow: 0 2px 10px 0 rgba(0,0,0,0.16), 0 2px 10px 0 
+    rgba(0,0,0,0.12);
+}
+.hms {
+    font-size: 68pt;
+    font-weight: 200;
+}
+.ampm {
+    font-size: 22pt;
+}
+.date {
+    font-size: 15pt;
+}
   </style>
 </head>
 
@@ -325,33 +344,25 @@
   <div class="row">
     <div class="col-lg-12 d-flex">
           <div class="col-lg-4">
-            <img class="logo" src="./logo naser gold.png" alt="" style="width: 350px;margin-top:-50px;margin-left: 25%;">
+            <img class="logo" src="./Logo Misna gold.png" alt="" style="width: 350px;margin-top:-50px;margin-left: 25%;">
           </div>
           <div class="col-lg-4 date-time">
-            <h3 id="time"></h3>
           </div>
           <div class="col-lg-3" style="margin-top:-50px; margin-left: 70px;">
-            <div class="calendar ">
-                <div class="calendar-body">
-                  <span class="month-name">Month</span>
-                  <div class="d-flex">
-                  <div class="col-md-6">
-                    <span class="date-number">00</span>
-                  </div>
-                  <div class="col-md-6 ml-4">
-                    <span class="day-name">Day</span><br>
-                    <span class="year">0000</span>
-                  </div>
-                </div>
-                </div>
-              </div>
+            <div class="time">
+                <span class="hms"></span>
+        <span class="ampm"></span>
+        <br>
+        <span class="date"></span>
+
+            </div>
     
                   </div>
       </div>
     
     <!-- GOLD -->
     <div class=" col-lg-4 gold-silver gold d-block mt-4" >
-      <div class="label" style="display: flex;justify-content: center;align-items: center;background-color: #dab038;color: white;">
+      <div class="label" style="display: flex;justify-content: center;align-items: center;background-color: #f4c81a;color: white;">
         <p>Gold</p>
         <h5>oz</h5>
       </div>
@@ -361,7 +372,7 @@
           
           <p>BUY</p>
           <div
-            style="background-color: #dab038;height: 32px;width: 32px;border: none;border-radius: 50%;  display: flex;justify-content: center;align-items: center;">
+            style="background-color: #f4c81a;height: 32px;width: 32px;border: none;border-radius: 50%;  display: flex;justify-content: center;align-items: center;">
             <i class="fa-solid fa-dollar-sign" style="color: white;"></i>
           </div>
         </div>
@@ -375,7 +386,7 @@
           
           <p>SELL</p>
           <div
-            style="background-color: #dab038;height: 32px;width: 32px; border: none;border-radius: 50%;  display: flex;justify-content: center;align-items: center;">
+            style="background-color: #f4c81a;height: 32px;width: 32px; border: none;border-radius: 50%;  display: flex;justify-content: center;align-items: center;">
             <i class="fa-solid fa-dollar-sign" style="color: white;"></i>
           </div>
         </div>
@@ -386,7 +397,7 @@
       </div>
 
       <!-- silver -->
-      <div class="label mt-4" style="display: flex;justify-content: center;align-items: center;background-color: #dab038;color: white;">
+      <div class="label mt-4" style="display: flex;justify-content: center;align-items: center;background-color: #f4c81a;color: white;">
         <p>Silver</p>
         <h5>oz</h5>
       </div>
@@ -396,7 +407,7 @@
           
           <p>BUY</p>
           <div
-            style="background-color: #dab038;height: 32px;width: 32px;  border: none;border-radius: 50%;display: flex;justify-content: center;align-items: center;">
+            style="background-color: #f4c81a;height: 32px;width: 32px;  border: none;border-radius: 50%;display: flex;justify-content: center;align-items: center;">
             <i class="fa-solid fa-dollar-sign" style="color: white;"></i>
           </div>
         </div>
@@ -409,7 +420,7 @@
           
           <p>SELL</p>
           <div
-          style="background-color: #dab038;height: 32px;width: 32px; border: none;border-radius: 50%;display: flex;justify-content: center;align-items: center;">
+          style="background-color: #f4c81a;height: 32px;width: 32px; border: none;border-radius: 50%;display: flex;justify-content: center;align-items: center;">
           <i class="fa-solid fa-dollar-sign" style="color: white;"></i>
         </div>
         </div>
@@ -492,74 +503,81 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
   <script>
-    window.addEventListener("load", () => {
-      clock();
-      function clock() {
-        const today = new Date();
+    function updateTime() {
+  var dateInfo = new Date();
 
-        // get time components
-        const hours = today.getHours();
-        const minutes = today.getMinutes();
-        const seconds = today.getSeconds();
+  /* time */
+  var hr,
+    _min = (dateInfo.getMinutes() < 10) ? "0" + dateInfo.getMinutes() : dateInfo.getMinutes(),
+    sec = (dateInfo.getSeconds() < 10) ? "0" + dateInfo.getSeconds() : dateInfo.getSeconds(),
+    ampm = (dateInfo.getHours() >= 12) ? "PM" : "AM";
 
-        //add '0' to hour, minute & second when they are less 10
-        const hour = hours < 10 ? "0" + hours : hours;
-        const minute = minutes < 10 ? "0" + minutes : minutes;
-        const second = seconds < 10 ? "0" + seconds : seconds;
+  // replace 0 with 12 at midnight, subtract 12 from hour if 13–23
+  if (dateInfo.getHours() == 0) {
+    hr = 12;
+  } else if (dateInfo.getHours() > 12) {
+    hr = dateInfo.getHours() - 12;
+  } else {
+    hr = dateInfo.getHours();
+  }
+// Add to time format
 
-        //make clock a 12-hour time clock
-        const hourTime = hour > 12 ? hour - 12 : hour;
+  var currentTime = hr + ":" + _min + ":" + sec;
 
-        // if (hour === 0) {
-        //   hour = 12;
-        // }
-        //assigning 'am' or 'pm' to indicate time of the day
-        const ampm = hour < 12 ? "AM" : "PM";
 
-        // get date components
-        const month = today.getMonth();
-        const year = today.getFullYear();
-        const day = today.getDate();
 
-        //declaring a list of all months in  a year
-        const monthList = [
-          "January",
-          "February",
-          "March",
-          "April",
-          "May",
-          "June",
-          "July",
-          "August",
-          "September",
-          "October",
-          "November",
-          "December"
-        ];
 
-        //get current date and time
-        const date = monthList[month] + " " + day + ", " + year;
-        const time = hourTime + ":" + minute + ":" + second + ampm;
+  // AM/ PM options 
 
-        //print current date and time to the DOM
-        //document.getElementById("date").innerHTML = date;
-        document.getElementById("time").innerHTML = time;
-        setTimeout(clock, 1000);
-      }
-    });
+  document.getElementsByClassName("hms")[0].innerHTML = currentTime;
+  document.getElementsByClassName("ampm")[0].innerHTML = ampm;
+
+
+
+/*  Add Date options */
+
+
+
+// print time and date once, then update them every second
+updateTime();
+setInterval(function() {
+  updateTime()
+}, 1000);
+
+  /* date */
+  var dow = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday"
+    ],
+    month = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
+    ],
+    day = dateInfo.getDate();
+
+  // store date
+  var currentDate = dow[dateInfo.getDay()] + ", " + month[dateInfo.getMonth()] + " " + day;
+
+  document.getElementsByClassName("date")[0].innerHTML = currentDate;
+};
   </script>
     
-    <script type="text/javascript">
-        const dayNumber = new Date().getDate();
-        const year = new Date().getFullYear();
-        const dayName = new Date().toLocaleString("default", {weekday: "long"});
-        const monthName = new Date().toLocaleString("default", {month: "long"});
-    
-        document.querySelector(".month-name").innerHTML = monthName;
-        document.querySelector(".day-name").innerHTML = dayName;
-        document.querySelector(".date-number").innerHTML = dayNumber;
-        document.querySelector(".year").innerHTML = year;
-        </script>
+   
   <script>
     // Check if the screen width is below a certain threshold (e.g., 1000 pixels)
     if (window.innerWidth < 1024) {
