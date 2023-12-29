@@ -155,7 +155,6 @@ function calculateRates() {
   const weightInput = document.getElementById("weightInput");
 
   // Set default values for unit and weight
-  let purity = parseFloat(purity.value) || 999;
   let unit = parseFloat(unitInput.value) || 1; // Use the value from the input or default to 1
   let weight = weightInput.value || "GM"; // Use the value from the input or default to "GM"
 
@@ -163,17 +162,14 @@ function calculateRates() {
   switch (metalType) {
     case "Gold kilobar":
       unit = 1;
-      purity = 999;
       weight = "KG";
       break;
     case "Gold TOLA":
       unit = 1;
-      purity = 999;
       weight = "TOLA";
       break;
     case "Gold TEN TOLA":
       unit = 1;
-      purity = 999;
       weight = "TTB";
       break;
     // Add more cases for other metal types if needed
@@ -348,7 +344,7 @@ async function showTable() {
         <td>${buyPremiumInputAED}</td>
         <td>
           <button class="btn bg-gradient-primary editRowBtn" data-document-id="${data.id}">
-            <i class="fas fa-edit editRowBtn" data-document-id="${data.id}"></i>  
+            <i class="fas fa-edit editRowBtn" data-document-id="${data.id}"></i> 
           </button>
           <button class="btn bg-gradient-primary deleteRowConfirmation" data-document-id="${data.id}">
             <i class="fas fa-trash-alt deleteRowConfirmation" data-document-id="${data.id}"></i>
@@ -424,12 +420,10 @@ async function saveRow() {
         <td>${metalInput}</td>
         <td>${purityInput}</td>
         <td>${unitInput} ${weightInput}</td>
-        <td>${buyAEDInput}</td>
         <td>${sellAEDInput}</td>
-        
-        <td>${buyPremiumInputAED}</td>
+        <td>${buyAEDInput}</td>
         <td>${sellPremiumInputAED}</td>
-        
+        <td>${buyPremiumInputAED}</td>
         <td>
           <button class="btn bg-gradient-primary editRowBtn" data-document-id="${data.id}">
             <i class="fas fa-edit editRowBtn" data-document-id="${data.id}"></i>
@@ -538,9 +532,8 @@ function updateRow(documentId) {
   editedRow.cells[2].textContent = `${document.getElementById("unitInput").value} ${document.getElementById("weightInput").value}`;
   editedRow.cells[3].textContent = document.getElementById("sellAEDInput").textContent;
   editedRow.cells[4].textContent = document.getElementById("buyAEDInput").textContent;
-  editedRow.cells[5].textContent = document.getElementById("buyPremiumAED").value;
-  editedRow.cells[6].textContent = document.getElementById("sellPremiumAED").value;
-
+  editedRow.cells[5].textContent = document.getElementById("sellPremiumAED").value;
+  editedRow.cells[6].textContent = document.getElementById("buyPremiumAED").value;
 
   // Prepare the data to be updated in Firestore
   const updatedData = {
@@ -548,11 +541,10 @@ function updateRow(documentId) {
     purity: document.getElementById("purityInput").value,
     unit: document.getElementById("unitInput").value,
     weight: document.getElementById("weightInput").value,
-    buyAED: document.getElementById("buyAEDInput").textContent,
     sellAED: document.getElementById("sellAEDInput").textContent,
-    buyPremiumAED: document.getElementById("buyPremiumAED").value
+    buyAED: document.getElementById("buyAEDInput").textContent,
     sellPremiumAED: document.getElementById("sellPremiumAED").value,
-
+    buyPremiumAED: document.getElementById("buyPremiumAED").value
   };
 
 
@@ -703,9 +695,8 @@ function valuesUSDToAED() {
   const sellValueInAED = sellValueInUSDToNum * 3.67;
   const buyValueInAED = buyValueInUSDToNum * 3.67;
 
-  document.getElementById("buyAEDInput").innerHTML = buyValueInAED;
   document.getElementById("sellAEDInput").innerHTML = sellValueInAED;
-
+  document.getElementById("buyAEDInput").innerHTML = buyValueInAED;
 }
 
 
