@@ -344,10 +344,10 @@ async function showTable() {
         <td>${buyPremiumInputAED}</td>
         <td>
           <button class="btn bg-gradient-primary editRowBtn" data-document-id="${data.id}">
-            <i class="fas fa-edit"></i>
+            <i class="fas fa-edit editRowBtn" data-document-id="${data.id}"></i>  
           </button>
           <button class="btn bg-gradient-primary deleteRowConfirmation" data-document-id="${data.id}">
-            <i class="fas fa-trash-alt"></i>
+            <i class="fas fa-trash-alt deleteRowConfirmation" data-document-id="${data.id}"></i>
           </button>
         </td>
         `;
@@ -401,8 +401,6 @@ async function showTable() {
 //   plays();
 // }
 
-
-
 async function saveRow() {
   // Get data from the form
   const metalInput = document.getElementById("metalInput").value;
@@ -427,8 +425,12 @@ async function saveRow() {
         <td>${sellPremiumInputAED}</td>
         <td>${buyPremiumInputAED}</td>
         <td>
-          <button class="btn bg-gradient-primary editRowBtn"><i class="fas fa-edit"></i></button>
-          <button class="btn bg-gradient-primary deleteRowConfirmation"><i class="fas fa-trash-alt"></i></button>
+          <button class="btn bg-gradient-primary editRowBtn" data-document-id="${data.id}">
+            <i class="fas fa-edit editRowBtn" data-document-id="${data.id}"></i>
+          </button>
+          <button class="btn bg-gradient-primary deleteRowConfirmation" data-document-id="${data.id}">
+            <i class="fas fa-trash-alt deleteRowConfirmation" data-document-id="${data.id}"></i>
+          </button>
         </td>
         `;
 
@@ -518,6 +520,7 @@ function editRow(iconElement) {
   $('#addRowModal').modal('show');
 
   document.getElementById("saveChangesButton").addEventListener('click', () => updateRow(documentId));
+  document.getElementById("closeModal").addEventListener('click', () => closeModal());
 }
 
 
@@ -562,13 +565,13 @@ function updateRow(documentId) {
 
   // Hide the modal after updating
   // $('#addRowModal').modal('hide');
-
   document.getElementById("closeModal").addEventListener('click', () => closeModal());
 }
 
-function closeModal(){
-  console.log("lll");
+// Function for Closing Modals on Button Click
+function closeModal() {
   $('#addRowModal').modal('hide');
+  $('#deleteConfirmationModal').modal('hide');
 }
 
 function deleteRowConfirmation(iconElement) {
@@ -580,6 +583,7 @@ function deleteRowConfirmation(iconElement) {
   $('#deleteConfirmationModal').modal('show');
 
   document.getElementById("confirmedDelete").addEventListener('click', () => confirmedDelete(documentId));
+  document.getElementById("closeModal2").addEventListener('click', () => closeModal());
 }
 
 function confirmedDelete(documentId) {

@@ -34,10 +34,10 @@
   <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
   <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
   <!-- Font Awesome Icons -->
-  <!-- <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script> -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"
+  <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"
     integrity="sha512-uKQ39gEGiyUJl4AI6L+ekBdGKpGw4xJ55+xyJG7YFlJokPNYegn9KwQ3P8A7aFQAUtUsAQHep+d/lrGqrbPIDQ=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
   <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
   <!-- CSS Files -->
   <link id="pagestyle" href="../assets/css/soft-ui-dashboard.css?v=1.0.7" rel="stylesheet" />
@@ -1009,8 +1009,8 @@
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="addRowModalLabel">Add New Commodity</h5>
-              <button type="button" class="close" id="closeModal" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
+              <button onclick="closeModal()" type="button" class="close" id="closeModal" data-dismiss="modal" aria-label="Close">
+                x
               </button>
             </div>
             <div class="modal-body">
@@ -1135,8 +1135,8 @@
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="deleteConfirmationModalLabel">Confirm Delete</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
+              <button onclick="closeModal2()" id="closeModal2" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                x
               </button>
             </div>
             <div class="modal-body">
