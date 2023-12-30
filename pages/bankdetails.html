@@ -34,6 +34,32 @@
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
   <link href="/assets/vendor/nucleo/css/nucleo.css" rel="stylesheet">
+
+  <style>
+    .bank-data {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .bank-data .row {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .row2 {
+      margin-top: 25px;
+    }
+
+    .bank-data .action div {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .action-button button {
+
+      margin-right: 10px;
+    }
+  </style>
 </head>
 
 <body class="g-sidenav-show bg-gray-100">
@@ -339,12 +365,102 @@
             <div class="modal-body">
               <form id="bankForm">
                 <div class="form-group">
-                  <label for="name">Name:</label>
-                  <input type="text" class="form-control" id="name">
+                  <label for="name">Holder Name:</label>
+                  <input type="text" class="form-control" id="holderName">
                 </div>
                 <div class="form-group">
-                  <label for="IFCcode">IFC Code:</label>
-                  <input type="text" class="form-control" id="IFCcode">
+                  <label for="Bank">Bank Name:</label>
+                  <select name="bankName" class="form-control" id="bankName" onchange="displayBankLogo()">
+                    <option value="select">Select a Bank</option>
+                    <option value="FBAB">First Abu Dhabi Bank</option>
+                    <option value="ADCB">Abu Dhabi Commercial Bank</option>
+                    <option value="ALMASRAF">Arab Bank For Investment and Foreign Trade</option>
+                    <option value="CBD">Commercial Bank of Dubai</option>
+                    <option value="ENBD">Emirates NBD</option>
+                    <option value="MASHREQ">Mashreq</option>
+                    <option value="bank7">Bank of Sharjah</option>
+                    <option value="bank8">United Arab Bank</option>
+                    <option value="bank9">Invest Bank</option>
+                    <option value="bank10">RAKBANK</option>
+                    <option value="bank11">Commercial Bank International</option>
+                    <option value="bank12">National Bank of Fujairah</option>
+                    <option value="bank13">National Bank of Umm Al Qaiwain</option>
+                    <option value="bank14">Dubai Islamic Bank</option>
+                    <option value="bank15">Emirates Islamic Bank</option>
+                    <option value="bank16">Sharjah Islamic Bank</option>
+                    <option value="bank17">Abu Dhabi Islamic Bank</option>
+                    <option value="bank18">Al Hilal Bank</option>
+                    <option value="bank19">Ajman Bank</option>
+                    <option value="bank20">Emirates Investment Bank</option>
+                    <option value="bank21">Network International</option>
+                    <option value="bank22">Mastercard</option>
+                    <option value="bank23">Foreign Exchange and Remittance Group</option>
+                    <option value="bank24">VISA</option>
+                    <option value="bank25">Al Maryah Community Bank</option>
+                    <option value="bank26">Wio Bank</option>
+                    <option value="bank27">Zand Bank</option>
+                    <option value="bank28">Arab Bank</option>
+                    <option value="bank29">Banque Misr</option>
+                    <option value="bank30">Bank of Baroda</option>
+                    <option value="bank31">Nilein Bank</option>
+                    <option value="bank32">National Bank of Bahrain</option>
+                    <option value="bank33">BNP Paribas Head Office</option>
+                    <option value="bank34">HSBC</option>
+                    <option value="bank35">Arab African International Bank</option>
+                    <option value="bank36">AL Khaliji - France S.A</option>
+                    <option value="bank37">Al Ahli Bank of Kuwait</option>
+                    <option value="bank38">Barclays Bank</option>
+                    <option value="bank39">Habib Bank Limited</option>
+                    <option value="bank40">Habib Bank AG Zurich</option>
+                    <option value="bank41">Standard Chartered Bank</option>
+                    <option value="bank42">Citi Bank</option>
+                    <option value="bank43">Bank Saderat Iran</option>
+                    <option value="bank44">Bank Melli Iran</option>
+                    <option value="bank45">Banque Banorient France</option>
+                    <option value="bank46">United Bank Limited</option>
+                    <option value="bank47">Doha Bank</option>
+                    <option value="bank48">Samba Financial Group</option>
+                    <option value="bank49">Deutsche Bank</option>
+                    <option value="bank50">Industrial and Commercial Bank of China</option>
+                    <option value="bank51">National Bank of Kuwait</option>
+                    <option value="bank52">Gulf International Bank</option>
+                    <option value="bank53">Bank of China</option>
+                    <option value="bank54">BOK International</option>
+                    <option value="bank55">Credit Agricole Corporate and Investment Bank</option>
+                    <option value="bank56">International Development Bank</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="Account">Account Number:</label>
+                  <input type="text" class="form-control" id="AccountNumber">
+                </div>
+                <div class="form-group">
+                  <label for="IBAN">IBAN Code:</label>
+                  <input type="text" class="form-control" id="IBANCode">
+                </div>
+                <div class="form-group">
+                  <label for="IFSCcode">IFSC Code:</label>
+                  <input type="text" class="form-control" id="IFSCcode">
+                </div>
+                <div class="form-group">
+                  <label for="SWIFT">SWIFT Code:</label>
+                  <input type="text" class="form-control" id="SWIFTcode">
+                </div>
+                <div class="form-group">
+                  <label for="Branch">Branch:</label>
+                  <input type="text" class="form-control" id="branch">
+                </div>
+                <div class="form-group">
+                  <label for="City">City:</label>
+                  <input type="text" class="form-control" id="city">
+                </div>
+                <div class="form-group">
+                  <label for="Country">Country:</label>
+                  <input type="text" class="form-control" id="country">
+                </div>
+                <div class="form-group">
+                  <label for="Logo">Logo:</label>
+                  <img id="bank-logo" src="" alt="Bank Logo">
                 </div>
                 <!-- Other bank details inputs can be added here -->
               </form>
@@ -356,7 +472,6 @@
           </div>
         </div>
       </div>
-
 
 
       <script>
@@ -380,13 +495,13 @@
           // When the save button is clicked, you can handle the form data here
           saveButton.addEventListener('click', function () {
             // Get the form values
-            var name = document.getElementById('name').value;
-            var IFCcode = document.getElementById('IFCcode').value;
+            var holderName = document.getElementById('holderName').value;
+            var bankName = document.getElementById('bankName').value;
             // Retrieve other form inputs here if needed
 
             // You can do something with the form data, for example:
-            console.log('Name:', name);
-            console.log('IFC Code:', IFCcode);
+            console.log('Holder Name:', holderName);
+            console.log('Bank Name:', bankName);
 
 
             // Close the modal after saving
@@ -424,22 +539,77 @@
           });
 
           saveButton.addEventListener('click', function () {
-            var name = document.getElementById('name').value;
-            var IFCcode = document.getElementById('IFCcode').value;
+            var holderName = document.getElementById('holderName').value;
+            var bankName = document.getElementById('bankName').value;
+            var AccountNumber = document.getElementById('AccountNumber').value;
+            var IBANCode = document.getElementById('IBANCode').value;
+            var IFSCcode = document.getElementById('IFSCcode').value;
+            var SWIFTcode = document.getElementById('SWIFTcode').value;
+            var branch = document.getElementById('branch').value;
+            var city = document.getElementById('city').value;
+            var country = document.getElementById('country').value;
+            var logo = document.getElementById('logo').value;
 
             // Create a new card for submitted details
             var newCard = document.createElement('div');
-            newCard.className = 'col-md-6'; // Bootstrap column class for half width
+            newCard.className = 'col-md-12'; // Bootstrap column class for half width
             newCard.innerHTML = `
               <div class="card mb-3">
-                  <div class="card-body">
-                      <h5 class="card-title">Bank Details</h5>
-                      <p>Name: ${name}</p>
-                      <p>IFC Code: ${IFCcode}</p>
-                      <button class="btn btn-primary btn-sm edit">Edit</button>
-                      <button class="btn btn-danger btn-sm delete">Delete</button>
-                      <!-- You can add more fields here as needed -->
+                <div class="card-body">
+                  <div class="bank-data">
+                    <div class="row col-md-12">
+                      <div class="col-md-2">
+                        <p>Holder Name</p>
+                        <p>${holderName}</p>
+                      </div>
+                      <div class="col-md-3">
+                        <p>Bank Name</p>
+                        <p>${bankName}</p>
+                      </div>
+                      <div class="col-md-3">
+                        <p>Account Number</p>
+                        <p>${AccountNumber}</p>
+                      </div>
+                      <div class="col-md-2">
+                        <p>IBAN</p>
+                        <p>${IBANCode}</p>
+                      </div>
+                      <div class="col-md-2">
+                        <p>IFSC</p>
+                        <p>${IFSCcode}</p>
+                      </div>
+                    </div>
+                    <div class="row col-md-12 row2">
+                      <div class="col-md-2">
+                        <p>SWIFT</p>
+                        <p>${SWIFTcode}</p>
+                      </div>
+                      <div class="col-md-2">
+                        <p>Branch</p>
+                        <p>${branch}</p>
+                      </div>
+                      <div class="col-md-2">
+                        <p>City</p>
+                        <p>${city}</p>
+                      </div>
+                      <div class="col-md-2">
+                        <p>Country</p>
+                        <p>${country}</p>
+                      </div>
+                      <div class="col-md-2">
+                        <p>Logo</p>
+                        <p>${logo}</p>
+                      </div>
+                      <div class="col-md-2 action">
+                        <p>Action</p>
+                        <div class="action-button">
+                          <button class="btn btn-primary btn-sm edit">Edit</button>
+                          <button class="btn btn-danger btn-sm delete">Delete</button>
+                        </div>
+                      </div>
+                    </div>
                   </div>
+                </div>
               </div>
           `;
             displayCards.appendChild(newCard); // Append the new card
@@ -809,7 +979,12 @@
       window.location.href = '../../../pages/error.html'; // Redirect to a mobile error page
     }
   </script>
-
+  <!-- Firebase  -->
+  <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-database.js"></script>
+  <script type="module" src="../config/db.js"></script>
+  <script type="module" defer src="../assets/js/core/news.js"></script>
 </body>
 
 </html>
