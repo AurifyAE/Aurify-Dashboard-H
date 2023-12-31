@@ -18,6 +18,8 @@ const auth = getAuth(app);
 
 
 document.getElementById('bankName').addEventListener('change', () => displayBankLogo())
+
+
 const deleteButtons = document.querySelectorAll('.delete');
 
 // Function to Read News from Database
@@ -47,6 +49,7 @@ function displayBankDetails() {
 
                 var newCard = document.createElement('div');
                 newCard.className = 'col-md-12';
+                newCard.setAttribute('data-id', documentId);
                 newCard.innerHTML = `
                 <div class="card mb-3">
                   <div class="card-body">
@@ -97,7 +100,7 @@ function displayBankDetails() {
                         <div class="col-md-2 action">
                           <p>Action</p>
                           <div class="action-button">
-                            <button class="btn btn-primary btn-sm edit">Edit</button>
+                            <button class="btn btn-primary btn-sm edit" data-id="${documentId}">Edit</button>
                             <button class="btn btn-danger btn-sm delete" data-id="${documentId}">Delete</button>
                           </div>
                         </div>
@@ -109,14 +112,19 @@ function displayBankDetails() {
                 displayCards.appendChild(newCard); // Append the new card
 
 
-
                 // Add event listener to the delete button
                 const deleteButton = newCard.querySelector('.delete');
+                const editButton = newCard.querySelector('.edit');
+
                 deleteButton.addEventListener('click', () => {
                     const documentId = deleteButton.getAttribute('data-id');
                     deleteBankDetails(documentId, newCard);
                 });
 
+                editButton.addEventListener('click', () => {
+                    const documentId = deleteButton.getAttribute('data-id');
+                    editBankDetails(documentId, bankDetails);
+                });
 
 
                 // Add the news element to the latest news area
@@ -126,6 +134,124 @@ function displayBankDetails() {
         .catch((error) => {
             console.error('Error reading data from Firestore: ', error);
         });
+
+    document.getElementById("closeBtn").addEventListener('click', () => closeModal());
+    document.getElementById("closeBtn2").addEventListener('click', () => closeModal());
+}
+
+// Function for Closing Modals on Button Click
+function closeModal() {
+    var modal = document.getElementById('addModal');
+    modal.style.display = 'none';
+
+    clearForm()
+}
+
+//Function to Clear Values
+function clearForm() {
+    document.getElementById('holderName').value = '';
+    document.getElementById('bankName').value = '';
+    document.getElementById('AccountNumber').value = '';
+    document.getElementById('IBANCode').value = '';
+    document.getElementById('IFSCcode').value = '';
+    document.getElementById('SWIFTcode').value = '';
+    document.getElementById('branch').value = '';
+    document.getElementById('city').value = '';
+    document.getElementById('country').value = '';
+    document.getElementById('bank-logo').value = '';
+}
+
+
+// Function to Update Data
+function editBankDetails(documentId, bankDetails) {
+    console.log("edit");
+    var modal = document.getElementById('addModal');
+    var updateButton = document.getElementById('updateDetails');
+    var saveButton = document.getElementById('saveDetails');
+    var displayCards = document.getElementById('displayCards');
+
+    const logo = displayBankLogo(bankDetails.bankName)
+
+
+    document.getElementById('holderName').value = bankDetails.holderName;
+    document.getElementById('bankName').value = bankDetails.bankName;
+    document.getElementById('AccountNumber').value = bankDetails.AccountNumber;
+    document.getElementById('IBANCode').value = bankDetails.IBANCode;
+    document.getElementById('IFSCcode').value = bankDetails.IFSCcode;
+    document.getElementById('SWIFTcode').value = bankDetails.SWIFTcode;
+    document.getElementById('branch').value = bankDetails.branch;
+    document.getElementById('city').value = bankDetails.city;
+    document.getElementById('country').value = bankDetails.country;
+    document.getElementById('bank-logo').src = logo;
+
+    modal.style.display = 'block'
+    saveButton.style.display = 'none'
+    updateButton.style.display = 'block'
+
+
+    updateButton.addEventListener('click', function () {
+        var holderName = document.getElementById('holderName').value;
+        var bankName = document.getElementById('bankName').value;
+        var AccountNumber = document.getElementById('AccountNumber').value;
+        var IBANCode = document.getElementById('IBANCode').value;
+        var IFSCcode = document.getElementById('IFSCcode').value;
+        var SWIFTcode = document.getElementById('SWIFTcode').value;
+        var branch = document.getElementById('branch').value;
+        var city = document.getElementById('city').value;
+        var country = document.getElementById('country').value;
+        var logo = document.getElementById('bank-logo').value;
+
+        // Get the UID of the authenticated user
+        const uid = sessionStorage.getItem('uid');
+
+        if (!uid) {
+            console.error('User not authenticated');
+            return Promise.reject('User not authenticated');
+        }
+
+        // Create an object with the data to be saved
+        const dataToSave = {
+            holderName: holderName,
+            bankName: bankName,
+            AccountNumber: AccountNumber,
+            IBANCode: IBANCode,
+            IFSCcode: IFSCcode,
+            SWIFTcode: SWIFTcode,
+            branch: branch,
+            city: city,
+            country: country
+        };
+
+        const userCollectionRef = collection(firestore, `users/${uid}/bank`);
+
+        if (userCollectionRef) {
+
+            // Reference to the specific document
+            const specificDocRef = doc(userCollectionRef, documentId);
+
+            // Update the document
+            updateDoc(specificDocRef, dataToSave)
+                .then(() => {
+                    console.log('Data successfully updated in Firestore');
+
+                    // Update the UI to reflect the changes
+                    addBankDetailsToUI(documentId, dataToSave);
+                })
+                .catch((error) => {
+                    console.error('Error updating data in Firestore: ', error);
+                });
+        }
+
+        modal.style.display = 'none';
+
+        clearForm()
+    });
+
+    modal.addEventListener('click', function (event) {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
 }
 
 // Function to delete a news item
@@ -149,6 +275,7 @@ function deleteBankDetails(documentId, newsItem) {
 
 displayBankDetails()
 
+// Function to Display Logo
 function displayBankLogo(bank) {
     var selectedBank = bank;
     var selectedBank2 = document.getElementById("bankName").value;
@@ -214,7 +341,7 @@ function displayBankLogo(bank) {
         "International Development Bank": "../../assets/img/bank/IDB.jpg"
     };
 
-    if (selectedBank !== "select") {   
+    if (selectedBank !== "select") {
         bankLogo.src = bankImageMap[selectedBank2];
         bankLogo.style.display = "block";
         return bankImageMap[selectedBank];
@@ -224,6 +351,8 @@ function displayBankLogo(bank) {
     }
 }
 
+
+// SAVE TO FIREBASE
 document.addEventListener('DOMContentLoaded', function () {
     var addButton = document.getElementById('showForm');
     var modal = document.getElementById('addModal');
@@ -281,10 +410,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
                     // Update the UI to reflect the addition
                     addBankDetailsToUI(documentId, dataToSave);
-
-                    // Optional: You can do other actions if needed
-
-                    // location.reload(); // Reload the page (you may want to remove this depending on your use case)
                 })
                 .catch((error) => {
                     console.error('Error adding data to Firestore: ', error);
@@ -292,6 +417,8 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         modal.style.display = 'none';
+
+        clearForm()
     });
 
     modal.addEventListener('click', function (event) {
@@ -343,14 +470,98 @@ document.addEventListener('DOMContentLoaded', function () {
 //     });
 // });
 
-// Function to dynamically add a new news item to the UI
-function addBankDetailsToUI(documentId, bankDetails) {
-    const logo = displayBankLogo(bankDetails.bankName)
 
-    // Create a new card for submitted details
-    var newCard = document.createElement('div');
-    newCard.className = 'col-md-12'; // Bootstrap column class for half width
-    newCard.innerHTML = `
+
+
+
+function addBankDetailsToUI(documentId, bankDetails) {
+    const logo = displayBankLogo(bankDetails.bankName);
+
+    // Check if the card with the specified documentId already exists
+    const existingCards = document.querySelectorAll('.card.mb-3');
+
+    let cardFound = false;
+
+    existingCards.forEach((card) => {
+        // Assuming you have some way to uniquely identify the card based on its contents
+        // Modify the condition below based on your specific use case
+        if (card.innerHTML.includes(bankDetails.AccountNumber)) {
+            // Update the content of the existing card
+            card.innerHTML = `
+        <div class="card mb-3">
+        <div class="card-body">
+          <div class="bank-data">
+            <div class="row col-md-12">
+              <div class="col-md-2">
+                <p>Holder Name</p>
+                <p>${bankDetails.holderName}</p>
+              </div>
+              <div class="col-md-4">
+                <p>Bank Name</p>
+                <p>${bankDetails.bankName}</p>
+              </div>
+              <div class="col-md-3">
+                <p>Account Number</p>
+                <p>${bankDetails.AccountNumber}</p>
+              </div>
+              <div class="col-md-2">
+                <p>IBAN</p>
+                <p>${bankDetails.IBANCode}</p>
+              </div>
+              <div class="col-md-1">
+                <p>IFSC</p>
+                <p>${bankDetails.IFSCcode}</p>
+              </div>
+            </div>
+            <div class="row col-md-12 row2">
+              <div class="col-md-2">
+                <p>SWIFT</p>
+                <p>${bankDetails.SWIFTcode}</p>
+              </div>
+              <div class="col-md-2">
+                <p>Branch</p>
+                <p>${bankDetails.branch}</p>
+              </div>
+              <div class="col-md-2">
+                <p>City</p>
+                <p>${bankDetails.city}</p>
+              </div>
+              <div class="col-md-2">
+                <p>Country</p>
+                <p>${bankDetails.country}</p>
+              </div>
+              <div class="col-md-2">
+                <p>Logo</p>
+                <img src="${logo}"></img>
+              </div>
+              <div class="col-md-2 action">
+                <p>Action</p>
+                <div class="action-button">
+                  <button class="btn btn-primary btn-sm edit">Edit</button>
+                  <button class="btn btn-danger btn-sm delete" data-id="${documentId}">Delete</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+        `;
+
+            // Add event listener to the delete button
+            const deleteButton = card.querySelector('.delete');
+            deleteButton.addEventListener('click', () => {
+                deleteBankDetails(documentId, card);
+            });
+
+            cardFound = true;
+        }
+    });
+
+    if (!cardFound) {
+        // Create a new card for submitted details if it doesn't exist
+        var newCard = document.createElement('div');
+        newCard.className = 'col-md-12'; // Bootstrap column class for half width
+        newCard.innerHTML = `
     <div class="card mb-3">
       <div class="card-body">
         <div class="bank-data">
@@ -409,14 +620,16 @@ function addBankDetailsToUI(documentId, bankDetails) {
       </div>
     </div>
 `;
-    displayCards.appendChild(newCard); // Append the new card
 
-    // Add event listener to the delete button
-    const deleteButton = newCard.querySelector('.delete');
-    deleteButton.addEventListener('click', () => {
-        deleteBankDetails(documentId, newCard);
-    });
+        displayCards.appendChild(newCard); // Append the new card
 
-    // Add the news element to the latest news area
-    latestNewsArea.appendChild(newCard);
+        // Add event listener to the delete button
+        const deleteButton = newCard.querySelector('.delete');
+        deleteButton.addEventListener('click', () => {
+            deleteBankDetails(documentId, newCard);
+        });
+
+        // Add the news element to the latest news area
+        latestNewsArea.appendChild(newCard);
+    }
 }
