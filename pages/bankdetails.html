@@ -55,9 +55,21 @@
       flex-direction: row;
     }
 
+    .bank-data img{
+      width: 150px;
+      object-fit: contain;
+      margin: 0;
+      padding: 0;
+    }
+
     .action-button button {
 
       margin-right: 10px;
+    }
+
+    .form-group img{
+      width: 200px;
+      object-fit: contain;
     }
   </style>
 </head>
@@ -370,64 +382,64 @@
                 </div>
                 <div class="form-group">
                   <label for="Bank">Bank Name:</label>
-                  <select name="bankName" class="form-control" id="bankName" onchange="displayBankLogo()">
+                  <select name="bankName" class="form-control" id="bankName">
                     <option value="select">Select a Bank</option>
-                    <option value="FBAB">First Abu Dhabi Bank</option>
-                    <option value="ADCB">Abu Dhabi Commercial Bank</option>
-                    <option value="ALMASRAF">Arab Bank For Investment and Foreign Trade</option>
-                    <option value="CBD">Commercial Bank of Dubai</option>
-                    <option value="ENBD">Emirates NBD</option>
-                    <option value="MASHREQ">Mashreq</option>
-                    <option value="bank7">Bank of Sharjah</option>
-                    <option value="bank8">United Arab Bank</option>
-                    <option value="bank9">Invest Bank</option>
-                    <option value="bank10">RAKBANK</option>
-                    <option value="bank11">Commercial Bank International</option>
-                    <option value="bank12">National Bank of Fujairah</option>
-                    <option value="bank13">National Bank of Umm Al Qaiwain</option>
-                    <option value="bank14">Dubai Islamic Bank</option>
-                    <option value="bank15">Emirates Islamic Bank</option>
-                    <option value="bank16">Sharjah Islamic Bank</option>
-                    <option value="bank17">Abu Dhabi Islamic Bank</option>
-                    <option value="bank18">Al Hilal Bank</option>
-                    <option value="bank19">Ajman Bank</option>
-                    <option value="bank20">Emirates Investment Bank</option>
-                    <option value="bank21">Network International</option>
-                    <option value="bank22">Mastercard</option>
-                    <option value="bank23">Foreign Exchange and Remittance Group</option>
-                    <option value="bank24">VISA</option>
-                    <option value="bank25">Al Maryah Community Bank</option>
-                    <option value="bank26">Wio Bank</option>
-                    <option value="bank27">Zand Bank</option>
-                    <option value="bank28">Arab Bank</option>
-                    <option value="bank29">Banque Misr</option>
-                    <option value="bank30">Bank of Baroda</option>
-                    <option value="bank31">Nilein Bank</option>
-                    <option value="bank32">National Bank of Bahrain</option>
-                    <option value="bank33">BNP Paribas Head Office</option>
-                    <option value="bank34">HSBC</option>
-                    <option value="bank35">Arab African International Bank</option>
-                    <option value="bank36">AL Khaliji - France S.A</option>
-                    <option value="bank37">Al Ahli Bank of Kuwait</option>
-                    <option value="bank38">Barclays Bank</option>
-                    <option value="bank39">Habib Bank Limited</option>
-                    <option value="bank40">Habib Bank AG Zurich</option>
-                    <option value="bank41">Standard Chartered Bank</option>
-                    <option value="bank42">Citi Bank</option>
-                    <option value="bank43">Bank Saderat Iran</option>
-                    <option value="bank44">Bank Melli Iran</option>
-                    <option value="bank45">Banque Banorient France</option>
-                    <option value="bank46">United Bank Limited</option>
-                    <option value="bank47">Doha Bank</option>
-                    <option value="bank48">Samba Financial Group</option>
-                    <option value="bank49">Deutsche Bank</option>
-                    <option value="bank50">Industrial and Commercial Bank of China</option>
-                    <option value="bank51">National Bank of Kuwait</option>
-                    <option value="bank52">Gulf International Bank</option>
-                    <option value="bank53">Bank of China</option>
-                    <option value="bank54">BOK International</option>
-                    <option value="bank55">Credit Agricole Corporate and Investment Bank</option>
-                    <option value="bank56">International Development Bank</option>
+                    <option value="First Abu Dhabi Bank">First Abu Dhabi Bank</option>
+                    <option value="Abu Dhabi Commercial Bank">Abu Dhabi Commercial Bank</option>
+                    <option value="Arab Bank For Investment and Foreign Trade">Arab Bank For Investment and Foreign Trade</option>
+                    <option value="Commercial Bank of Dubai">Commercial Bank of Dubai</option>
+                    <option value="Emirates NBD">Emirates NBD</option>
+                    <option value="Mashreq">Mashreq</option>
+                    <option value="Bank of Sharjah">Bank of Sharjah</option>
+                    <option value="United Arab Bank">United Arab Bank</option>
+                    <option value="Invest Bank">Invest Bank</option>
+                    <option value="RAKBANK">RAKBANK</option>
+                    <option value="Commercial Bank International">Commercial Bank International</option>
+                    <option value="National Bank of Fujairah">National Bank of Fujairah</option>
+                    <option value="National Bank of Umm Al Qaiwain">National Bank of Umm Al Qaiwain</option>
+                    <option value="Dubai Islamic Bank">Dubai Islamic Bank</option>
+                    <option value="Emirates Islamic Bank">Emirates Islamic Bank</option>
+                    <option value="Sharjah Islamic Bank">Sharjah Islamic Bank</option>
+                    <option value="Abu Dhabi Islamic Bank">Abu Dhabi Islamic Bank</option>
+                    <option value="Al Hilal Bank">Al Hilal Bank</option>
+                    <option value="Ajman Bank">Ajman Bank</option>
+                    <option value="Emirates Investment Bank">Emirates Investment Bank</option>
+                    <option value="Network International">Network International</option>
+                    <option value="Mastercard">Mastercard</option>
+                    <option value="Foreign Exchange and Remittance Group">Foreign Exchange and Remittance Group</option>
+                    <option value="VISA">VISA</option>
+                    <option value="Al Maryah Community Bank">Al Maryah Community Bank</option>
+                    <option value="Wio Bank">Wio Bank</option>
+                    <option value="Zand Bank">Zand Bank</option>
+                    <option value="Arab Bank">Arab Bank</option>
+                    <option value="Banque Misr">Banque Misr</option>
+                    <option value="Bank of Baroda">Bank of Baroda</option>
+                    <option value="Nilein Bank">Nilein Bank</option>
+                    <option value="National Bank of Bahrain">National Bank of Bahrain</option>
+                    <option value="BNP Paribas Head Office">BNP Paribas Head Office</option>
+                    <option value="HSBC">HSBC</option>
+                    <option value="Arab African International Bank">Arab African International Bank</option>
+                    <option value="AL Khaliji - France S.A">AL Khaliji - France S.A</option>
+                    <option value="Al Ahli Bank of Kuwait">Al Ahli Bank of Kuwait</option>
+                    <option value="Barclays Bank">Barclays Bank</option>
+                    <option value="Habib Bank Limited">Habib Bank Limited</option>
+                    <option value="Habib Bank AG Zurich">Habib Bank AG Zurich</option>
+                    <option value="Standard Chartered Bank">Standard Chartered Bank</option>
+                    <option value="Citi Bank">Citi Bank</option>
+                    <option value="Bank Saderat Iran">Bank Saderat Iran</option>
+                    <option value="Bank Melli Iran">Bank Melli Iran</option>
+                    <option value="Banque Banorient France">Banque Banorient France</option>
+                    <option value="United Bank Limited">United Bank Limited</option>
+                    <option value="Doha Bank">Doha Bank</option>
+                    <option value="Samba Financial Group">Samba Financial Group</option>
+                    <option value="Deutsche Bank">Deutsche Bank</option>
+                    <option value="Industrial and Commercial Bank of China">Industrial and Commercial Bank of China</option>
+                    <option value="National Bank of Kuwait">National Bank of Kuwait</option>
+                    <option value="Gulf International Bank">Gulf International Bank</option>
+                    <option value="Bank of China">Bank of China</option>
+                    <option value="BOK International">BOK International</option>
+                    <option value="Credit Agricole Corporate and Investment Bank">Credit Agricole Corporate and Investment Bank</option>
+                    <option value="International Development Bank">International Development Bank</option>
                   </select>
                 </div>
                 <div class="form-group">
@@ -460,7 +472,7 @@
                 </div>
                 <div class="form-group">
                   <label for="Logo">Logo:</label>
-                  <img id="bank-logo" src="" alt="Bank Logo">
+                  <img id="bank-logo" src="" alt=""> 
                 </div>
                 <!-- Other bank details inputs can be added here -->
               </form>
@@ -474,49 +486,7 @@
       </div>
 
 
-      <script>
-
-        // Wait for the document to be fully loaded
-        document.addEventListener('DOMContentLoaded', function () {
-          // Get the button element
-          var addButton = document.getElementById('showForm');
-
-          // Get the modal
-          var modal = document.getElementById('addModal');
-
-          // Get the button that saves the details
-          var saveButton = document.getElementById('saveDetails');
-
-          // When the "Add" button is clicked, show the modal
-          addButton.addEventListener('click', function () {
-            modal.style.display = 'block';
-          });
-
-          // When the save button is clicked, you can handle the form data here
-          saveButton.addEventListener('click', function () {
-            // Get the form values
-            var holderName = document.getElementById('holderName').value;
-            var bankName = document.getElementById('bankName').value;
-            // Retrieve other form inputs here if needed
-
-            // You can do something with the form data, for example:
-            console.log('Holder Name:', holderName);
-            console.log('Bank Name:', bankName);
-
-
-            // Close the modal after saving
-            modal.style.display = 'none';
-          });
-
-          // Close the modal when the close button or outside the modal is clicked
-          modal.addEventListener('click', function (event) {
-            if (event.target === modal) {
-              modal.style.display = 'none';
-            }
-          });
-        });
-
-      </script>
+      
 
 
       <!-- Your existing modal code -->
@@ -527,119 +497,7 @@
       <!-- This is where the submitted details will be displayed in cards -->
       <div id="displayCards" class="row"></div>
 
-      <script>
-        document.addEventListener('DOMContentLoaded', function () {
-          var addButton = document.getElementById('showForm');
-          var modal = document.getElementById('addModal');
-          var saveButton = document.getElementById('saveDetails');
-          var displayCards = document.getElementById('displayCards');
-
-          addButton.addEventListener('click', function () {
-            modal.style.display = 'block';
-          });
-
-          saveButton.addEventListener('click', function () {
-            var holderName = document.getElementById('holderName').value;
-            var bankName = document.getElementById('bankName').value;
-            var AccountNumber = document.getElementById('AccountNumber').value;
-            var IBANCode = document.getElementById('IBANCode').value;
-            var IFSCcode = document.getElementById('IFSCcode').value;
-            var SWIFTcode = document.getElementById('SWIFTcode').value;
-            var branch = document.getElementById('branch').value;
-            var city = document.getElementById('city').value;
-            var country = document.getElementById('country').value;
-            var logo = document.getElementById('logo').value;
-
-            // Create a new card for submitted details
-            var newCard = document.createElement('div');
-            newCard.className = 'col-md-12'; // Bootstrap column class for half width
-            newCard.innerHTML = `
-              <div class="card mb-3">
-                <div class="card-body">
-                  <div class="bank-data">
-                    <div class="row col-md-12">
-                      <div class="col-md-2">
-                        <p>Holder Name</p>
-                        <p>${holderName}</p>
-                      </div>
-                      <div class="col-md-3">
-                        <p>Bank Name</p>
-                        <p>${bankName}</p>
-                      </div>
-                      <div class="col-md-3">
-                        <p>Account Number</p>
-                        <p>${AccountNumber}</p>
-                      </div>
-                      <div class="col-md-2">
-                        <p>IBAN</p>
-                        <p>${IBANCode}</p>
-                      </div>
-                      <div class="col-md-2">
-                        <p>IFSC</p>
-                        <p>${IFSCcode}</p>
-                      </div>
-                    </div>
-                    <div class="row col-md-12 row2">
-                      <div class="col-md-2">
-                        <p>SWIFT</p>
-                        <p>${SWIFTcode}</p>
-                      </div>
-                      <div class="col-md-2">
-                        <p>Branch</p>
-                        <p>${branch}</p>
-                      </div>
-                      <div class="col-md-2">
-                        <p>City</p>
-                        <p>${city}</p>
-                      </div>
-                      <div class="col-md-2">
-                        <p>Country</p>
-                        <p>${country}</p>
-                      </div>
-                      <div class="col-md-2">
-                        <p>Logo</p>
-                        <p>${logo}</p>
-                      </div>
-                      <div class="col-md-2 action">
-                        <p>Action</p>
-                        <div class="action-button">
-                          <button class="btn btn-primary btn-sm edit">Edit</button>
-                          <button class="btn btn-danger btn-sm delete">Delete</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-          `;
-            displayCards.appendChild(newCard); // Append the new card
-
-            modal.style.display = 'none';
-          });
-
-          // Event delegation for edit and delete buttons
-          displayCards.addEventListener('click', function (event) {
-            if (event.target.classList.contains('edit')) {
-              // Implement edit functionality
-              // You might want to open the modal and populate it with the card details for editing
-              // For example, you can extract the details from the card by traversing the DOM
-              // Then pre-fill the modal fields for editing
-              console.log('Edit button clicked');
-            } else if (event.target.classList.contains('delete')) {
-              // Implement delete functionality
-              // You'll want to remove the entire card from the display
-              event.target.closest('.card').remove();
-              console.log('Delete button clicked');
-            }
-          });
-
-          modal.addEventListener('click', function (event) {
-            if (event.target === modal) {
-              modal.style.display = 'none';
-            }
-          });
-        });
-      </script>
+      
 
 
 
@@ -967,7 +825,7 @@
 
       if (!uid) {
         // If not authenticated, redirect to the login page
-        window.location.href = 'index.html'; // Change to your login page
+        window.location.href = '../../index.html'; // Change to your login page
       }
     });
   </script>
@@ -984,7 +842,7 @@
   <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-database.js"></script>
   <script type="module" src="../config/db.js"></script>
-  <script type="module" defer src="../assets/js/core/news.js"></script>
+  <script type="module" defer src="../assets/js/core/bank.js"></script>
 </body>
 
 </html>
