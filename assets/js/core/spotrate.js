@@ -24,7 +24,7 @@ document.body.addEventListener('click', function (event) {
   if (event.target.classList.contains('editRowBtn')) {
     editRow(event.target);
   }
-
+  
   if (event.target.classList.contains('editGoldBid')) {
     editGoldBid(event.target);
   }
