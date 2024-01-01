@@ -36,6 +36,22 @@
   <link href="/assets/vendor/nucleo/css/nucleo.css" rel="stylesheet">
 
   <style>
+    .container-fluid {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      margin: 0;
+    }
+
+    #displayCards {
+      flex: 1 0 auto;
+    }
+
+    .footer {
+      flex-shrink: 0;
+    }
+
     .bank-data {
       display: flex;
       flex-direction: column;
@@ -55,7 +71,7 @@
       flex-direction: row;
     }
 
-    .bank-data img{
+    .bank-data img {
       width: 150px;
       object-fit: contain;
       margin: 0;
@@ -67,7 +83,7 @@
       margin-right: 10px;
     }
 
-    .form-group img{
+    .form-group img {
       width: 200px;
       object-fit: contain;
     }
@@ -386,7 +402,8 @@
                     <option value="select">Select a Bank</option>
                     <option value="First Abu Dhabi Bank">First Abu Dhabi Bank</option>
                     <option value="Abu Dhabi Commercial Bank">Abu Dhabi Commercial Bank</option>
-                    <option value="Arab Bank For Investment and Foreign Trade">Arab Bank For Investment and Foreign Trade</option>
+                    <option value="Arab Bank For Investment and Foreign Trade">Arab Bank For Investment and Foreign
+                      Trade</option>
                     <option value="Commercial Bank of Dubai">Commercial Bank of Dubai</option>
                     <option value="Emirates NBD">Emirates NBD</option>
                     <option value="Mashreq">Mashreq</option>
@@ -433,12 +450,14 @@
                     <option value="Doha Bank">Doha Bank</option>
                     <option value="Samba Financial Group">Samba Financial Group</option>
                     <option value="Deutsche Bank">Deutsche Bank</option>
-                    <option value="Industrial and Commercial Bank of China">Industrial and Commercial Bank of China</option>
+                    <option value="Industrial and Commercial Bank of China">Industrial and Commercial Bank of China
+                    </option>
                     <option value="National Bank of Kuwait">National Bank of Kuwait</option>
                     <option value="Gulf International Bank">Gulf International Bank</option>
                     <option value="Bank of China">Bank of China</option>
                     <option value="BOK International">BOK International</option>
-                    <option value="Credit Agricole Corporate and Investment Bank">Credit Agricole Corporate and Investment Bank</option>
+                    <option value="Credit Agricole Corporate and Investment Bank">Credit Agricole Corporate and
+                      Investment Bank</option>
                     <option value="International Development Bank">International Development Bank</option>
                   </select>
                 </div>
@@ -472,13 +491,14 @@
                 </div>
                 <div class="form-group">
                   <label for="Logo">Logo:</label>
-                  <img id="bank-logo" src="" alt=""> 
+                  <img id="bank-logo" src="" alt="">
                 </div>
                 <!-- Other bank details inputs can be added here -->
               </form>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary closeBtn" data-dismiss="modal" id="closeBtn2">Close</button>
+              <button type="button" class="btn btn-secondary closeBtn" data-dismiss="modal"
+                id="closeBtn2">Close</button>
               <button type="button" class="btn btn-primary" id="saveDetails">Save</button>
               <button type="button" class="btn btn-primary" id="updateDetails" style="display: none;">Update</button>
             </div>
@@ -487,7 +507,7 @@
       </div>
 
 
-      
+
 
 
       <!-- Your existing modal code -->
@@ -498,7 +518,7 @@
       <!-- This is where the submitted details will be displayed in cards -->
       <div id="displayCards" class="row"></div>
 
-      
+
 
 
 
@@ -511,7 +531,7 @@
 
       <!-- footer starts here -->
 
-      <footer class="footer pt-3  " style="margin-top:38%;">
+      <footer class="footer">
         <div class="container-fluid">
           <div class="row align-items-center justify-content-lg-between">
             <div class="col-lg-6 mb-lg-0 mb-4">

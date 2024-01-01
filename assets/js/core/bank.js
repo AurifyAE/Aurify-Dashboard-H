@@ -223,7 +223,7 @@ function updateBankDetails(documentId) {
 
   const userCollectionRef = collection(firestore, `users/${uid}/bank`);
 
-  if (userCollectionRef) {  
+  if (userCollectionRef) {
     // Reference to the specific document
     const specificDocRef = doc(userCollectionRef, documentId);
 
@@ -233,7 +233,7 @@ function updateBankDetails(documentId) {
         console.log('Data successfully updated in Firestore');
 
         // UI
-        location.reload()
+        // location.reload()
       })
       .catch((error) => {
         console.error('Error updating data in Firestore: ', error);
@@ -422,7 +422,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-
+// Refresh UI
 function addBankDetailsToUI(documentId, bankDetails) {
   const logo = displayBankLogo(bankDetails.bankName);
 
