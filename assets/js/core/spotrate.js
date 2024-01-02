@@ -24,7 +24,7 @@ document.body.addEventListener('click', function (event) {
   if (event.target.classList.contains('editRowBtn')) {
     editRow(event.target);
   }
-  
+
   if (event.target.classList.contains('editGoldBid')) {
     editGoldBid(event.target);
   }
@@ -614,9 +614,9 @@ function setGoldValue(goldValue) {
   const goldSpread = document.getElementById("goldSpread").textContent;
   document.getElementById("goldBiddingPrice").textContent = (goldValue + parseFloat(goldSpread)).toFixed(2);
 
-  document.getElementById("goldAsk").textContent = goldValue + 0.5;
+  document.getElementById("goldAsk").textContent = (goldValue + 0.5 + parseFloat(goldSpread)).toFixed(2);
   const goldAskSpread = document.getElementById("goldAskSpread").textContent;
-  document.getElementById("goldAskingPrice").textContent = (goldValue + 0.5 + parseFloat(goldAskSpread)).toFixed(2);
+  document.getElementById("goldAskingPrice").textContent = (goldValue + 0.5 + parseFloat(goldAskSpread) + parseFloat(goldSpread)).toFixed(2);
 
   // Set Value to Commodity
   updateSellUSDInput(goldValue + 0.5);
@@ -767,13 +767,14 @@ function editGoldBid() {
     }
     console.log(totalGoldSpreadValue);
 
-    document.getElementById("goldBiddingPrice").innerHTML = totalGoldSpreadValue;
-    document.getElementById("goldAsk").innerHTML = totalGoldSpreadValue + 0.5;
-    document.getElementById("goldAskingPrice").innerHTML = totalGoldSpreadValue + 0.5;
-
     const editedAskSpreadValue = parseFloat(document.getElementById("goldAskSpread").textContent.trim());
     const editedBidSilverSpreadValue = parseFloat(document.getElementById("silverSpread").textContent.trim());
     const editedAskSilverSpreadValue = parseFloat(document.getElementById("silverAskSpread").textContent.trim());
+
+
+    document.getElementById("goldBiddingPrice").innerHTML = totalGoldSpreadValue;
+    document.getElementById("goldAsk").innerHTML = 0.5 + totalGoldSpreadValue;
+    document.getElementById("goldAskingPrice").innerHTML = 0.5 + totalGoldSpreadValue;
 
     // Add the edited spread value to Firebase
     addToFirebaseSpreadCollection(editedGoldSpreadValue, editedAskSpreadValue, editedBidSilverSpreadValue, editedAskSilverSpreadValue);
