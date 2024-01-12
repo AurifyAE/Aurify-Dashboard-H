@@ -343,7 +343,7 @@
         <div class="row gx-4">
           <div class="col-auto">
             <div class="avatar avatar-xl position-relative">
-              <img src="../orbexbullion l1.png" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
+              <img src="" alt="profile_image" class="w-100 border-radius-lg shadow-sm" id="profile-logo">
             </div>
           </div>
 
@@ -609,12 +609,12 @@
         <div class="col-12 col-xl-4">
           <div class="card h-100">
             <div class="card-header pb-0 p-3">
-              <h6 class="mb-0">Copmany logo</h6>
+              <h6 class="mb-0">Company Logo</h6>
             </div>
             <div class="card-body p-3">
               <!-- Logo Upload Area -->
               <div class="logo-upload">
-                <label for="logo" class="logo-label">Upload Logo:</label>
+                <label for="logo" class="logo-label">Upload Logo :</label>
                 <input type="file" id="logo" name="logo" accept="image/*" style="display: none;">
                 <!-- Replace "Choose a Logo" text with a button -->
                 <label for="logo" class="logo-button"><i class="fa-solid fa-image"></i></label>
@@ -623,6 +623,9 @@
                   <img id="logo-preview" src="#" alt="" style="max-width: 100%; max-height: 150px;">
                   <!-- Delete Icon -->
                   <span id="delete-icon" class="delete-icon" style="display: none;">&#x274C;</span>
+                </div>
+                <div>
+                 <h5 id="success-message" style="display: none;">Successfully Uploaded</h5>
                 </div>
               </div>
             </div>
@@ -639,70 +642,6 @@
           </div>
         </div>
 
-        <script>
-          // JavaScript to handle logo upload and preview
-          const logoInput = document.getElementById('logo');
-          const logoPreview = document.getElementById('logo-preview');
-          const deleteIcon = document.getElementById('delete-icon');
-
-          logoInput.addEventListener('change', function () {
-            const file = logoInput.files[0];
-            if (file) {
-              const reader = new FileReader();
-              reader.onload = function (e) {
-                logoPreview.src = e.target.result;
-                deleteIcon.style.display = 'inline'; // Show the delete icon
-              };
-              reader.readAsDataURL(file);
-            } else {
-              logoPreview.src = '#'; // Clear the preview if no file selected
-              deleteIcon.style.display = 'none'; // Hide the delete icon
-            }
-          });
-
-          // Add a click event listener to the delete icon
-          deleteIcon.addEventListener('click', function () {
-            logoInput.value = ''; // Clear the file input
-            logoPreview.src = ''; // Clear the preview
-            deleteIcon.style.display = 'none'; // Hide the delete icon
-          });
-        </script>
-
-
-
-        <script>
-          // Function to handle logo change
-          function handleLogoChange() {
-            const logoInput = document.getElementById('logo');
-            const logoPreview = document.getElementById('logo-preview');
-            const tvLogo = document.getElementById('tv-logo');
-
-            // Add an event listener to the logo input element
-            logoInput.addEventListener('change', function () {
-              // Check if a file is selected
-              if (logoInput.files.length > 0) {
-                // Get the selected file
-                const selectedFile = logoInput.files[0];
-
-                // Create a FileReader to read the selected file
-                const reader = new FileReader();
-
-                // Set up the onload event handler for the FileReader
-                reader.onload = function () {
-                  // Update the src attribute of the logo preview and TV logo elements
-                  logoPreview.src = reader.result;
-                  tvLogo.src = reader.result;
-                };
-
-                // Read the selected file as a data URL
-                reader.readAsDataURL(selectedFile);
-              }
-            });
-          }
-
-          // Call the function to initialize the logo change functionality
-          handleLogoChange();
-        </script>
 
         </script>
 
@@ -876,6 +815,7 @@
     <!-- Firebase  -->
     <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-storage.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-database.js"></script>
     <script type="module" src="../config/db.js"></script>
     <script type="module" src="../assets/js/core/profileDB.js"></script>
