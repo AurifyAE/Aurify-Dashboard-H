@@ -34,6 +34,20 @@
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
   <link href="/assets/vendor/nucleo/css/nucleo.css" rel="stylesheet">
+
+  <style>
+    .fa-image {
+      padding: 15px;
+      font-size: 25px;
+      cursor: pointer;
+      border: 1px solid grey;
+      border-radius: 10px;
+    }
+
+    .delete-icon{
+      cursor: pointer;
+    }
+  </style>
 </head>
 
 <body class="g-sidenav-show bg-gray-100">
@@ -600,13 +614,13 @@
             <div class="card-body p-3">
               <!-- Logo Upload Area -->
               <div class="logo-upload">
-                <label for="logo">Upload Logo:</label>
+                <label for="logo" class="logo-label">Upload Logo:</label>
                 <input type="file" id="logo" name="logo" accept="image/*" style="display: none;">
                 <!-- Replace "Choose a Logo" text with a button -->
-                <label for="logo" class="logo-button">Choose a Logo</label>
+                <label for="logo" class="logo-button"><i class="fa-solid fa-image"></i></label>
                 <!-- Logo Showcase -->
                 <div class="logo-showcase">
-                  <img id="logo-preview" src="#" alt="Uploaded Logo" style="max-width: 100%; max-height: 150px;">
+                  <img id="logo-preview" src="#" alt="" style="max-width: 100%; max-height: 150px;">
                   <!-- Delete Icon -->
                   <span id="delete-icon" class="delete-icon" style="display: none;">&#x274C;</span>
                 </div>
