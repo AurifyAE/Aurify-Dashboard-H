@@ -22,7 +22,7 @@ document.getElementById('bankName').addEventListener('change', () => displayBank
 
 const deleteButtons = document.querySelectorAll('.delete');
 
-// Function to Read News from Database
+// Function to Read Data from Database
 function displayBankDetails() {
   // Get the UID of the authenticated user
   const uid = sessionStorage.getItem('uid');
@@ -32,7 +32,7 @@ function displayBankDetails() {
     return Promise.reject('User not authenticated');
   }
 
-  // Reference to the user's profile collection
+  // Reference to the user's bank collection
   const userCollectionRef = collection(firestore, `users/${uid}/bank`);
 
   // Get all documents in the collection
@@ -142,9 +142,14 @@ function displayBankDetails() {
 function closeModal() {
   var modal = document.getElementById('addModal');
   modal.style.display = 'none';
-
   clearForm()
 }
+
+var modal = document.getElementById('addModal');
+modal.addEventListener('click', function (event) {
+  event.stopPropagation();
+});
+
 
 //Function to Clear Values
 function clearForm() {
@@ -345,81 +350,104 @@ function displayBankLogo(bank) {
 }
 
 
-// SAVE TO FIREBASE
-document.addEventListener('DOMContentLoaded', function () {
-  var addButton = document.getElementById('showForm');
-  var modal = document.getElementById('addModal');
-  var saveButton = document.getElementById('saveDetails');
-  var displayCards = document.getElementById('displayCards');
+var addButton = document.getElementById('showForm');
+var modal = document.getElementById('addModal');
+var saveButton = document.getElementById('saveDetails');
+var displayCards = document.getElementById('displayCards');
 
-  addButton.addEventListener('click', function () {
-    modal.style.display = 'block';
-  });
+addButton.addEventListener('click', showModal);
 
-  saveButton.addEventListener('click', function () {
-    var holderName = document.getElementById('holderName').value;
-    var bankName = document.getElementById('bankName').value;
-    var AccountNumber = document.getElementById('AccountNumber').value;
-    var IBANCode = document.getElementById('IBANCode').value;
-    var IFSCcode = document.getElementById('IFSCcode').value;
-    var SWIFTcode = document.getElementById('SWIFTcode').value;
-    var branch = document.getElementById('branch').value;
-    var city = document.getElementById('city').value;
-    var country = document.getElementById('country').value;
-    var logo = document.getElementById('bank-logo').value;
+saveButton.addEventListener('click', saveData);
 
-    // Get the UID of the authenticated user
-    const uid = sessionStorage.getItem('uid');
+modal.addEventListener('click', function (event) {
+  if (event.target === modal) {
+    hideModal();
+  }
+});
 
-    if (!uid) {
-      console.error('User not authenticated');
-      return Promise.reject('User not authenticated');
-    }
+function showModal() {
+  console.log('click');
+  modal.style.display = 'block';
+  $('#bankName').val('select');
+}
 
-    // Create an object with the data to be saved
-    const dataToSave = {
-      holderName: holderName,
-      bankName: bankName,
-      AccountNumber: AccountNumber,
-      IBANCode: IBANCode,
-      IFSCcode: IFSCcode,
-      SWIFTcode: SWIFTcode,
-      branch: branch,
-      city: city,
-      country: country
-    };
+function saveData() {
+  var holderName = document.getElementById('holderName').value;
+  var bankName = document.getElementById('bankName').value;
+  var AccountNumber = document.getElementById('AccountNumber').value;
+  var IBANCode = document.getElementById('IBANCode').value;
+  var IFSCcode = document.getElementById('IFSCcode').value;
+  var SWIFTcode = document.getElementById('SWIFTcode').value;
+  var branch = document.getElementById('branch').value;
+  var city = document.getElementById('city').value;
+  var country = document.getElementById('country').value;
+  var logo = document.getElementById('bank-logo').value;
 
-    // Reference to the user's profile collection
-    const userCollectionRef = collection(firestore, `users/${uid}/bank`);
+  if (!holderName || !bankName || !AccountNumber || !IBANCode || !IFSCcode 
+    || !SWIFTcode || !branch || !city || !country) {
+    // alert('Enter Details')
+    var holderName = document.getElementById('holderName');
+    var bankName = document.getElementById('bankName');
+    var AccountNumber = document.getElementById('AccountNumber');
+    var IBANCode = document.getElementById('IBANCode');
+    var IFSCcode = document.getElementById('IFSCcode');
+    var SWIFTcode = document.getElementById('SWIFTcode');
+    var branch = document.getElementById('branch');
+    var city = document.getElementById('city');
+    var country = document.getElementById('country');
 
-    if (userCollectionRef) {
-      // Create a new document
-      addDoc(userCollectionRef, dataToSave)
-        .then((docRef) => {
-          console.log('Data successfully added to Firestore');
+    holderName.style.border = '2px solid red';
+    bankName.style.border = '2px solid red';
+    AccountNumber.style.border = '2px solid red';
+    IBANCode.style.border = '2px solid red';
+    IFSCcode.style.border = '2px solid red';
+    SWIFTcode.style.border = '2px solid red';
+    branch.style.border = '2px solid red';
+    city.style.border = '2px solid red';
+    country.style.border = '2px solid red';
+  }
 
-          // Get the newly generated document ID
-          const documentId = docRef.id;
+  const uid = sessionStorage.getItem('uid');
 
-          // Update the UI to reflect the addition
-          addBankDetailsToUI(documentId, dataToSave);
-        })
-        .catch((error) => {
-          console.error('Error adding data to Firestore: ', error);
-        });
-    }
+  if (!uid) {
+    console.error('User not authenticated');
+    return Promise.reject('User not authenticated');
+  }
 
-    modal.style.display = 'none';
+  const dataToSave = {
+    holderName: holderName,
+    bankName: bankName,
+    AccountNumber: AccountNumber,
+    IBANCode: IBANCode,
+    IFSCcode: IFSCcode,
+    SWIFTcode: SWIFTcode,
+    branch: branch,
+    city: city,
+    country: country
+  };
 
-    clearForm()
-  });
+  const userCollectionRef = collection(firestore, `users/${uid}/bank`);
 
-  modal.addEventListener('click', function (event) {
-    if (event.target === modal) {
-      modal.style.display = 'none';
-    }
-  });
-}); 
+  if (userCollectionRef) {
+    addDoc(userCollectionRef, dataToSave)
+      .then((docRef) => {
+        console.log('Data successfully added to Firestore');
+        const documentId = docRef.id;
+        addBankDetailsToUI(documentId, dataToSave);
+      })
+      .catch((error) => {
+        console.error('Error adding data to Firestore: ', error);
+      });
+  }
+
+  hideModal();
+  clearForm();
+}
+
+function hideModal() {
+  modal.style.display = 'none';
+}
+
 
 
 // Refresh UI
