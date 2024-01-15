@@ -28,7 +28,7 @@ submitButton.addEventListener("click", function (e) {
             // Store the UID in sessionStorage
             sessionStorage.setItem('uid', user.uid);
 
-            window.alert("Success! Welcome back!");
+            // window.alert("Success! Welcome back!");
             // ...
 
             // Redirect to the dashboard page (change 'dashboard.html' to your actual dashboard page)

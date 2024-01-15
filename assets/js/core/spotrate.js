@@ -584,6 +584,7 @@ function deleteRowConfirmation(iconElement) {
 
   document.getElementById("confirmedDelete").addEventListener('click', () => confirmedDelete(documentId));
   document.getElementById("closeModal2").addEventListener('click', () => closeModal());
+  document.getElementById("closeModal3").addEventListener('click', () => closeModal());
 }
 
 function confirmedDelete(documentId) {
