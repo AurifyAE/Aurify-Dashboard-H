@@ -172,6 +172,10 @@ function calculateRates() {
       unit = 1;
       weight = "TTB";
       break;
+      case "Silver":
+        unit = 1;
+        weight = "GM";
+        break;
     // Add more cases for other metal types if needed
     default:
       break;
@@ -1036,4 +1040,3 @@ function editSilverMarginValue() {
     document.getElementById("silverNewHighValue").innerHTML = finalHighMarginValue;
   });
 }
-
