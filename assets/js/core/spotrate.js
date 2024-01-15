@@ -652,6 +652,12 @@ function setSilverValue(silverValue) {
   document.getElementById("silverAsk").innerHTML = silverValue + 0.05
   const silverAskSpread = document.getElementById("silverAskSpread").textContent;
   document.getElementById("silverAskingPrice").innerHTML = (silverValue + 0.05 + parseFloat(silverAskSpread)).toFixed(2);
+
+  var silverValuegm = silverValue
+  var SilverUSDResult = (silverValuegm / 31.1035).toFixed(4);
+  var SilverAEDResult = (SilverUSDResult * 3.67).toFixed(4);
+  document.getElementById("SilverUSDresult").textContent = SilverUSDResult;
+  document.getElementById("SilverAEDresult").textContent = SilverAEDResult;
 }
 
 //Margin Value
