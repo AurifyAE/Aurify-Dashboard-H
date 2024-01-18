@@ -50,7 +50,7 @@ function displayBankDetails() {
         var newCard = document.createElement('div');
         newCard.className = 'col-md-12';
         newCard.innerHTML = `
-                <div class="card mb-3">
+                <div class="card mb-3" id="div-${documentId}">
                   <div class="card-body">
                     <div class="bank-data">
                       <div class="row col-md-12">
@@ -190,7 +190,69 @@ function editBankDetails(documentId, bankDetails) {
   document.getElementById('updateDetails').addEventListener('click', () => updateBankDetails(documentId));
 }
 
-// Function to Update Data
+// // Function to Update Data
+// function updateBankDetails(documentId) {
+//   var modal = document.getElementById('addModal');
+
+//   var holderName = document.getElementById('holderName').value;
+//   var bankName = document.getElementById('bankName').value;
+//   var AccountNumber = document.getElementById('AccountNumber').value;
+//   var IBANCode = document.getElementById('IBANCode').value;
+//   var IFSCcode = document.getElementById('IFSCcode').value;
+//   var SWIFTcode = document.getElementById('SWIFTcode').value;
+//   var branch = document.getElementById('branch').value;
+//   var city = document.getElementById('city').value;
+//   var country = document.getElementById('country').value;
+//   var logo = document.getElementById('bank-logo').value;
+
+//   // Get the UID of the authenticated user
+//   const uid = sessionStorage.getItem('uid');
+
+//   if (!uid) {
+//     console.error('User not authenticated');
+//     return Promise.reject('User not authenticated');
+//   }
+
+//   // Create an object with the data to be saved
+//   const dataToSave = {
+//     holderName: holderName,
+//     bankName: bankName,
+//     AccountNumber: AccountNumber,
+//     IBANCode: IBANCode,
+//     IFSCcode: IFSCcode,
+//     SWIFTcode: SWIFTcode,
+//     branch: branch,
+//     city: city,
+//     country: country
+//   };
+
+//   const userCollectionRef = collection(firestore, `users/${uid}/bank`);
+
+//   if (userCollectionRef) {
+//     // Reference to the specific document
+//     const specificDocRef = doc(userCollectionRef, documentId);
+
+//     // Update the document
+//     updateDoc(specificDocRef, dataToSave)
+//       .then(() => {
+//         console.log('Data successfully updated in Firestore');
+
+//         //addBankDetailsToUI(documentId, dataToSave);
+
+//         // UI
+//         // location.reload()
+//       })
+//       .catch((error) => {
+//         console.error('Error updating data in Firestore: ', error);
+//       });
+//   }
+
+
+//   modal.style.display = 'none';
+
+//   clearForm()
+// }
+
 function updateBankDetails(documentId) {
   var modal = document.getElementById('addModal');
 
@@ -213,7 +275,6 @@ function updateBankDetails(documentId) {
     return Promise.reject('User not authenticated');
   }
 
-  // Create an object with the data to be saved
   const dataToSave = {
     holderName: holderName,
     bankName: bankName,
@@ -232,24 +293,34 @@ function updateBankDetails(documentId) {
     // Reference to the specific document
     const specificDocRef = doc(userCollectionRef, documentId);
 
-    // Update the document
+    // Update the document in Firestore
     updateDoc(specificDocRef, dataToSave)
       .then(() => {
         console.log('Data successfully updated in Firestore');
 
-        // UI
-        // location.reload()
+
+        // Now update the content in your UI
+        const divToUpdate = document.getElementById(`div-${documentId}`);
+        if (divToUpdate) {
+          // Update the content in the corresponding div
+          divToUpdate.innerHTML = `
+                   <!-- Your HTML structure here with updated data -->
+                `;
+
+          addBankDetailsToUI(documentId, dataToSave)
+        } else {
+          console.error(`Element with id 'div-${documentId}' not found`);
+        }
       })
       .catch((error) => {
         console.error('Error updating data in Firestore: ', error);
       });
   }
 
-
   modal.style.display = 'none';
-
-  clearForm()
+  clearForm();
 }
+
 
 
 // Function to delete a news item
@@ -383,7 +454,7 @@ function saveData() {
   var country = document.getElementById('country').value;
   var logo = document.getElementById('bank-logo').value;
 
-  if (!holderName || !bankName || !AccountNumber || !IBANCode || !IFSCcode 
+  if (!holderName || !bankName || !AccountNumber || !IBANCode || !IFSCcode
     || !SWIFTcode || !branch || !city || !country) {
     // alert('Enter Details')
     var holderName = document.getElementById('holderName');
@@ -457,7 +528,7 @@ function addBankDetailsToUI(documentId, bankDetails) {
   var newCard = document.createElement('div');
   newCard.className = 'col-md-12'; // Bootstrap column class for half width
   newCard.innerHTML = `
-    <div class="card mb-3">
+    <div class="card mb-3" id="div-${documentId}">
       <div class="card-body">
         <div class="bank-data">
           <div class="row col-md-12">
