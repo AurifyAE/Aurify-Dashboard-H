@@ -152,11 +152,16 @@ async function readData() {
     const querySnapshot = await getDocs(collection(firestore, `users/${uid}/commodities`));
     const result = [];
     querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        const timestamp = data.timestamp;
+
         result.push({
             id: doc.id,
-            data: doc.data()
+            data: doc.data(),
+            timestamp: timestamp
         });
     });
+    result.sort((a, b) => a.timestamp - b.timestamp);
     return result;
 }
 

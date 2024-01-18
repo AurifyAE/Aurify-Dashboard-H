@@ -1,4 +1,5 @@
 import { saveDataToFirestore, readData, updateDataInFirestore, deleteDataFromFirestore, saveSpreadValues, readSpreadValues } from '../core/spotrateDB.js'
+import { serverTimestamp } from 'https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore.js';
 
 setInterval(() => {
   fetchData()
@@ -172,10 +173,10 @@ function calculateRates() {
       unit = 1;
       weight = "TTB";
       break;
-      case "Silver":
-        unit = 1;
-        weight = "GM";
-        break;
+    case "Silver":
+      unit = 1;
+      weight = "GM";
+      break;
     // Add more cases for other metal types if needed
     default:
       break;
@@ -387,11 +388,13 @@ async function showTable() {
         let askSpreadValue = askSpread || 0;
         let bidSpreadValue = bidSpread || 0;
 
+        const goldSpread = document.getElementById('goldSpread').textContent;
+
         // console.log(unitMultiplier);
         // console.log(parseFloat(goldValue));
 
         // Update the sellAED and buyAED values for the current 
-        newRow.querySelector("#sellAED").innerText = parseFloat(((parseFloat(goldValue) + parseFloat(sellPremium) + parseFloat(askSpreadValue) + parseFloat(0.5)) * unitInput * unitMultiplier * (purityInput / Math.pow(10, purityInput.length))).toFixed(4));
+        newRow.querySelector("#sellAED").innerText = parseFloat(((parseFloat(goldValue) + parseFloat(sellPremium) + parseFloat(goldSpread) + parseFloat(0.5)) * unitInput * unitMultiplier * (purityInput / Math.pow(10, purityInput.length))).toFixed(4));
         newRow.querySelector("#buyAED").innerText = ((parseFloat(goldValue) + parseFloat(buyPremium) + parseFloat(bidSpreadValue)) * unitInput * unitMultiplier * (purityInput / Math.pow(10, purityInput.length))).toFixed(4);
       }, 1000)
 
@@ -443,6 +446,9 @@ async function saveRow() {
 
   // Firebase
   try {
+    // Add timestamp to data
+    const timestamp = serverTimestamp();
+
     // Save data to Firestore
     saveDataToFirestore({
       metal: metalInput,
@@ -452,13 +458,15 @@ async function saveRow() {
       sellAED: sellAEDInput,
       buyAED: buyAEDInput,
       sellPremiumAED: sellPremiumInputAED,
-      buyPremiumAED: buyPremiumInputAED
+      buyPremiumAED: buyPremiumInputAED,
+      timestamp: timestamp
     }).then((response) => {
       console.log("Document written with ID: ", response.id);
-    })
+    });
   } catch (error) {
     console.error("Error adding document: ", error);
   }
+
 
   document.getElementById("addRowModal").addEventListener("show.bs.modal", function () {
     // Check if it's for editing or adding
