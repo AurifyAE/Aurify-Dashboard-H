@@ -394,10 +394,9 @@ async function showTable() {
         // console.log(parseFloat(goldValue));
 
         // Update the sellAED and buyAED values for the current 
-        newRow.querySelector("#sellAED").innerText = parseFloat(((parseFloat(goldValue) + parseFloat(sellPremium) + parseFloat(goldSpread) + parseFloat(0.5)) * unitInput * unitMultiplier * (purityInput / Math.pow(10, purityInput.length))).toFixed(4));
-        newRow.querySelector("#buyAED").innerText = ((parseFloat(goldValue) + parseFloat(buyPremium) + parseFloat(bidSpreadValue)) * unitInput * unitMultiplier * (purityInput / Math.pow(10, purityInput.length))).toFixed(4);
+        newRow.querySelector("#sellAED").innerText = parseFloat(((parseFloat(goldValue) + parseFloat(goldSpread) + parseFloat(0.5)) * unitInput * unitMultiplier * (purityInput / Math.pow(10, purityInput.length)) + parseFloat(sellPremium) ).toFixed(4));
+        newRow.querySelector("#buyAED").innerText = ((parseFloat(goldValue) + parseFloat(bidSpreadValue)) * unitInput * unitMultiplier * (purityInput / Math.pow(10, purityInput.length)) + parseFloat(buyPremium)).toFixed(4);
       }, 1000)
-
     }
   } catch (error) {
     console.error('Error reading data:', error);
@@ -523,9 +522,9 @@ function editRow(iconElement) {
   document.getElementById("weightInput").value = weightInput;
   document.getElementById("sellAEDInput").textContent = sellAEDInput;
   document.getElementById("buyAEDInput").textContent = buyAEDInput;
-  document.getElementById("sellPremiumUSD").value = sellPremiumInputAED;
+  // document.getElementById("sellPremiumUSD").value = sellPremiumInputAED;
   document.getElementById("sellPremiumAED").value = sellPremiumInputAED;
-  document.getElementById("buyPremiumUSD").value = buyPremiumInputAED;
+  // document.getElementById("buyPremiumUSD").value = buyPremiumInputAED;
   document.getElementById("buyPremiumAED").value = buyPremiumInputAED;
 
   // Show the modal for editing
