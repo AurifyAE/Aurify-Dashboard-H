@@ -96,6 +96,64 @@ async function fetchData() {
   }
 }
 
+// async function fetchData() {
+//   console.log('koiiii');
+//   const token = 'eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1M2UzZDVhOWY2YTU1MzNkOGExZjEyOGY2ODZhZGJhNSIsInBlcm1pc3Npb25zIjpbXSwiYWNjZXNzUnVsZXMiOlt7ImlkIjoidHJhZGluZy1hY2NvdW50LW1hbmFnZW1lbnQtYXBpIiwibWV0aG9kcyI6WyJ0cmFkaW5nLWFjY291bnQtbWFuYWdlbWVudC1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoibWV0YWFwaS1yZXN0LWFwaSIsIm1ldGhvZHMiOlsibWV0YWFwaS1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoibWV0YWFwaS1ycGMtYXBpIiwibWV0aG9kcyI6WyJtZXRhYXBpLWFwaTp3czpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoibWV0YWFwaS1yZWFsLXRpbWUtc3RyZWFtaW5nLWFwaSIsIm1ldGhvZHMiOlsibWV0YWFwaS1hcGk6d3M6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbIio6JFVTRVJfSUQkOioiXX0seyJpZCI6Im1ldGFzdGF0cy1hcGkiLCJtZXRob2RzIjpbIm1ldGFzdGF0cy1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoicmlzay1tYW5hZ2VtZW50LWFwaSIsIm1ldGhvZHMiOlsicmlzay1tYW5hZ2VtZW50LWFwaTpyZXN0OnB1YmxpYzoqOioiXSwicm9sZXMiOlsicmVhZGVyIiwid3JpdGVyIl0sInJlc291cmNlcyI6WyIqOiRVU0VSX0lEJDoqIl19LHsiaWQiOiJjb3B5ZmFjdG9yeS1hcGkiLCJtZXRob2RzIjpbImNvcHlmYWN0b3J5LWFwaTpyZXN0OnB1YmxpYzoqOioiXSwicm9sZXMiOlsicmVhZGVyIiwid3JpdGVyIl0sInJlc291cmNlcyI6WyIqOiRVU0VSX0lEJDoqIl19LHsiaWQiOiJtdC1tYW5hZ2VyLWFwaSIsIm1ldGhvZHMiOlsibXQtbWFuYWdlci1hcGk6cmVzdDpkZWFsaW5nOio6KiIsIm10LW1hbmFnZXItYXBpOnJlc3Q6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbIio6JFVTRVJfSUQkOioiXX0seyJpZCI6ImJpbGxpbmctYXBpIiwibWV0aG9kcyI6WyJiaWxsaW5nLWFwaTpyZXN0OnB1YmxpYzoqOioiXSwicm9sZXMiOlsicmVhZGVyIl0sInJlc291cmNlcyI6WyIqOiRVU0VSX0lEJDoqIl19XSwidG9rZW5JZCI6IjIwMjEwMjEzIiwiaW1wZXJzb25hdGVkIjpmYWxzZSwicmVhbFVzZXJJZCI6IjUzZTNkNWE5ZjZhNTUzM2Q4YTFmMTI4ZjY4NmFkYmE1IiwiaWF0IjoxNzA4MzUyMzg5fQ.NOoHG_OenAmoYhAhvDhHAHPVIw9kscPbzaMgigwfKOPLKj4s44iV1OwjyKmUtX2PyfZvHL5Vnl-xTbatvhWwGEqKM4U4WzR1UWEFqu08gzBqcgOFcGUlnR3H-Rd5CnlC7QWxfUvkeuD8Gt2sR5CGUAwMc3Gm1pOqmeOKwo-fhpC2Jxyr6Lmit-3r2Hu3bLihkWsT8NwrPmlQzRoss3sOqLFZK06eRy6CvcZbgiSikpXBBnnuMaGCSc08P4Ecq1GmyaL9Q-lWnBgrsw6lrt6dGxjwYvOzZSy_tanYKnqI_hksHJC2g9DnQqzUg30EKlcS8R6XGVdyKkUKFHn8kdLjBDLfrIfqwSPehBdHJ3O4D8p1KXiyKikfg1jZE7WmVp6epEBbVhcH8yLl49gKsBlQsuYTaGjNJM6-8ymwY4zOU85TxFsJkixtab62N7i0ldunKZUBl_3Nar4hLpNpABOXg1CF3H_jvKn0aJhmpL7vPpxItuaEGYZl5pqVy8hq09AFjc1cEh1T382sdtpeTgl9ZRbtRQN-Qo7L3LYjwwYSm0WN2l7v-8F_rRXU7DqCZScHAxXSz4XaZTjzX1A_-Snbbssd0NpicL0kH9LhJHnFJbn018X8y4S_w9aJ-LWsyfJtP8yarqeCO-qqDb_enA6Fs5VvcRNjEeODyeUgCmRtcwc';
+//   const accountId = 'a29e33ea-193d-4d14-9b37-5e95fb9f7544';
+
+//   if (token && accountId) {
+//     const api = new MetaApi.default(token);
+//     return api.metatraderAccountApi.getAccount(accountId)
+//       .then(account => {
+//         // console.log(account);
+//         // console.log('Waiting for API server to connect to broker (may take couple of minutes)');
+
+//         return account.waitConnected()
+//           .then(() => {
+//             let connection = account.getStreamingConnection();
+//             return (connection.connect(), connection);
+//           })
+//           .then(connection => {
+//             console.log('Waiting for SDK to synchronize to terminal state (may take some time depending on your history size)');
+//             return connection.waitSynchronized()
+//               .then(async () => {
+//                 // console.log('Testing terminal state access');
+//                 let terminalState = connection.terminalState;
+//                 // console.log('connected:', terminalState.connected);
+//                 // console.log('connected to broker:', terminalState.connectedToBroker);
+//                 // console.log('account information:', JSON.stringify(terminalState.accountInformation));
+//                 // console.log('positions:', JSON.stringify(terminalState.positions));
+//                 // console.log('orders:', JSON.stringify(terminalState.orders));
+//                 // console.log('specifications:', JSON.stringify(terminalState.specifications));
+//                 // console.log('EURUSD specification:', JSON.stringify(terminalState.specification('EURUSD')));
+//                 console.log('price:', JSON.stringify(terminalState.price('XAUUSD.fix')));
+
+//                 const resultGold = JSON.stringify(terminalState.price('XAUUSD.fix'));
+//                 const resultSilver = JSON.stringify(terminalState.price('XAGUSD.fix'));
+
+//                 // Adjust based on the actual API response structure
+//                 var goldValue = parseFloat(resultGold.bid);
+//                 var silverValue = parseFloat(resultSilver.bid);
+
+//                 var goldLowValue = parseFloat(resultGold.low_price);
+//                 var goldHighValue = parseFloat(resultGold.high_price);
+//                 var silverLowValue = parseFloat(resultSilver.low_price);
+//                 var silverHighValue = parseFloat(resultSilver.high_price);
+
+//                 // Make sure setGoldValue and setSilverValue are defined and do what you expect
+
+//                 setGoldValue(goldValue)
+//                 setSilverValue(silverValue);
+//                 setGoldLowMarginValue(goldLowValue)
+//                 setGoldHighMarginValue(goldHighValue)
+//                 setSilverLowMarginValue(silverLowValue)
+//                 setSilverHighMarginValue(silverHighValue)
+//               })
+//           });
+//       })
+//       .catch(error => console.error(error))
+//   }
+// }
 
 // // Add an event listener to trigger the calculation when the gold value input changes
 // document.getElementById("getGoldValue").addEventListener("input", function () {
@@ -394,7 +452,7 @@ async function showTable() {
         // console.log(parseFloat(goldValue));
 
         // Update the sellAED and buyAED values for the current 
-        newRow.querySelector("#sellAED").innerText = parseFloat(((parseFloat(goldValue) + parseFloat(goldSpread) + parseFloat(0.5)) * unitInput * unitMultiplier * (purityInput / Math.pow(10, purityInput.length)) + parseFloat(sellPremium) ).toFixed(4));
+        newRow.querySelector("#sellAED").innerText = parseFloat(((parseFloat(goldValue) + parseFloat(goldSpread) + parseFloat(0.5)) * unitInput * unitMultiplier * (purityInput / Math.pow(10, purityInput.length)) + parseFloat(sellPremium)).toFixed(4));
         newRow.querySelector("#buyAED").innerText = ((parseFloat(goldValue) + parseFloat(bidSpreadValue)) * unitInput * unitMultiplier * (purityInput / Math.pow(10, purityInput.length)) + parseFloat(buyPremium)).toFixed(4);
       }, 1000)
     }
