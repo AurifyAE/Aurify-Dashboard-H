@@ -86,7 +86,7 @@ async function fetchData1() {
 
     // Make sure setGoldValue and setSilverValue are defined and do what you expect
 
-    // setGoldValue(goldValue)
+    setGoldValue(goldValue)
     setSilverValue(silverValue);
     setGoldLowMarginValue(goldLowValue)
     setGoldHighMarginValue(goldHighValue)
@@ -99,91 +99,91 @@ async function fetchData1() {
 
 // const api = new MetaApi.default(token);
 
-async function fetchData() {
-  console.log('koiiii');
-  let token = 'eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiIyMTlmN2Y0ZTQ2MjgzNmVhN2IyMGRlMjI5MWZhYWFiOSIsInBlcm1pc3Npb25zIjpbXSwiYWNjZXNzUnVsZXMiOlt7ImlkIjoidHJhZGluZy1hY2NvdW50LW1hbmFnZW1lbnQtYXBpIiwibWV0aG9kcyI6WyJ0cmFkaW5nLWFjY291bnQtbWFuYWdlbWVudC1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiYWNjb3VudDokVVNFUl9JRCQ6OGFhOTRlYWQtMGVlMy00NGIyLTk2YjEtMzIxODBmNWE5YzVjIl19LHsiaWQiOiJtZXRhYXBpLXJlc3QtYXBpIiwibWV0aG9kcyI6WyJtZXRhYXBpLWFwaTpyZXN0OnB1YmxpYzoqOioiXSwicm9sZXMiOlsicmVhZGVyIiwid3JpdGVyIl0sInJlc291cmNlcyI6WyJhY2NvdW50OiRVU0VSX0lEJDo4YWE5NGVhZC0wZWUzLTQ0YjItOTZiMS0zMjE4MGY1YTljNWMiXX0seyJpZCI6Im1ldGFhcGktcnBjLWFwaSIsIm1ldGhvZHMiOlsibWV0YWFwaS1hcGk6d3M6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbImFjY291bnQ6JFVTRVJfSUQkOjhhYTk0ZWFkLTBlZTMtNDRiMi05NmIxLTMyMTgwZjVhOWM1YyJdfSx7ImlkIjoibWV0YWFwaS1yZWFsLXRpbWUtc3RyZWFtaW5nLWFwaSIsIm1ldGhvZHMiOlsibWV0YWFwaS1hcGk6d3M6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbImFjY291bnQ6JFVTRVJfSUQkOjhhYTk0ZWFkLTBlZTMtNDRiMi05NmIxLTMyMTgwZjVhOWM1YyJdfSx7ImlkIjoibWV0YXN0YXRzLWFwaSIsIm1ldGhvZHMiOlsibWV0YXN0YXRzLWFwaTpyZXN0OnB1YmxpYzoqOioiXSwicm9sZXMiOlsicmVhZGVyIl0sInJlc291cmNlcyI6WyJhY2NvdW50OiRVU0VSX0lEJDo4YWE5NGVhZC0wZWUzLTQ0YjItOTZiMS0zMjE4MGY1YTljNWMiXX0seyJpZCI6InJpc2stbWFuYWdlbWVudC1hcGkiLCJtZXRob2RzIjpbInJpc2stbWFuYWdlbWVudC1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiYWNjb3VudDokVVNFUl9JRCQ6OGFhOTRlYWQtMGVlMy00NGIyLTk2YjEtMzIxODBmNWE5YzVjIl19LHsiaWQiOiJtZXRhYXBpLXJlYWwtdGltZS1zdHJlYW1pbmctYXBpIiwibWV0aG9kcyI6WyJtZXRhYXBpLWFwaTp3czpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiYWNjb3VudDokVVNFUl9JRCQ6OGFhOTRlYWQtMGVlMy00NGIyLTk2YjEtMzIxODBmNWE5YzVjIl19LHsiaWQiOiJjb3B5ZmFjdG9yeS1hcGkiLCJtZXRob2RzIjpbImNvcHlmYWN0b3J5LWFwaTpyZXN0OnB1YmxpYzoqOioiXSwicm9sZXMiOlsicmVhZGVyIiwid3JpdGVyIl0sInJlc291cmNlcyI6WyJhY2NvdW50OiRVU0VSX0lEJDo4YWE5NGVhZC0wZWUzLTQ0YjItOTZiMS0zMjE4MGY1YTljNWMiXX1dLCJ0b2tlbklkIjoiMjAyMTAyMTMiLCJpbXBlcnNvbmF0ZWQiOmZhbHNlLCJyZWFsVXNlcklkIjoiMjE5ZjdmNGU0NjI4MzZlYTdiMjBkZTIyOTFmYWFhYjkiLCJpYXQiOjE3MDkyMTg4NTEsImV4cCI6MTcxMTgxMDg1MX0.Q2IK0ReqNRDYcfYpaZF4_Neke8Kl3hYkPo7qBqNfeA7Dwq875Qw7p2Ja29F3ezl4MiinB8xt9egL4H3E79lmmWO0YipW0KcPaesBIwQ4mumK8aeJ2_zPupAGy3aq0gWaHLeRF4-hR0Lly6jTb_2WSNugXOGMsNMqZSl0LA0OD1IQ20mNv8wUpx3Vmgc4_TBnfB1dHCrtl2pcc-CJiazGuseaF3_slAAmneDwSfuSbgtqyO_Bt2HVORX85Ec1jZfp_zgjHaTSf_e4zSPreej1dce8Dm_dFd1358V1EcougVpPbbkV3WZGW4N3E9D4bENlIj0d5Jo7Df_mPGJzax2kS0eoktoFueuo267vElLioMNIYupcIBlHoUZbe3hszTF33xaIR1m-LyFsi_hMn7NBdjk1i456ZMc7Wh0-wEPDdQH04fpYTlTiUWWibOLCxbGIk8Oi7-jPDLOtwSHCC3srqO1qSWP_ErMsZip3A15nemMr0Vp_TuGwG4kZeXiFoMLg2kC4wtGZDNDv3yuOsw9nKPogCpDYnZ1deiHky7Ws1_rc3UbzjaniX31LMaOUGf-jYW9DcV_4WZsOVtpcCeVswBVhNS1_pNQWGWN9Ya2hMYj9XHcOzABJOZk0tu1h4C3O6gASesWoOpwpqsp-u-FKHRclFFDTVpgYUJ7rn81Zfnc';
-  let accountId = '8aa94ead-0ee3-44b2-96b1-32180f5a9c5c';
-  const api = new MetaApi.default(token);
+// async function fetchData() {
+//   console.log('koiiii');
+//   let token = 'eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiIyMTlmN2Y0ZTQ2MjgzNmVhN2IyMGRlMjI5MWZhYWFiOSIsInBlcm1pc3Npb25zIjpbXSwiYWNjZXNzUnVsZXMiOlt7ImlkIjoidHJhZGluZy1hY2NvdW50LW1hbmFnZW1lbnQtYXBpIiwibWV0aG9kcyI6WyJ0cmFkaW5nLWFjY291bnQtbWFuYWdlbWVudC1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiYWNjb3VudDokVVNFUl9JRCQ6OGFhOTRlYWQtMGVlMy00NGIyLTk2YjEtMzIxODBmNWE5YzVjIl19LHsiaWQiOiJtZXRhYXBpLXJlc3QtYXBpIiwibWV0aG9kcyI6WyJtZXRhYXBpLWFwaTpyZXN0OnB1YmxpYzoqOioiXSwicm9sZXMiOlsicmVhZGVyIiwid3JpdGVyIl0sInJlc291cmNlcyI6WyJhY2NvdW50OiRVU0VSX0lEJDo4YWE5NGVhZC0wZWUzLTQ0YjItOTZiMS0zMjE4MGY1YTljNWMiXX0seyJpZCI6Im1ldGFhcGktcnBjLWFwaSIsIm1ldGhvZHMiOlsibWV0YWFwaS1hcGk6d3M6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbImFjY291bnQ6JFVTRVJfSUQkOjhhYTk0ZWFkLTBlZTMtNDRiMi05NmIxLTMyMTgwZjVhOWM1YyJdfSx7ImlkIjoibWV0YWFwaS1yZWFsLXRpbWUtc3RyZWFtaW5nLWFwaSIsIm1ldGhvZHMiOlsibWV0YWFwaS1hcGk6d3M6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbImFjY291bnQ6JFVTRVJfSUQkOjhhYTk0ZWFkLTBlZTMtNDRiMi05NmIxLTMyMTgwZjVhOWM1YyJdfSx7ImlkIjoibWV0YXN0YXRzLWFwaSIsIm1ldGhvZHMiOlsibWV0YXN0YXRzLWFwaTpyZXN0OnB1YmxpYzoqOioiXSwicm9sZXMiOlsicmVhZGVyIl0sInJlc291cmNlcyI6WyJhY2NvdW50OiRVU0VSX0lEJDo4YWE5NGVhZC0wZWUzLTQ0YjItOTZiMS0zMjE4MGY1YTljNWMiXX0seyJpZCI6InJpc2stbWFuYWdlbWVudC1hcGkiLCJtZXRob2RzIjpbInJpc2stbWFuYWdlbWVudC1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiYWNjb3VudDokVVNFUl9JRCQ6OGFhOTRlYWQtMGVlMy00NGIyLTk2YjEtMzIxODBmNWE5YzVjIl19LHsiaWQiOiJtZXRhYXBpLXJlYWwtdGltZS1zdHJlYW1pbmctYXBpIiwibWV0aG9kcyI6WyJtZXRhYXBpLWFwaTp3czpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiYWNjb3VudDokVVNFUl9JRCQ6OGFhOTRlYWQtMGVlMy00NGIyLTk2YjEtMzIxODBmNWE5YzVjIl19LHsiaWQiOiJjb3B5ZmFjdG9yeS1hcGkiLCJtZXRob2RzIjpbImNvcHlmYWN0b3J5LWFwaTpyZXN0OnB1YmxpYzoqOioiXSwicm9sZXMiOlsicmVhZGVyIiwid3JpdGVyIl0sInJlc291cmNlcyI6WyJhY2NvdW50OiRVU0VSX0lEJDo4YWE5NGVhZC0wZWUzLTQ0YjItOTZiMS0zMjE4MGY1YTljNWMiXX1dLCJ0b2tlbklkIjoiMjAyMTAyMTMiLCJpbXBlcnNvbmF0ZWQiOmZhbHNlLCJyZWFsVXNlcklkIjoiMjE5ZjdmNGU0NjI4MzZlYTdiMjBkZTIyOTFmYWFhYjkiLCJpYXQiOjE3MDkyMTg4NTEsImV4cCI6MTcxMTgxMDg1MX0.Q2IK0ReqNRDYcfYpaZF4_Neke8Kl3hYkPo7qBqNfeA7Dwq875Qw7p2Ja29F3ezl4MiinB8xt9egL4H3E79lmmWO0YipW0KcPaesBIwQ4mumK8aeJ2_zPupAGy3aq0gWaHLeRF4-hR0Lly6jTb_2WSNugXOGMsNMqZSl0LA0OD1IQ20mNv8wUpx3Vmgc4_TBnfB1dHCrtl2pcc-CJiazGuseaF3_slAAmneDwSfuSbgtqyO_Bt2HVORX85Ec1jZfp_zgjHaTSf_e4zSPreej1dce8Dm_dFd1358V1EcougVpPbbkV3WZGW4N3E9D4bENlIj0d5Jo7Df_mPGJzax2kS0eoktoFueuo267vElLioMNIYupcIBlHoUZbe3hszTF33xaIR1m-LyFsi_hMn7NBdjk1i456ZMc7Wh0-wEPDdQH04fpYTlTiUWWibOLCxbGIk8Oi7-jPDLOtwSHCC3srqO1qSWP_ErMsZip3A15nemMr0Vp_TuGwG4kZeXiFoMLg2kC4wtGZDNDv3yuOsw9nKPogCpDYnZ1deiHky7Ws1_rc3UbzjaniX31LMaOUGf-jYW9DcV_4WZsOVtpcCeVswBVhNS1_pNQWGWN9Ya2hMYj9XHcOzABJOZk0tu1h4C3O6gASesWoOpwpqsp-u-FKHRclFFDTVpgYUJ7rn81Zfnc';
+//   let accountId = '8aa94ead-0ee3-44b2-96b1-32180f5a9c5c';
+//   const api = new MetaApi.default(token);
 
-  async function getRealTimeBidAskPrices() {
-    try {
-      const account = await api.metatraderAccountApi.getAccount(accountId);
-      const initialState = account.state;
-      const deployedStates = ['DEPLOYING', 'DEPLOYED'];
+//   async function getRealTimeBidAskPrices() {
+//     try {
+//       const account = await api.metatraderAccountApi.getAccount(accountId);
+//       const initialState = account.state;
+//       const deployedStates = ['DEPLOYING', 'DEPLOYED'];
 
-      if (!deployedStates.includes(initialState)) {
-        // wait until account is deployed and connected to broker
-        // console.log('Deploying account');
-        await account.deploy();
-      }
-      // console.log('Waiting for API server to connect to broker (may take a couple of minutes)');
-      await account.waitConnected();
+//       if (!deployedStates.includes(initialState)) {
+//         // wait until account is deployed and connected to broker
+//         // console.log('Deploying account');
+//         await account.deploy();
+//       }
+//       // console.log('Waiting for API server to connect to broker (may take a couple of minutes)');
+//       await account.waitConnected();
 
-      // connect to MetaApi API
-      let connection = account.getStreamingConnection();
-      await connection.connect();
+//       // connect to MetaApi API
+//       let connection = account.getStreamingConnection();
+//       await connection.connect();
 
-      // wait until terminal state synchronized to the local state
-      // console.log('Waiting for SDK to synchronize to terminal state (may take some time depending on your history size)');
-      await connection.waitSynchronized();
+//       // wait until terminal state synchronized to the local state
+//       // console.log('Waiting for SDK to synchronize to terminal state (may take some time depending on your history size)');
+//       await connection.waitSynchronized();
 
 
-      // Subscribe to real-time market data for XAUUSD.fix (gold) and XAGUSD.fix (silver)
-      await connection.subscribeToMarketData('XAUUSD.fix', [{ type: 'quotes' }]);
-      // await connection.subscribeToMarketData('XAGUSD.fix', [{ type: 'quotes' }]);
+//       // Subscribe to real-time market data for XAUUSD.fix (gold) and XAGUSD.fix (silver)
+//       await connection.subscribeToMarketData('XAUUSD.fix', [{ type: 'quotes' }]);
+//       // await connection.subscribeToMarketData('XAGUSD.fix', [{ type: 'quotes' }]);
 
-      // Access terminal state
-      let terminalState = connection.terminalState;
+//       // Access terminal state
+//       let terminalState = connection.terminalState;
 
-      let goldPrice = null;
-      let silverPrice = null;
+//       let goldPrice = null;
+//       let silverPrice = null;
 
-      connection.addSynchronizationListener({
-        async onSymbolPriceUpdated(instanceIndex, price) {
-          if (price.symbol === 'XAUUSD.fix' || price.symbol === 'XAGUSD.fix') {
-            console.log(`Real-time Bid and Ask Prices for ${price.symbol}:`, price);
+//       connection.addSynchronizationListener({
+//         async onSymbolPriceUpdated(instanceIndex, price) {
+//           if (price.symbol === 'XAUUSD.fix' || price.symbol === 'XAGUSD.fix') {
+//             console.log(`Real-time Bid and Ask Prices for ${price.symbol}:`, price);
 
-            const bidPrice = price.bid;
-            console.log('Bid Price:', bidPrice);
+//             const bidPrice = price.bid;
+//             console.log('Bid Price:', bidPrice);
 
-            if (price.symbol === 'XAUUSD.fix') {
-              // Update gold price
-              goldPrice = bidPrice;
-              setGoldValue(goldPrice);
-              // ... (other gold-related logic)
-            } else if (price.symbol === 'XAGUSD.fix') {
-              // Update silver price
-              silverPrice = bidPrice;
-              setSilverValue(silverPrice);
-              // ... (other silver-related logic)
-            }
+//             if (price.symbol === 'XAUUSD.fix') {
+//               // Update gold price
+//               goldPrice = bidPrice;
+//               setGoldValue(goldPrice);
+//               // ... (other gold-related logic)
+//             } else if (price.symbol === 'XAGUSD.fix') {
+//               // Update silver price
+//               silverPrice = bidPrice;
+//               setSilverValue(silverPrice);
+//               // ... (other silver-related logic)
+//             }
 
-            // Check if both gold and silver prices are available
-            if (goldPrice !== null && silverPrice !== null) {
-              // Perform actions that require both gold and silver data
-              console.log('Both gold and silver prices are available:', goldPrice, silverPrice);
-            }
-          }
-        },
-      });
+//             // Check if both gold and silver prices are available
+//             if (goldPrice !== null && silverPrice !== null) {
+//               // Perform actions that require both gold and silver data
+//               console.log('Both gold and silver prices are available:', goldPrice, silverPrice);
+//             }
+//           }
+//         },
+//       });
 
-      // Keep the script running to receive real-time updates
-      // console.log('Listening for real-time updates. Press Ctrl+C to exit.');
-      await new Promise(() => { });
+//       // Keep the script running to receive real-time updates
+//       // console.log('Listening for real-time updates. Press Ctrl+C to exit.');
+//       await new Promise(() => { });
 
-      // Close the connection if the account was undeployed
-      if (!deployedStates.includes(initialState)) {
-        // console.log('Undeploying account');
-        await connection.close();
-        await account.undeploy();
-      }
-    } catch (err) {
-      console.error(err);
-    }
-  }
+//       // Close the connection if the account was undeployed
+//       if (!deployedStates.includes(initialState)) {
+//         // console.log('Undeploying account');
+//         await connection.close();
+//         await account.undeploy();
+//       }
+//     } catch (err) {
+//       console.error(err);
+//     }
+//   }
 
-  getRealTimeBidAskPrices();
-}
+//   getRealTimeBidAskPrices();
+// }
 
 // // Add an event listener to trigger the calculation when the gold value input changes
 // document.getElementById("getGoldValue").addEventListener("input", function () {
