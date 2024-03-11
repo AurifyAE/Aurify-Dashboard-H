@@ -1,11 +1,27 @@
 import { saveDataToFirestore, readData, updateDataInFirestore, deleteDataFromFirestore, saveSpreadValues, readSpreadValues } from '../core/spotrateDB.js'
 import { serverTimestamp } from 'https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore.js';
 
+// const { JSDOM } = require('jsdom');
+const script = document.createElement('script');
+script.src = 'https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.2.0/socket.io.js';
+document.head.appendChild(script); 
+
+// const dom = new JSDOM('<!DOCTYPE html><html><body></body></html>');
+// global.window = dom.window;
+// global.document = dom.window.document;
+
+const socket = io('https://meta-api-server.onrender.com');
+socket.on('goldValue', (goldValue) => {
+    // console.log('Received gold value:', goldValue);
+    setGoldValue(goldValue.bid)
+    // You can do something with the received gold value here, like updating UI
+});
+
 setInterval(() => {
   fetchData1()
 }, 500)
 
-fetchData()
+// fetchData()
 showTable();
 displaySpreadValues();
 
@@ -76,7 +92,7 @@ async function fetchData1() {
     const resultSilver = await responseSilver.json();
 
     // Adjust based on the actual API response structure
-    var goldValue = parseFloat(resultGold.price);
+    // var goldValue = parseFloat(resultGold.price);
     var silverValue = parseFloat(resultSilver.price);
 
     var goldLowValue = parseFloat(resultGold.low_price);
@@ -86,7 +102,7 @@ async function fetchData1() {
 
     // Make sure setGoldValue and setSilverValue are defined and do what you expect
 
-    setGoldValue(goldValue)
+    // setGoldValue(goldValue)
     setSilverValue(silverValue);
     setGoldLowMarginValue(goldLowValue)
     setGoldHighMarginValue(goldHighValue)
