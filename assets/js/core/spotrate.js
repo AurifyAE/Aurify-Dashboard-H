@@ -4,7 +4,7 @@ import { serverTimestamp } from 'https://www.gstatic.com/firebasejs/9.6.0/fireba
 // const { JSDOM } = require('jsdom');
 const script = document.createElement('script');
 script.src = 'https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.2.0/socket.io.js';
-document.head.appendChild(script); 
+document.head.appendChild(script);
 
 // const dom = new JSDOM('<!DOCTYPE html><html><body></body></html>');
 // global.window = dom.window;
@@ -12,9 +12,9 @@ document.head.appendChild(script);
 
 const socket = io('https://meta-api-server.onrender.com');
 socket.on('goldValue', (goldValue) => {
-    // console.log('Received gold value:', goldValue);
-    setGoldValue(goldValue.bid)
-    // You can do something with the received gold value here, like updating UI
+  // console.log('Received gold value:', goldValue);
+  setGoldValue(goldValue.bid)
+  // You can do something with the received gold value here, like updating UI
 });
 
 setInterval(() => {
