@@ -99,7 +99,6 @@ function deleteNewsItem(documentId, newsItem) {
 }
 
 
-
 displayNews()
 
 // Function to handle news submission
