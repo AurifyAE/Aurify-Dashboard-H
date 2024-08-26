@@ -1,34 +1,89 @@
 import { saveDataToFirestore, readData, updateDataInFirestore, deleteDataFromFirestore, saveSpreadValues, readSpreadValues } from '../core/spotrateDB.js'
 import { serverTimestamp } from 'https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore.js';
 
-// const { JSDOM } = require('jsdom');
 const script = document.createElement('script');
 script.src = 'https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.2.0/socket.io.js';
 document.head.appendChild(script);
 
-// const dom = new JSDOM('<!DOCTYPE html><html><body></body></html>');
-// global.window = dom.window;
-// global.document = dom.window.document;
-
-const socket = io('https://meta-api-server.onrender.com');
-socket.on('goldValue', (goldValue) => {
-  // console.log('Received gold value:', goldValue);
-  setGoldValue(goldValue.bid)
-  // You can do something with the received gold value here, like updating UI
+const socket = io('https://capital-server-9ebj.onrender.com/', {
+  query: { secret: 'aurify@123' }, // Pass secret key as query parameter
 });
 
+socket.on("connect", () => {
+  console.log("Connected to WebSocket server");
+  requestMarketData(["GOLD", "SILVER"]);
+});
+
+// Request market data based on symbols
+function requestMarketData(symbols) {
+  socket.emit("request-data", symbols);
+}
+
+// const socket = io('https://meta-api-server.onrender.com');
+// socket.on('goldValue', (goldValue) => {
+//   // console.log('Received gold value:', goldValue);
+//   setGoldValue(goldValue.bid)
+//   // You can do something with the received gold value here, like updating UI
+// });
+
 setInterval(() => {
-  fetchData1()
+  fetchData()
 }, 500)
 
-// fetchData()
+
+fetchData1()
 showTable();
 displaySpreadValues();
 
+let goldData = {}
+let silverData = {}
 
-// Gold API KEY
-const API_KEY = 'goldapi-fbqpmirloto20zi-io'
-// Add a variable to keep track of the edited row
+async function fetchData() {
+  socket.on('market-data', (data) => {
+    // console.log('Received gold value:', data);
+
+    if (data && data.symbol) {
+      if (data.symbol === "Gold") {
+        goldData = data;
+        setGoldValue(goldData.bid);
+        setGoldLowMarginValue(goldData.low)
+        setGoldHighMarginValue(goldData.high)
+      } else if (data.symbol === "Silver") {
+        silverData = data;
+        setSilverValue(silverData.bid);
+        setSilverLowMarginValue(silverData.low)
+        setSilverHighMarginValue(silverData.high)
+      }
+    } else {
+      console.warn("Received malformed market data:", data);
+    }
+
+    // const value = goldData.bid;
+    // goldHigh = goldData.high;
+    // goldLow = goldData.low;
+    // goldBuy = (value + bidSpread).toFixed(2);
+    // goldSell = (value + bidSpread + askSpread + parseFloat(0.5)).toFixed(2);
+
+    // const value2 = silverData.bid;
+    // silverHigh = silverData.high;
+    // silverLow = silverData.low;
+    // silverBuy = (value2 + silverBidSpread).toFixed(2);
+    // silverSell = (value2 + silverBidSpread + silverAskSpread + parseFloat(0.5)).toFixed(2);
+  });
+
+  // var goldBuyUSD = (goldBuy / 31.103).toFixed(4);
+  // goldBiddingPrice = (goldBuyUSD * 3.674).toFixed(4);
+
+  // var goldSellUSD = (goldSell / 31.103).toFixed(4);
+  // goldAskingPrice = (goldSellUSD * 3.674).toFixed(4);
+
+  // var silverBuyUSD = (silverBuy / 31.103).toFixed(4);
+  // silverBiddingPrice = (silverBuyUSD * 3.674).toFixed(4);
+
+  // var silverSellUSD = (silverSell / 31.103).toFixed(4);
+  // silverAskingPrice = (silverSellUSD * 3.674).toFixed(4);
+}
+
 let editedRow;
 // Add a variable to store the row to be deleted
 let rowToDelete;
@@ -70,144 +125,8 @@ document.body.addEventListener('click', function (event) {
 
 // Function to Fetch Gold API Data
 async function fetchData1() {
-  var myHeaders = new Headers();
-  myHeaders.append("x-access-token", API_KEY);
-  myHeaders.append("Content-Type", "application/json");
 
-  var requestOptions = {
-    method: 'GET',
-    headers: myHeaders,
-    redirect: 'follow'
-  };
-
-  try {
-    const responseGold = await fetch("https://www.goldapi.io/api/XAU/USD", requestOptions);
-    const responseSilver = await fetch("https://www.goldapi.io/api/XAG/USD", requestOptions);
-
-    if (!responseGold.ok && !responseSilver.ok) {
-      throw new Error('One or more network responses were not OK');
-    }
-
-    const resultGold = await responseGold.json();
-    const resultSilver = await responseSilver.json();
-
-    // Adjust based on the actual API response structure
-    // var goldValue = parseFloat(resultGold.price);
-    var silverValue = parseFloat(resultSilver.price);
-
-    var goldLowValue = parseFloat(resultGold.low_price);
-    var goldHighValue = parseFloat(resultGold.high_price);
-    var silverLowValue = parseFloat(resultSilver.low_price);
-    var silverHighValue = parseFloat(resultSilver.high_price);
-
-    // Make sure setGoldValue and setSilverValue are defined and do what you expect
-
-    // setGoldValue(goldValue)
-    setSilverValue(silverValue);
-    setGoldLowMarginValue(goldLowValue)
-    setGoldHighMarginValue(goldHighValue)
-    setSilverLowMarginValue(silverLowValue)
-    setSilverHighMarginValue(silverHighValue)
-  } catch (error) {
-    console.error('Error fetching gold and silver values:', error);
-  }
 }
-
-// const api = new MetaApi.default(token);
-
-// async function fetchData() {
-//   console.log('koiiii');
-//   let token = 'eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiIyMTlmN2Y0ZTQ2MjgzNmVhN2IyMGRlMjI5MWZhYWFiOSIsInBlcm1pc3Npb25zIjpbXSwiYWNjZXNzUnVsZXMiOlt7ImlkIjoidHJhZGluZy1hY2NvdW50LW1hbmFnZW1lbnQtYXBpIiwibWV0aG9kcyI6WyJ0cmFkaW5nLWFjY291bnQtbWFuYWdlbWVudC1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiYWNjb3VudDokVVNFUl9JRCQ6OGFhOTRlYWQtMGVlMy00NGIyLTk2YjEtMzIxODBmNWE5YzVjIl19LHsiaWQiOiJtZXRhYXBpLXJlc3QtYXBpIiwibWV0aG9kcyI6WyJtZXRhYXBpLWFwaTpyZXN0OnB1YmxpYzoqOioiXSwicm9sZXMiOlsicmVhZGVyIiwid3JpdGVyIl0sInJlc291cmNlcyI6WyJhY2NvdW50OiRVU0VSX0lEJDo4YWE5NGVhZC0wZWUzLTQ0YjItOTZiMS0zMjE4MGY1YTljNWMiXX0seyJpZCI6Im1ldGFhcGktcnBjLWFwaSIsIm1ldGhvZHMiOlsibWV0YWFwaS1hcGk6d3M6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbImFjY291bnQ6JFVTRVJfSUQkOjhhYTk0ZWFkLTBlZTMtNDRiMi05NmIxLTMyMTgwZjVhOWM1YyJdfSx7ImlkIjoibWV0YWFwaS1yZWFsLXRpbWUtc3RyZWFtaW5nLWFwaSIsIm1ldGhvZHMiOlsibWV0YWFwaS1hcGk6d3M6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbImFjY291bnQ6JFVTRVJfSUQkOjhhYTk0ZWFkLTBlZTMtNDRiMi05NmIxLTMyMTgwZjVhOWM1YyJdfSx7ImlkIjoibWV0YXN0YXRzLWFwaSIsIm1ldGhvZHMiOlsibWV0YXN0YXRzLWFwaTpyZXN0OnB1YmxpYzoqOioiXSwicm9sZXMiOlsicmVhZGVyIl0sInJlc291cmNlcyI6WyJhY2NvdW50OiRVU0VSX0lEJDo4YWE5NGVhZC0wZWUzLTQ0YjItOTZiMS0zMjE4MGY1YTljNWMiXX0seyJpZCI6InJpc2stbWFuYWdlbWVudC1hcGkiLCJtZXRob2RzIjpbInJpc2stbWFuYWdlbWVudC1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiYWNjb3VudDokVVNFUl9JRCQ6OGFhOTRlYWQtMGVlMy00NGIyLTk2YjEtMzIxODBmNWE5YzVjIl19LHsiaWQiOiJtZXRhYXBpLXJlYWwtdGltZS1zdHJlYW1pbmctYXBpIiwibWV0aG9kcyI6WyJtZXRhYXBpLWFwaTp3czpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiYWNjb3VudDokVVNFUl9JRCQ6OGFhOTRlYWQtMGVlMy00NGIyLTk2YjEtMzIxODBmNWE5YzVjIl19LHsiaWQiOiJjb3B5ZmFjdG9yeS1hcGkiLCJtZXRob2RzIjpbImNvcHlmYWN0b3J5LWFwaTpyZXN0OnB1YmxpYzoqOioiXSwicm9sZXMiOlsicmVhZGVyIiwid3JpdGVyIl0sInJlc291cmNlcyI6WyJhY2NvdW50OiRVU0VSX0lEJDo4YWE5NGVhZC0wZWUzLTQ0YjItOTZiMS0zMjE4MGY1YTljNWMiXX1dLCJ0b2tlbklkIjoiMjAyMTAyMTMiLCJpbXBlcnNvbmF0ZWQiOmZhbHNlLCJyZWFsVXNlcklkIjoiMjE5ZjdmNGU0NjI4MzZlYTdiMjBkZTIyOTFmYWFhYjkiLCJpYXQiOjE3MDkyMTg4NTEsImV4cCI6MTcxMTgxMDg1MX0.Q2IK0ReqNRDYcfYpaZF4_Neke8Kl3hYkPo7qBqNfeA7Dwq875Qw7p2Ja29F3ezl4MiinB8xt9egL4H3E79lmmWO0YipW0KcPaesBIwQ4mumK8aeJ2_zPupAGy3aq0gWaHLeRF4-hR0Lly6jTb_2WSNugXOGMsNMqZSl0LA0OD1IQ20mNv8wUpx3Vmgc4_TBnfB1dHCrtl2pcc-CJiazGuseaF3_slAAmneDwSfuSbgtqyO_Bt2HVORX85Ec1jZfp_zgjHaTSf_e4zSPreej1dce8Dm_dFd1358V1EcougVpPbbkV3WZGW4N3E9D4bENlIj0d5Jo7Df_mPGJzax2kS0eoktoFueuo267vElLioMNIYupcIBlHoUZbe3hszTF33xaIR1m-LyFsi_hMn7NBdjk1i456ZMc7Wh0-wEPDdQH04fpYTlTiUWWibOLCxbGIk8Oi7-jPDLOtwSHCC3srqO1qSWP_ErMsZip3A15nemMr0Vp_TuGwG4kZeXiFoMLg2kC4wtGZDNDv3yuOsw9nKPogCpDYnZ1deiHky7Ws1_rc3UbzjaniX31LMaOUGf-jYW9DcV_4WZsOVtpcCeVswBVhNS1_pNQWGWN9Ya2hMYj9XHcOzABJOZk0tu1h4C3O6gASesWoOpwpqsp-u-FKHRclFFDTVpgYUJ7rn81Zfnc';
-//   let accountId = '8aa94ead-0ee3-44b2-96b1-32180f5a9c5c';
-//   const api = new MetaApi.default(token);
-
-//   async function getRealTimeBidAskPrices() {
-//     try {
-//       const account = await api.metatraderAccountApi.getAccount(accountId);
-//       const initialState = account.state;
-//       const deployedStates = ['DEPLOYING', 'DEPLOYED'];
-
-//       if (!deployedStates.includes(initialState)) {
-//         // wait until account is deployed and connected to broker
-//         // console.log('Deploying account');
-//         await account.deploy();
-//       }
-//       // console.log('Waiting for API server to connect to broker (may take a couple of minutes)');
-//       await account.waitConnected();
-
-//       // connect to MetaApi API
-//       let connection = account.getStreamingConnection();
-//       await connection.connect();
-
-//       // wait until terminal state synchronized to the local state
-//       // console.log('Waiting for SDK to synchronize to terminal state (may take some time depending on your history size)');
-//       await connection.waitSynchronized();
-
-
-//       // Subscribe to real-time market data for XAUUSD.fix (gold) and XAGUSD.fix (silver)
-//       await connection.subscribeToMarketData('XAUUSD.fix', [{ type: 'quotes' }]);
-//       // await connection.subscribeToMarketData('XAGUSD.fix', [{ type: 'quotes' }]);
-
-//       // Access terminal state
-//       let terminalState = connection.terminalState;
-
-//       let goldPrice = null;
-//       let silverPrice = null;
-
-//       connection.addSynchronizationListener({
-//         async onSymbolPriceUpdated(instanceIndex, price) {
-//           if (price.symbol === 'XAUUSD.fix' || price.symbol === 'XAGUSD.fix') {
-//             console.log(`Real-time Bid and Ask Prices for ${price.symbol}:`, price);
-
-//             const bidPrice = price.bid;
-//             console.log('Bid Price:', bidPrice);
-
-//             if (price.symbol === 'XAUUSD.fix') {
-//               // Update gold price
-//               goldPrice = bidPrice;
-//               setGoldValue(goldPrice);
-//               // ... (other gold-related logic)
-//             } else if (price.symbol === 'XAGUSD.fix') {
-//               // Update silver price
-//               silverPrice = bidPrice;
-//               setSilverValue(silverPrice);
-//               // ... (other silver-related logic)
-//             }
-
-//             // Check if both gold and silver prices are available
-//             if (goldPrice !== null && silverPrice !== null) {
-//               // Perform actions that require both gold and silver data
-//               console.log('Both gold and silver prices are available:', goldPrice, silverPrice);
-//             }
-//           }
-//         },
-//       });
-
-//       // Keep the script running to receive real-time updates
-//       // console.log('Listening for real-time updates. Press Ctrl+C to exit.');
-//       await new Promise(() => { });
-
-//       // Close the connection if the account was undeployed
-//       if (!deployedStates.includes(initialState)) {
-//         // console.log('Undeploying account');
-//         await connection.close();
-//         await account.undeploy();
-//       }
-//     } catch (err) {
-//       console.error(err);
-//     }
-//   }
-
-//   getRealTimeBidAskPrices();
-// }
-
-// // Add an event listener to trigger the calculation when the gold value input changes
-// document.getElementById("getGoldValue").addEventListener("input", function () {
-//   setGoldValue(); // Call setGoldValue function when the input changes
-//   calculateRates(); // Call calculateRates to update the table values
-// });
-
-// document.getElementById("getGoldValue").addEventListener("input", setGoldValue);
 
 document.getElementById("addRowForm").addEventListener("input", calculateRates);
 
@@ -244,7 +163,6 @@ function totalUSDInputValue() {
 
   valuesUSDToAED()
 }
-
 
 // Set default values in the form
 document.getElementById("metalInput").value = "Gold";

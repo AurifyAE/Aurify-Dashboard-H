@@ -2,7 +2,25 @@
 import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore.js";
 import { app } from '../../../config/db.js';
 
+const script = document.createElement('script');
+script.src = 'https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.2.0/socket.io.js';
+document.head.appendChild(script);
+
+const socket = io('https://capital-server-9ebj.onrender.com/', {
+    query: { secret: 'aurify@123' }, // Pass secret key as query parameter
+});
+
 const firestore = getFirestore(app)
+
+socket.on("connect", () => {
+    console.log("Connected to WebSocket server");
+    requestMarketData(["GOLD", "SILVER"]);
+});
+
+// Request market data based on symbols
+function requestMarketData(symbols) {
+    socket.emit("request-data", symbols);
+}
 
 setInterval(() => {
     fetchData()
@@ -15,54 +33,88 @@ setInterval(() => {
 showTable();
 
 
-let askSpread, bidSpread, goldValue, silverBidSpread, silverAskSpread, goldBuy, goldSell, silverBuy, silverSell;
+// let askSpread, bidSpread, goldValue, silverBidSpread, silverAskSpread, goldBuy, goldSell, silverBuy, silverSell;
+let askSpread, bidSpread, silverBidSpread, silverAskSpread, goldBuy, goldAskingPrice, goldBiddingPrice,
+    goldSell, silverBuy, silverSell, silverValue, goldHigh, goldLow, silverLow, silverHigh, silverAskingPrice, silverBiddingPrice;
 
-// Gold API KEY
-const API_KEY = 'goldapi-fbqpmirloto20zi-io'
+let goldData = {}
+let silverData = {}
+
+async function fetchData() {
+    socket.on('market-data', (data) => {
+        // console.log('Received gold value:', data);
+
+        if (data && data.symbol) {
+            if (data.symbol === "Gold") {
+                goldData = data;
+                // updateGoldUI();
+            } else if (data.symbol === "Silver") {
+                silverData = data;
+            }
+        } else {
+            console.warn("Received malformed market data:", data);
+        }
+
+
+        const value = goldData.bid;
+        goldHigh = goldData.high;
+        goldLow = goldData.low;
+        goldBuy = (value + bidSpread).toFixed(2);
+        goldSell = (value + bidSpread + askSpread + parseFloat(0.5)).toFixed(2);
+
+        const value2 = silverData.bid;
+        silverHigh = silverData.high;
+        silverLow = silverData.low;
+        silverBuy = (value2 + silverBidSpread).toFixed(2);
+        silverSell = (value2 + silverBidSpread + silverAskSpread + parseFloat(0.5)).toFixed(2);
+    });
+
+    var goldBuyUSD = (goldBuy / 31.103).toFixed(4);
+    goldBiddingPrice = (goldBuyUSD * 3.674).toFixed(4);
+
+    var goldSellUSD = (goldSell / 31.103).toFixed(4);
+    goldAskingPrice = (goldSellUSD * 3.674).toFixed(4);
+
+    var silverBuyUSD = (silverBuy / 31.103).toFixed(4);
+    silverBiddingPrice = (silverBuyUSD * 3.674).toFixed(4);
+
+    var silverSellUSD = (silverSell / 31.103).toFixed(4);
+    silverAskingPrice = (silverSellUSD * 3.674).toFixed(4);
+}
 
 // Function to Fetch Gold API Data
 async function fetchData() {
-    var myHeaders = new Headers();
-    myHeaders.append("x-access-token", API_KEY);
-    myHeaders.append("Content-Type", "application/json");
-
-    var requestOptions = {
-        method: 'GET',
-        headers: myHeaders,
-        redirect: 'follow'
-    };
-
     try {
-        const responseGold = await fetch("https://www.goldapi.io/api/XAU/USD", requestOptions);
-        const responseSilver = await fetch("https://www.goldapi.io/api/XAG/USD", requestOptions);
+        // const responseGold = await fetch("https://www.goldapi.io/api/XAU/USD", requestOptions);
+        // const responseSilver = await fetch("https://www.goldapi.io/api/XAG/USD", requestOptions);
 
-        if (!responseGold.ok && !responseSilver.ok) {
-            throw new Error('One or more network responses were not OK');
-        }
+        // if (!responseGold.ok && !responseSilver.ok) {
+        //     throw new Error('One or more network responses were not OK');
+        // }
 
-        const resultGold = await responseGold.json();
-        const resultSilver = await responseSilver.json();
+        // const resultGold = await responseGold.json();
+        // const resultSilver = await responseSilver.json();
 
-        // Adjust based on the actual API response structure
-        var goldValueUSD = parseFloat(resultGold.price);
-        var silverValueUSD = parseFloat(resultSilver.price)
+        // // Adjust based on the actual API response structure
+        // var goldValueUSD = parseFloat(resultGold.price);
+        // var silverValueUSD = parseFloat(resultSilver.price)
 
-        document.getElementById('goldRate').textContent = '$' + goldValueUSD.toFixed(2);
-        document.getElementById('silverRate').textContent = '$' + silverValueUSD.toFixed(3);
+        // document.getElementById('goldRate').textContent = '$' + goldValueUSD.toFixed(2);
+        // document.getElementById('silverRate').textContent = '$' + silverValueUSD.toFixed(3);
 
-        var GoldUSDResult = (goldValueUSD / 31.1035).toFixed(4);
-        goldValue = (GoldUSDResult * 3.67).toFixed(4);
+        // var GoldUSDResult = (goldValueUSD / 31.1035).toFixed(4);
+        // goldValue = (GoldUSDResult * 3.67).toFixed(4);
 
-        var goldLowValue = parseFloat(resultGold.low_price);
-        var goldHighValue = parseFloat(resultGold.high_price);
-        var silverLowValue = parseFloat(resultSilver.low_price);
-        var silverHighValue = parseFloat(resultSilver.high_price);
+        // var goldLowValue = parseFloat(resultGold.low_price);
+        // var goldHighValue = parseFloat(resultGold.high_price);
+        // var silverLowValue = parseFloat(resultSilver.low_price);
+        // var silverHighValue = parseFloat(resultSilver.high_price);
 
 
-        goldBuy = (goldValueUSD + bidSpread).toFixed(2);
-        goldSell = (goldValueUSD + askSpread + parseFloat(0.5)).toFixed(2);
-        silverBuy = (silverValueUSD + silverBidSpread).toFixed(3);
-        silverSell = (silverValueUSD + silverAskSpread + parseFloat(0.05)).toFixed(3);
+        // goldBuy = (goldValueUSD + bidSpread).toFixed(2);
+        // goldSell = (goldValueUSD + askSpread + parseFloat(0.5)).toFixed(2);
+        // silverBuy = (silverValueUSD + silverBidSpread).toFixed(3);
+        // silverSell = (silverValueUSD + silverAskSpread + parseFloat(0.05)).toFixed(3);
 
 
         var currentGoldBuy = goldBuy;
@@ -161,12 +213,6 @@ async function fetchData() {
 
         updatePrice();
 
-
-        // document.getElementById("goldInputLow").innerHTML = goldBuy;
-        // document.getElementById("goldInputHigh").innerHTML = goldSell;
-        // document.getElementById("silverInputLow").innerHTML = silverBuy;
-        // document.getElementById("silverInputHigh").innerHTML = silverSell;
-
         document.getElementById("lowLabelGold").innerHTML = goldLowValue;
         document.getElementById("highLabelGold").innerHTML = goldHighValue;
         document.getElementById("lowLabelSilver").innerHTML = silverLowValue;
@@ -193,33 +239,6 @@ async function fetchData() {
         console.error('Error fetching gold and silver values:', error);
     }
 }
-
-// function blinker() {
-//     if (document.getElementById("goldInputLow")) {
-//         var d = document.getElementById("goldInputLow");
-//         d.classList.add("fading-label"); // Add the fading-label class
-//         d.style.backgroundColor = (d.style.backgroundColor == 'white' ? 'transparent' : 'white');
-//     }
-
-//     if (document.getElementById("goldInputHigh")) {
-//         var d = document.getElementById("goldInputHigh");
-//         d.classList.add("fading-label"); // Add the fading-label class
-//         d.style.backgroundColor = (d.style.backgroundColor == 'white' ? 'transparent' : 'white');
-//     }
-
-//     if (document.getElementById("silverInputLow")) {
-//         var d = document.getElementById("silverInputLow");
-//         d.classList.add("fading-label"); // Add the fading-label class
-//         d.style.backgroundColor = (d.style.backgroundColor == 'white' ? '' : 'white');
-//     }
-
-//     if (document.getElementById("silverInputHigh")) {
-//         var d = document.getElementById("silverInputHigh");
-//         d.classList.add("fading-label"); // Add the fading-label class
-//         d.style.backgroundColor = (d.style.backgroundColor == 'white' ? '' : 'white');
-//     }
-// }
-
 
 
 async function readSpreadValues() {
